@@ -119,14 +119,8 @@ const ChartCard = ({ title, subtitle, data, maxValue }) => {
   };
 
   return (
-    <div className=" rounded-xl   flex flex-col    p-2 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-      {/* <div className="text-right mb-6">
-        <h3 className="text-lg font-bold text-gray-800 mb-1">{title}</h3>
-        <p className="text-sm text-gray-600">{subtitle}</p>
-      </div> */}
-
+    <div className=" rounded-xl flex flex-col p-2 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
       <StatCard title={title} subtitle={subtitle} />
-
       <div className="relative h-55 ">
         <Bar data={chartData} options={options} />
       </div>
