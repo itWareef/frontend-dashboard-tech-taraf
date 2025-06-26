@@ -24,7 +24,7 @@ const menuItems = [
   },
   {
     id: 2,
-    path: "/orders",
+    path: "/OrdersPage",
     icon: (
       <svg
         width="32"
@@ -44,7 +44,7 @@ const menuItems = [
   },
   {
     id: 3,
-    path: "/x",
+    path: "/SupervisorPage",
     icon: (
       <svg
         width="32"
@@ -177,7 +177,7 @@ const menuItems = [
 const SidebarItem = () => {
   return (
     <div className="flex flex-col items-center justify-between h-full w-full">
-      <nav className="flex flex-col items-center gap-y-4 md:gap-y-6 lg:gap-y-8 w-full px-1">
+      <nav className="flex flex-col items-center gap-y-3 md:gap-y-1 lg:gap-y-3 w-full px-1">
         {menuItems.map((item) => (
           <NavLink
             key={item.id}

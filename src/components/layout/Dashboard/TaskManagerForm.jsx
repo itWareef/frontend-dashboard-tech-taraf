@@ -53,7 +53,7 @@ const TaskManagerForm = () => {
     setShowConfirm(false);
   };
   return (
-    <div className="bg-card  w-full rounded-lg p-6 shadow-md relative overflow-hidden">
+    <div className="bg-card max-h-[480px] h-full  w-full rounded-lg p-6 shadow-md relative overflow-hidden">
       <h2 className=" text-2xl md:text-[40px] text-center text-muted">
         إدارة المهام
       </h2>

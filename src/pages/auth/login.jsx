@@ -7,6 +7,7 @@ const Login = () => {
       {/* Left Column - Image */}
       <div className="flex-1 relative hidden lg:block">
         <div className="absolute inset-0 ">
+          <div className="absolute inset-0 bg-[#013B41] opacity-50"></div>
           <img
             src={LoginImg}
             alt="Taraf"

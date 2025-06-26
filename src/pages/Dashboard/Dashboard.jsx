@@ -5,7 +5,7 @@ import Header from "@/components/shared/Header/Header";
 const Dashboard = () => {
   return (
     <main className="min-h-svh">
-      <Header />
+      <Header PageName="لوحة التحكم" />
 
       <div className="flex flex-col lg:flex-row gap-6 pb-5 lg:pb-0 pt-5 md:px-4">
         <SidebarPanel />

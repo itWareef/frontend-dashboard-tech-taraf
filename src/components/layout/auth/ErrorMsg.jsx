@@ -1,14 +1,9 @@
-const ErrorMsg = ({ formik, type }) => {
-  const typeInput = type;
+const ErrorMsg = ({ formik, name }) => {
   return (
     <>
-      {formik.errors[typeInput] && formik.touched[typeInput] ? (
-        <span className="error text-destructive">
-          {formik.errors[typeInput]}
-        </span>
-      ) : (
-        ""
-      )}
+      {formik.errors[name] && formik.touched[name] ? (
+        <span className="error text-destructive">{formik.errors[name]}</span>
+      ) : null}
     </>
   );
 };

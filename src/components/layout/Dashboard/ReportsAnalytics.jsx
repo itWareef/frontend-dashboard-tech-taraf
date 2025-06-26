@@ -6,7 +6,7 @@ const ReportsAnalytics = () => {
     <div
       className="
       bg-card rounded-lg p-4 md:p-6 shadow-md
-      h-[440px] overflow-y-auto
+      max-h-[480px] overflow-y-auto
       [-ms-overflow-style:none] [scrollbar-width:none]
       [&::-webkit-scrollbar]:hidden
     "

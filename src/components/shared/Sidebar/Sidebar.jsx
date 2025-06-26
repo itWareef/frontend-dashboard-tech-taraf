@@ -20,8 +20,8 @@ const Sidebar = () => {
       {/* Sidebar */}
       <nav
         className={`
-          bg-sidebar h-full py-6 md:py-20 overflow-x-hidden overflow-y-auto
-          flex flex-col items-center w-[70px] lg:w-[95px]
+          bg-sidebar h-full pt-30 md:py-20 overflow-x-hidden overflow-y-auto
+          flex flex-col items-center w-[70px] 
           fixed md:static inset-y-0 right-0 z-40
           transform transition-transform duration-300 ease-in-out
           ${

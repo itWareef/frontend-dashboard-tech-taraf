@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
@@ -15,8 +15,8 @@ const LoginForm = () => {
 
   const handleSubmit = (values) => {
     console.log(values);
+    navigate("/");
   };
-
   const validationSchema = useMemo(() => {
     return Yup.object({
       email: Yup.string()
@@ -36,13 +36,15 @@ const LoginForm = () => {
   });
 
   return (
-    <div className="w-full flex flex-col  items-center justify-center ">
+    <div className="w-full flex flex-col items-center justify-center">
       <CardLogo />
 
       <form
         onSubmit={formik.handleSubmit}
-        className="space-y-5 mt-15 w-full md:w-[680px] "
+        className="space-y-5 mt-15 px-3 w-full md:w-[680px]"
+        noValidate
       >
+        {/* Email */}
         <div className="space-y-2">
           <div className="relative">
             <Input
@@ -52,13 +54,14 @@ const LoginForm = () => {
               placeholder="البريد الإلكتروني"
               className="pr-5 w-full h-[50px] text-2xl bg-input border-secondary placeholder:text-xl placeholder:text-muted"
               onChange={formik.handleChange}
-              value={formik.values.email}
               onBlur={formik.handleBlur}
+              value={formik.values.email}
             />
           </div>
-          <ErrorMsg formik={formik} type={"email"} />
+          <ErrorMsg formik={formik} type="email" />
         </div>
 
+        {/* Password */}
         <div className="space-y-2">
           <div className="relative">
             <Input
@@ -68,14 +71,14 @@ const LoginForm = () => {
               placeholder="كلمة المرور"
               className="pr-5 w-full h-[50px] text-2xl bg-input border-secondary placeholder:text-xl placeholder:text-muted"
               onChange={formik.handleChange}
-              value={formik.values.password}
               onBlur={formik.handleBlur}
+              value={formik.values.password}
             />
             <Button
               type="button"
               variant="ghost"
               size="sm"
-              className="absolute left-0 top-0 h-full px-3"
+              className="absolute left-0 top-0 h-full px-3 py-0 hover:bg-transparent"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
@@ -85,12 +88,12 @@ const LoginForm = () => {
               )}
             </Button>
           </div>
-          <ErrorMsg formik={formik} type={"password"} />
+          <ErrorMsg formik={formik} type="password" />
         </div>
 
         <Link
           to="/auth/forgot-password"
-          className="text-sm  text-muted  block text-center  hover:text-secondary/90  transition-colors duration-200"
+          className="text-sm text-muted block text-center hover:text-secondary/90 transition-colors duration-200"
           aria-label="إعادة تعيين كلمة المرور"
         >
           هل نسيت كلمة المرور؟
