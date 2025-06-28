@@ -9,55 +9,46 @@ import { AlertTriangleIcon } from "lucide-react";
 import { useState } from "react";
 
 const chooseOrderOptions = [
-  {
-    label: "طلب رقم 5783 عمليل رقم 19 وحده 39",
-    value: "order-5783",
-  },
-  {
-    label: "طلب رقم 5784 عمليل رقم 20 وحده 40",
-    value: "order-5784",
-  },
-  {
-    label: "طلب رقم 5785 عمليل رقم 21 وحده 41",
-    value: "order-5785",
-  },
+  { label: "طلب رقم 5783 عمليل رقم 19 وحده 39", value: "order-5783" },
+  { label: "طلب رقم 5784 عمليل رقم 20 وحده 40", value: "order-5784" },
+  { label: "طلب رقم 5785 عمليل رقم 21 وحده 41", value: "order-5785" },
 ];
 
 const chooseSupervisorOptions = [
-  {
-    name: "عبدالرحمن علي",
-    value: "supervisor-1",
-  },
-  {
-    name: "سالم محمد",
-    value: "supervisor-2",
-  },
-  {
-    name: "فاطمة الزهراء",
-    value: "supervisor-3",
-  },
+  { name: "عبدالرحمن علي", value: "supervisor-1" },
+  { name: "سالم محمد", value: "supervisor-2" },
+  { name: "فاطمة الزهراء", value: "supervisor-3" },
 ];
+
 const TaskManagerForm = () => {
   const [showConfirm, setShowConfirm] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState("");
+  const [selectedSupervisor, setSelectedSupervisor] = useState("");
+
   const handleConfirm = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setShowConfirm(true);
-  };
-
-  const handleFinalConfirm = (e) => {
     e.preventDefault();
+    if (selectedOrder && selectedSupervisor) {
+      setShowConfirm(true);
+    }
+  };
+
+  const handleFinalConfirm = () => {
+    console.log("تم الإسناد:", {
+      order: selectedOrder,
+      supervisor: selectedSupervisor,
+    });
     setShowConfirm(false);
   };
 
-  const handleCancel = () => {
-    setShowConfirm(false);
-  };
+  const handleCancel = () => setShowConfirm(false);
+
   return (
-    <div className="bg-card max-h-[480px] h-full  w-full rounded-lg p-6 shadow-md relative overflow-hidden">
-      <h2 className=" text-2xl md:text-[40px] text-center text-muted">
+    <div className="relative h-full max-h-[430px] w-full rounded-lg bg-card p-6 shadow-md">
+      <h2 className="text-center text-2xl text-muted md:text-[40px]">
         إدارة المهام
       </h2>
-      <div className="head text-center flex flex-col gap-y-5 items-center justify-center mt-6   ">
+
+      <div className="mt-6 flex flex-col items-center justify-center gap-y-5 text-center">
         <svg
           width="40"
           height="40"
@@ -70,11 +61,12 @@ const TaskManagerForm = () => {
             fill="#1C7E68"
           />
         </svg>
-        <h3 className="text-[27px]">اسناد طلب سريع </h3>
+        <h3 className="text-[27px]">إسناد طلب سريع</h3>
       </div>
-      <form onSubmit={handleConfirm}>
-        <Select dir="rtl">
-          <SelectTrigger className="w-full my-6 py-6">
+
+      <form onSubmit={handleConfirm} className="mt-4">
+        <Select dir="rtl" onValueChange={setSelectedOrder}>
+          <SelectTrigger className="my-6 w-full py-6">
             <SelectValue placeholder="اختر طلب" />
           </SelectTrigger>
           <SelectContent>
@@ -85,8 +77,9 @@ const TaskManagerForm = () => {
             ))}
           </SelectContent>
         </Select>
-        <Select dir="rtl">
-          <SelectTrigger className="w-full my-6 py-6">
+
+        <Select dir="rtl" onValueChange={setSelectedSupervisor}>
+          <SelectTrigger className="my-6 w-full py-6">
             <SelectValue placeholder="اختر مشرف" />
           </SelectTrigger>
           <SelectContent>
@@ -97,55 +90,49 @@ const TaskManagerForm = () => {
             ))}
           </SelectContent>
         </Select>
-        <div className="flex justify-between   gap-4 mt-4">
+
+        <div className="mt-4 flex justify-between gap-4">
           <button
             type="submit"
-            className={
-              "cursor-pointer w-[125px] rounded-lg h-[45px] text-lg bg-secondary hover:bg-secondary/80 transition-colors duration-300"
-            }
+            className="h-[45px] w-[125px] rounded-lg bg-secondary text-lg transition-colors duration-300 hover:bg-secondary/80"
           >
             تأكيد
           </button>
           <button
             type="button"
-            className={
-              "cursor-pointer w-[125px] rounded-lg h-[45px] text-lg bg-muted hover:bg-muted/80 transition-colors duration-300"
-            }
+            className="h-[45px] w-[125px] rounded-lg bg-muted text-lg transition-colors duration-300 hover:bg-muted/80"
           >
-            الغاء
+            إلغاء
           </button>
         </div>
       </form>
 
+      {/* ✅ نافذة التأكيد */}
       <div
-        className={`confirm absolute rounded-t-2xl left-0 right-0 bottom-0 transition-all duration-300 ${
+        role="dialog"
+        aria-modal="true"
+        className={`absolute left-0 right-0 bottom-0 flex flex-col items-center justify-center gap-y-4 rounded-t-2xl bg-chart-2/20 p-6 backdrop-blur-sm transition-all duration-300 ${
           showConfirm
             ? "translate-y-0 opacity-100"
             : "translate-y-full opacity-0"
-        } bg-chart-2/20 backdrop-blur-sm flex flex-col items-center justify-center gap-y-4 p-6`}
+        }`}
       >
         <AlertTriangleIcon className="h-30 w-30 text-muted" />
-        <p className="text-lg md:text-2xl text-center">
-          هل انت متأكدمن اسناء الطلب للمشرف
+        <p className="text-center text-lg md:text-2xl">
+          هل أنت متأكد من إسناد الطلب للمشرف؟
         </p>
-        <div className="flex justify-between   gap-4 mt-4">
+        <div className="mt-4 flex justify-between gap-4">
           <button
-            type="submit"
-            className={
-              "cursor-pointer w-[125px] rounded-lg h-[45px] text-lg bg-secondary hover:bg-secondary/80 transition-colors duration-300"
-            }
             onClick={handleFinalConfirm}
+            className="h-[45px] w-[125px] rounded-lg bg-secondary text-lg transition-colors duration-300 hover:bg-secondary/80"
           >
             تأكيد
           </button>
           <button
             onClick={handleCancel}
-            type="button"
-            className={
-              "cursor-pointer w-[125px] rounded-lg h-[45px] text-lg bg-muted hover:bg-muted/80 transition-colors duration-300"
-            }
+            className="h-[45px] w-[125px] rounded-lg bg-muted text-lg transition-colors duration-300 hover:bg-muted/80"
           >
-            الغاء
+            إلغاء
           </button>
         </div>
       </div>

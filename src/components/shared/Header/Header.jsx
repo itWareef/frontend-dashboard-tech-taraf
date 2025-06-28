@@ -5,7 +5,7 @@ const Header = ({ PageName, returnState = false }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-between px-5 pt-5 rounded-2xl">
+    <div className="flex sticky top-0 bg-background pb-2 z-40 items-center justify-between px-5 pt-5 ">
       <div>
         <h2 className="text-primary font-bold text-2xl md:text-[40px]">
           {PageName}
@@ -13,13 +13,13 @@ const Header = ({ PageName, returnState = false }) => {
         {returnState && (
           <Button
             onClick={() => navigate(-1)}
-            className="mt-2 cursor-pointer flex items-center gap-2 bg-secondary text-xl font-bold h-[30px] w-[90px] text-white hover:bg-secondary/80 transition-all duration-300"
+            className="mt-2 cursor-pointer flex items-center gap-2 bg-secondary text-xl font-bold min-h-[30px] w-[90px] text-white hover:bg-secondary/80 transition-all duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="21.448"
-              height="21.407"
-              viewBox="0 0 21.448 21.407"
+              width="20.448"
+              height="20.407"
+              viewBox="0 0 20.448 20.407"
             >
               <path
                 id="Icon_akar-arrow-back-thick-fill"
@@ -29,12 +29,13 @@ const Header = ({ PageName, returnState = false }) => {
                 fill="#fff"
               />
             </svg>
-            رجوع
+
+            <span className="pb-2"> رجوع</span>
           </Button>
         )}
       </div>
       <Link
-        to="/"
+        to="/login"
         className="text-muted flex gap-2 hover:text-secondary transition-all duration-300"
       >
         تسجيل الخروج

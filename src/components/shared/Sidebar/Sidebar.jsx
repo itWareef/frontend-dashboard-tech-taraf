@@ -2,10 +2,14 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import logo from "../../../assets/logo.png";
 import SidebarItem from "./SidebarItem";
+import SidebarProfile from "./SidebarProfile";
 
 const Sidebar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpenSidBarProfile = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       {/* Mobile Toggle Button */}
@@ -21,7 +25,7 @@ const Sidebar = () => {
       <nav
         className={`
           bg-sidebar h-full pt-30 md:py-20 overflow-x-hidden overflow-y-auto
-          flex flex-col items-center w-[70px] 
+          flex flex-col items-center w-[80px] 
           fixed md:static inset-y-0 right-0 z-40
           transform transition-transform duration-300 ease-in-out
           ${
@@ -39,7 +43,7 @@ const Sidebar = () => {
             className="w-full h-full object-contain"
           />
         </figure>
-        <SidebarItem />
+        <SidebarItem handleOpenSidBarProfile={handleOpenSidBarProfile} />
       </nav>
 
       {/* Overlay for mobile */}
@@ -47,6 +51,13 @@ const Sidebar = () => {
         <div
           className="fixed inset-0 bg-[#aaaaaa] opacity-60 z-30 md:hidden"
           onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
+      {isOpen && (
+        <SidebarProfile
+          handleOpenSidBarProfile={handleOpenSidBarProfile}
+          isOpen={isOpen}
         />
       )}
     </>

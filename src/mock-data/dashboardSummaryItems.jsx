@@ -46,6 +46,7 @@ const dashboardSummaryItems = [
     ),
     title: "طلبات قيد المعالجة",
     count: 35,
+    path: "pending-requests",
   },
 
   {
@@ -76,6 +77,7 @@ const dashboardSummaryItems = [
     ),
     title: "طلبات تم الانتهاء منها ",
     count: 65,
+    path: "/completed-requests",
   },
   {
     id: 4,

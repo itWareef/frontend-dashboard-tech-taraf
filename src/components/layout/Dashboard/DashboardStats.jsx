@@ -1,16 +1,20 @@
 import dashboardSummaryItems from "@/mock-data/dashboardSummaryItems";
+import { Link } from "react-router-dom";
 
 const DashboardStats = () => {
   return (
-    <div className="  gap-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-      {dashboardSummaryItems.map((item) => (
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      {dashboardSummaryItems.map(({ id, path, icon, title, count }) => (
         <div
-          key={item.id}
-          className="w-full text-center bg-card gap-y-3 rounded-lg shadow-md flex flex-col items-center justify-center p-4 hover:shadow-lg "
+          key={id}
+          className="w-full text-center bg-card rounded-lg shadow-md flex flex-col items-center justify-center p-4 gap-y-3 hover:shadow-lg transition-shadow duration-200"
         >
-          {item.icon}
-          <h3 className="text-lg ">{item.title}</h3>
-          <p className="text-2xl   text-muted">{item.count}</p>
+          <div className="text-3xl">
+            {path ? <Link to={path}>{icon}</Link> : icon}
+          </div>
+
+          <h3 className="text-lg font-medium ">{title}</h3>
+          <p className="text-2xl text-muted font-bold">{count}</p>
         </div>
       ))}
     </div>

@@ -4,14 +4,14 @@ import Header from "@/components/shared/Header/Header";
 
 const Dashboard = () => {
   return (
-    <main className="min-h-svh">
+    <>
       <Header PageName="لوحة التحكم" />
 
-      <div className="flex flex-col lg:flex-row gap-6 pb-5 lg:pb-0 pt-5 md:px-4">
+      <section className="overflow-hidden  flex flex-col gap-6 pt-5 pb-5 md:px-4 lg:flex-row lg:pb-0">
         <SidebarPanel />
         <DashboardSummary />
-      </div>
-    </main>
+      </section>
+    </>
   );
 };
 

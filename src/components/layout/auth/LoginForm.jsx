@@ -1,21 +1,21 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useFormik } from "formik";
 import { Eye, EyeOff } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import ErrorMsg from "./ErrorMsg";
-import CardLogo from "./CardLogo";
 import BtnSubmit from "./BtnSubmit";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import CardLogo from "./CardLogo";
+import ErrorMsg from "./ErrorMsg";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    console.log(values);
     navigate("/");
+    console.log(values);
   };
   const validationSchema = useMemo(() => {
     return Yup.object({
