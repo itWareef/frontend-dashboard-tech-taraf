@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugins: [ require("tailwind-scrollbar-hide")] @custom-variant dark (&:
+      is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Light Mode Colors */
+  --background: #f4f7fe;
+  --foreground: #ffffff;
+  --card: #013b41;
+  --card-foreground: #ffffff;
+  --popover: #09555d;
+  --popover-foreground: #ffffff;
+  --primary: #013b41;
+  --primary-foreground: #ffffff;
+  --secondary: #1c7e68;
+  --secondary-foreground: #ffffff;
+  --muted: #aaaaaa;
+  --muted-foreground: #272d3b;
+  --accent: #1c7e68;
+  --accent-foreground: #ffffff;
+  --destructive: #e7000b;
+  --border: #21413b;
+  --input: #09555d;
+  --ring: #1c7e68;
+
+  /* Chart Colors */
+  --chart-1: #9bd3ca;
+  --chart-2: #00ccf2;
+  --chart-3: #1c7e68;
+  --chart-4: #ffffff;
+  --chart-5: #7d00b5;
+
+  /* Sidebar Colors */
+  --sidebar: #013b41;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00ccf2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1c7e68;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #21413b;
+  --sidebar-ring: #00ccf2;
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --background: #181d23;
+  --foreground: #ffffff;
+  --card: #29313a;
+  --card-foreground: #ffffff;
+  --popover: #29313a;
+  --popover-foreground: #ffffff;
+  --primary: #013b41;
+  --primary-foreground: #ffffff;
+  --secondary: #1c7e68;
+  --secondary-foreground: #ffffff;
+  --muted: #aaaaaa;
+  --muted-foreground: #aaaaaa;
+  --accent: #1c7e68;
+  --accent-foreground: #181d23;
+  --destructive: #e7000b;
+  --border: #455060;
+  --input: #09555d;
+  --ring: #1c7e68;
+
+  /* Dark Chart Colors */
+  --chart-1: #9bd3ca;
+  --chart-2: #00ccf2;
+  --chart-3: #1c7e68;
+  --chart-4: #ffffff;
+  --chart-5: #7d00b5;
+
+  /* Dark Sidebar Colors */
+  --sidebar: #29313a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00ccf2;
+  --sidebar-primary-foreground: #181d23;
+  --sidebar-accent: #455060;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #455060;
+  --sidebar-ring: #00ccf2;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Janna LT";
+    direction: rtl;
+    color: var(--primary);
+  }
+}
+
+@font-face {
+  font-family: "Janna LT";
+  src: url("./assets/fonts/ArbFONTS-JannaLT-Regular.ttf");
+  font-weight: 400; /* Regular */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Janna LT";
+  src: url("./assets/fonts/ArbFONTS-ArbFONTS-Janna-LT-Bold.ttf")
+    format("truetype");
+  font-weight: 700; /* Bold */
+  font-display: swap;
+}
+/* For English */
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@layer utilities {
+  /* Font Settings for English */
+  .font-en {
+    font-family: "Montserrat", sans-serif;
+    direction: ltr;
+  }
+  /*  Font Settings for Arabic */
+  .font-ar {
+    font-family: "Janna LT", sans-serif;
+    direction: rtl;
+  }
+
+  .font-bold {
+    font-weight: 700 !important;
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.leaflet-popup-content {
+  width: auto !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+.invoice-wrapper {
+  padding: 20px;
+  color: #013b41 !important;
+}
+
+.invoice-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #013b41 !important;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  color: #013b41 !important;
+}
+
+.invoice-header p {
+  margin: 5px 0;
+  color: #013b41 !important;
+}
+
+.invoice-section {
+  margin-bottom: 20px;
+  color: #013b41 !important;
+}
+
+.section-title {
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #013b41 !important;
+}
+
+.invoice-section p {
+  margin: 5px 0;
+  color: #013b41 !important;
+}
+
+.invoice-section ul {
+  padding-left: 20px;
+  color: #013b41 !important;
+}
+
+.invoice-section li {
+  margin-bottom: 5px;
+  color: #013b41 !important;
+}
+
+.invoice-footer {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  color: #013b41 !important;
+}
