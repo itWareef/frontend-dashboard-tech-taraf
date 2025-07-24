@@ -6,6 +6,10 @@ import notificationsIcon from "../public/Icons/notificationsIcon.svg";
 import logoutIcon from "../public/Icons/logoutIcon.svg";
 import fullScreenIcon from "../public/Icons/fullScreenIcon.svg";
 import chatIcon from "../public/Icons/chatIcon.svg";
+import arrowLeft from "../public/Icons/arrow-down.svg";
+import rectangleList from "../public/Icons/rectangle-list.svg";
+import pen from "../public/Icons/pen.svg";
+import warning from "../public/Icons/warning.svg";
 
 export const svgIcons = {
   proposalSubmission: proposalSubmission,
@@ -16,6 +20,10 @@ export const svgIcons = {
   logoutIcon: logoutIcon,
   fullScreenIcon: fullScreenIcon,
   chatIcon: chatIcon,
+  arrowLeft: arrowLeft,
+  rectangleList: rectangleList,
+  pen: pen,
+  warning: warning,
 
   projects: (
     <svg

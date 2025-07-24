@@ -13,7 +13,6 @@ import NotFound from "@/pages/NotFound/NotFound";
 import OrdersPage from "@/pages/OrdersPage/OrdersPage";
 import PendingRequestsPage from "@/pages/PendingRequestsPage/PendingRequestsPage";
 import ProjectsPage from "@/pages/ProjectsPage/ProjectsPage";
-import ProposalsPage from "@/pages/ProposalsPage/ProposalsPage";
 import SupervisorOrders from "@/pages/SupervisorOrders/SupervisorOrders";
 import SupervisorPage from "@/pages/SupervisorPage/SupervisorPage";
 import UnitsPage from "@/pages/UnitsPage/UnitsPage";

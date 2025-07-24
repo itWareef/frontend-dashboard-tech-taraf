@@ -33,7 +33,7 @@ const Sidebar = () => {
           }
           shadow-lg md:shadow-none
            [-ms-overflow-style:none] [scrollbar-width:none] 
-      [&::-webkit-scrollbar]:hidden
+       [&::-webkit-scrollbar]:hidden
         `}
       >
         <figure className="w-10 h-8 md:w-12 md:h-10 mb-8 md:mb-12">
