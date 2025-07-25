@@ -6,7 +6,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { svgIcons } from "@/svgIcons";
-import { AlertTriangleIcon } from "lucide-react";
 import { useState } from "react";
 
 const chooseOrderOptions = [

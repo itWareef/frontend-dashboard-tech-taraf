@@ -21,6 +21,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedAuth from "./ProtectedAuth";
 import ProposalSubmissionPage from "@/pages/ProposalSubmissionPage/ProposalSubmissionPage";
 import OfferPricePage from "@/pages/OfferPricePage.jsx/OfferPricePage";
+import AssignExternalRequest from "@/pages/AssignExternalRequestPage/AssignExternalRequestPage";
+import AssignExternalRequestPage from "@/pages/AssignExternalRequestPage/AssignExternalRequestPage";
 
 const AppRoutes = () => {
   const routers = createBrowserRouter([
@@ -42,6 +44,10 @@ const AppRoutes = () => {
         { path: "/projects", element: <ProjectsPage /> },
         { path: "/proposals-submission", element: <ProposalSubmissionPage /> },
         { path: "/offer-price", element: <OfferPricePage /> },
+        {
+          path: "/assign-external-request",
+          element: <AssignExternalRequestPage />,
+        },
         {
           path: "contract-requests",
           element: <ContractRequests />,
