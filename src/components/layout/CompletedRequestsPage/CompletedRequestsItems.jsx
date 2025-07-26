@@ -140,6 +140,12 @@ const CompletedRequestsItems = ({ requests }) => {
               ))}
             </div>
           </div>
+          <div className="px-2 flex  items-center justify-end ">
+            <button className="bg-secondary flex items-center gap-2 px-2  h-6 w-20 rounded-[6px] text-white">
+              {completedRequestIcons.eye}
+              السجل
+            </button>
+          </div>
         </div>
       ))}
     </>

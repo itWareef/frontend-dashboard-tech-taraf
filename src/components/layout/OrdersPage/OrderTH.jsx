@@ -1,6 +1,6 @@
 const OrderTH = () => {
   return (
-    <thead className="sticky top-0 z-10  ">
+    <thead className="bg-card sticky top-0 z-10">
       <tr>
         <th className="px-4  text-center text-white font-normal text-xl bg-secondary h-[45px] rounded-r-[6px]">
           رقم الطلب
