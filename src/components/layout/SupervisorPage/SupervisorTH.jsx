@@ -24,10 +24,8 @@ const SupervisorTH = () => {
           الطلبات
         </th>
 
-        <th className="flex  w-[160px] ps-4  ">
-          <span className="py-3 text-center block w-full text-white font-normal text-xl bg-secondary rounded-[6px]">
-            العمليات
-          </span>
+        <th className="px-4 py-3 ms-2 flex items-center justify-center h-auto  text-center text-white font-normal text-xl bg-secondary rounded-[6px]">
+          العمليات
         </th>
       </tr>
     </thead>

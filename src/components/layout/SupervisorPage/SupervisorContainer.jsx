@@ -66,11 +66,37 @@ const SupervisorContainer = () => {
       email: "abdalahm234@gmail.com",
       avgRating: 4.5,
     },
+    {
+      id: 7,
+      supervisorImage: superVisorImg,
+      supervisorName: "عبدالرحمن علي",
+      maintenanceNum: 30,
+      phone: "0550000000",
+      email: "abdalahm234@gmail.com",
+      avgRating: 4.5,
+    },
+    {
+      id: 8,
+      supervisorImage: superVisorImg,
+      supervisorName: "عبدالرحمن علي",
+      maintenanceNum: 30,
+      phone: "0550000000",
+      email: "abdalahm234@gmail.com",
+      avgRating: 4.5,
+    },
+    {
+      id: 9,
+      supervisorImage: superVisorImg,
+      supervisorName: "عبدالرحمن علي",
+      maintenanceNum: 30,
+      phone: "0550000000",
+      email: "abdalahm234@gmail.com",
+      avgRating: 4.5,
+    },
   ]);
 
   const handleDelete = (supervisorId) => {
     console.log("Delete supervisor:", supervisorId);
-    // Add your delete logic here
   };
 
   const handleAdd = (formdata) => {
@@ -118,49 +144,33 @@ const SupervisorContainer = () => {
 
   return (
     <>
-      <div className="px-4 relative z-50">
-        {/* Table Card */}
-
-        {/* Model Add Supervisor */}
-        {isOpen && (
-          <ModelAddSupervisor
-            handleAdd={handleAdd}
-            handleCloseModel={handleCloseModel}
-            selectedSupervisor={selectedSupervisor}
-            handleEdit={handleEdit}
-          />
-        )}
-
-        <div className="bg-card h-[calc(100vh-165px)] relative  p-3 rounded-2xl my-3">
-          {/* Button For Show Model Add Supervisor */}
-          <div className="w-[80px] absolute bottom-0 left-0 -translate-x-1/2  translate-y-5  z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
+      {/* Model Add Supervisor */}
+      {isOpen && (
+        <ModelAddSupervisor
+          handleAdd={handleAdd}
+          handleCloseModel={handleCloseModel}
+          selectedSupervisor={selectedSupervisor}
+          handleEdit={handleEdit}
+        />
+      )}
+      <section className="bg-card p-3 relative rounded-[20px] my-3 space-y-4">
+        <div className="max-h-[calc(100vh-200px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="w-[80px] fixed bottom-0 left-0 translate-x-0  -translate-y-5  z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
             <button onClick={() => setIsOpen(true)}>
               {svgIcons.addSupervisor}
             </button>
           </div>
-          {/* Table Container with scroll */}
-          <div className="relative h-full">
-            <div
-              className="absolute inset-0 overflow-y-auto rounded-[6px] 
-            [-ms-overflow-style:none]
-            [scrollbar-width:none]
-            [&::-webkit-scrollbar]:hidden"
-            >
-              <table className="w-full border-separate border-spacing-y-6">
-                {/* Table Header */}
-                <SupervisorTH />
+          <table className="w-full border-separate border-spacing-y-6">
+            <SupervisorTH />
 
-                {/* Table Body */}
-                <SupervisorTBody
-                  supervisors={supervisors}
-                  handleDelete={handleDelete}
-                  handleEdit={handleEditClick}
-                />
-              </table>
-            </div>
-          </div>
+            <SupervisorTBody
+              supervisors={supervisors}
+              handleDelete={handleDelete}
+              handleEdit={handleEditClick}
+            />
+          </table>
         </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -1,8 +1,22 @@
+import { useState } from "react";
 import { completedRequestIcons } from "./completedRequestIcons";
+import ModelClientData from "./ModelClientData";
 
 const CompletedRequestsItems = ({ requests }) => {
+  const [isOpenModel, setIsOpenModel] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState(null);
+  const handleOpenModel = (request) => {
+    setSelectedRequest(request);
+    setIsOpenModel(!isOpenModel);
+  };
   return (
     <>
+      {isOpenModel && (
+        <ModelClientData
+          selectedRequest={selectedRequest}
+          handleOpenModel={handleOpenModel}
+        />
+      )}
       {requests.map((request, index) => (
         <div
           key={index}
@@ -141,8 +155,13 @@ const CompletedRequestsItems = ({ requests }) => {
             </div>
           </div>
           <div className="px-2 flex  items-center justify-end ">
-            <button className="bg-secondary flex items-center gap-2 px-2  h-6 w-20 rounded-[6px] text-white">
-              {completedRequestIcons.eye}
+            <button
+              onClick={() => {
+                handleOpenModel(request);
+              }}
+              className="bg-secondary flex items-center gap-2 px-2  h-6 w-20 rounded-[6px] text-white"
+            >
+              <img src="/Icons/history.svg" alt="" />
               السجل
             </button>
           </div>

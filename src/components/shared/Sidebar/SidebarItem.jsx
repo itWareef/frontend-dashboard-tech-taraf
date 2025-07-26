@@ -283,13 +283,13 @@ const menuItems = [
 const SidebarItem = ({ handleOpenSidBarProfile }) => {
   return (
     <div className="flex flex-col items-center justify-between h-full w-full">
-      <nav className="flex flex-col items-center gap-y-3 md:gap-y-1 lg:gap-y-3 w-full px-1">
+      <nav className="flex flex-col items-center gap-y-3 md:gap-y-1 lg:gap-y-6 w-full px-1">
         {menuItems.map((item) => (
           <NavLink
             key={item.id}
             to={item.path}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 w-full py-2 md:py-3 rounded-lg transition-all duration-200 ${
+              `flex flex-col items-center gap-1 w-full  rounded-lg transition-all duration-200 ${
                 isActive
                   ? "text-secondary  bg-opacity-10"
                   : "text-muted hover:text-secondary hover:bg-opacity-10"
