@@ -26,7 +26,7 @@ const CellsRendering = (tabName) => {
     );
   } else if (tabName === "types") {
     return (
-      <td className="px-2 py-0 border-r border-r-muted text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
+      <td className="px-2 py-0 border-r w-[150px] border-r-muted text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
         <div className="flex items-center justify-center h-full py-3 cursor-pointer">
           {svgIcons.list}
         </div>
@@ -34,7 +34,7 @@ const CellsRendering = (tabName) => {
     );
   } else if (tabName === "coupons") {
     return (
-      <td className="px-5 py-3 w-[150px] text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
+      <td className="px-5 py-3 w-[200px] text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
         <Select dir="rtl">
           <SelectTrigger
             iconClass={"text-primary  opacity-100"}
@@ -44,9 +44,9 @@ const CellsRendering = (tabName) => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="نشط">نشط</SelectItem>
-              <SelectItem value="خامل">خامل</SelectItem>
-              <SelectItem value="قيد الاانتظار">قيد الاانتظار</SelectItem>
+              <SelectItem value="لم يتم السداد">لم يتم السداد</SelectItem>
+              <SelectItem value="تم السداد">تم السداد</SelectItem>
+              <SelectItem value="تم رفض المعامله">تم رفض المعامله</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -75,7 +75,7 @@ const CellsRendering = (tabName) => {
   } else if (tabName === "product_requests") {
     return (
       <>
-        <td className="px-2 py-0 border-r border-r-muted text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
+        <td className="px-2 py-0 border-r w-[150px] border-r-muted text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
           <div className="flex items-center justify-center h-full py-3 cursor-pointer">
             <img src="public/Icons/AddRequestEyeIcon.svg" alt="eye icon" />
           </div>
@@ -102,12 +102,12 @@ const CellsRendering = (tabName) => {
   } else if (tabName === "payments") {
     return (
       <>
-        <td className="px-2 py-0 border-r border-r-muted text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
+        <td className="w-10 px-2 py-0 border-r border-r-muted text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
           <div className="flex items-center justify-center h-full py-3 cursor-pointer">
             {svgIcons.list}
           </div>
         </td>
-        <td className="px-5 py-3 w-[150px] text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
+        <td className="px-5 py-3 w-[200px] text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
           <Select dir="rtl">
             <SelectTrigger
               iconClass={"text-primary  opacity-100"}
@@ -117,9 +117,9 @@ const CellsRendering = (tabName) => {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="نشط">نشط</SelectItem>
-                <SelectItem value="خامل">خامل</SelectItem>
-                <SelectItem value="قيد الاانتظار">قيد الاانتظار</SelectItem>
+                <SelectItem value="لم يتم السداد">لم يتم السداد</SelectItem>
+                <SelectItem value="تم السداد">تم السداد</SelectItem>
+                <SelectItem value="تم رفض المعامله">تم رفض المعامله</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

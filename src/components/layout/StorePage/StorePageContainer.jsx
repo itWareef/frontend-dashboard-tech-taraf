@@ -45,38 +45,57 @@ export const StorePageContainer = () => {
         defaultValue="items"
         className={cn("w-full h-full")}
       >
-        <TabsList className="border-b-2 border-zinc-600 bg-transparent pb-0 w-full h-fit flex justify-start  relative rounded-none">
-          <div className="flex gap-5">
-            {/* //---------------------------------------------- */}
+        <div className="flex items-center justify-between gap-2">
+          <TabsList className="border-b-2 border-zinc-600 bg-transparent pb-0 w-full h-fit flex justify-start  relative rounded-none">
+            <div className="flex gap-5">
+              {/* //---------------------------------------------- */}
 
-            {/* Tabs array */}
-            {table_store_tabs.map((tab, index) => {
-              return (
-                <TabsTrigger
-                  key={index}
-                  value={tab.value}
-                  className="
-                     text-zinc-400
-                     dark:text-zinc-400
-                     text-xl
-                     px-3 py-2
-                     relative
-                     data-[state=active]:after:content-['']
-                     data-[state=active]:after:absolute 
-                     data-[state=active]:after:bottom-0
-                     data-[state=active]:after:left-1/2
-                     data-[state=active]:after:-translate-x-1/2
-                     data-[state=active]:after:w-full 
+              {/* Tabs array */}
+              {table_store_tabs.map((tab, index) => {
+                return (
+                  <TabsTrigger
+                    key={index}
+                    value={tab.value}
+                    className="
+                    text-zinc-400
+                dark:text-zinc-400
+                text-xl
+                px-3 py-2
+                relative
+                data-[state=active]:after:content-['']
+                data-[state=active]:after:absolute 
+                data-[state=active]:after:bottom-0
+                data-[state=active]:after:left-1/2
+                data-[state=active]:after:-translate-x-1/2
+                data-[state=active]:after:w-full 
                      data-[state=active]:after:h-[2px]
-                    data-[state=active]:after:bg-white
+                     data-[state=active]:after:bg-white
                      "
-                >
-                  {tab.name}
-                </TabsTrigger>
-              );
-            })}
+                  >
+                    {tab.name}
+                  </TabsTrigger>
+                );
+              })}
+            </div>
+          </TabsList>
+          <img
+            src="public/Icons/SettingsSearchIcon.svg"
+            alt="settings icon"
+            className="w-8 h-8"
+          />
+          <div className="flex items-center bg-white rounded-xl py-2 w-[30%] px-4 gap-4">
+            <img
+              src="public/Icons/SearchIcon.svg"
+              alt="search icon"
+              className="w-6 h-6"
+            />
+            <input
+              type="text"
+              placeholder="بحث"
+              className="flex-1 outline-none"
+            />
           </div>
-        </TabsList>
+        </div>
         <div className="h-full overflow-y-scroll [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {/* //---------------------------------------------- */}
 
