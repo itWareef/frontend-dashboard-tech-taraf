@@ -1,5 +1,4 @@
 import { svgIcons } from "@/svgIcons";
-import { Link } from "react-router-dom";
 
 const ClientsTBody = ({
   clients,

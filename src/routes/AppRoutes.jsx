@@ -23,6 +23,7 @@ import ProposalSubmissionPage from "@/pages/ProposalSubmissionPage/ProposalSubmi
 import OfferPricePage from "@/pages/OfferPricePage.jsx/OfferPricePage";
 import AssignExternalRequest from "@/pages/AssignExternalRequestPage/AssignExternalRequestPage";
 import AssignExternalRequestPage from "@/pages/AssignExternalRequestPage/AssignExternalRequestPage";
+import DeveloperPage from "@/pages/DeveloperPage/DeveloperPage";
 
 const AppRoutes = () => {
   const routers = createBrowserRouter([
@@ -35,6 +36,7 @@ const AppRoutes = () => {
         { path: "/supervisor-orders", element: <SupervisorOrders /> },
         { path: "/supervisorPage", element: <SupervisorPage /> },
         { path: "/clientsPage", element: <ClientsPage /> },
+        { path: "/developers", element: <DeveloperPage /> },
         { path: "/completed-requests", element: <CompletedRequestsPage /> },
         { path: "/pending-requests", element: <PendingRequestsPage /> },
         { path: "/units", element: <UnitsPage /> },

@@ -142,6 +142,7 @@ const dashboardSummaryItems = [
     ),
     title: "عدد المطورين",
     count: 150,
+    path: "/developers",
   },
   {
     id: 7,
@@ -165,6 +166,7 @@ const dashboardSummaryItems = [
     ),
     title: "عدد الوحدات",
     count: 85,
+    path: "/units",
   },
   {
     id: 8,
@@ -204,8 +206,9 @@ const dashboardSummaryItems = [
         />
       </svg>
     ),
-    title: " عدد العقود",
+    title: " المشاريع",
     count: 120,
+    path: "/projects",
   },
 ];
 export default dashboardSummaryItems;

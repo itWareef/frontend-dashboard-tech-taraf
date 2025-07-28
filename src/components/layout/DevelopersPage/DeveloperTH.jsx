@@ -1,23 +1,19 @@
 const developerTableHeaders = [
+  { key: "developerLogo", label: " شعار المطور" },
   { key: "developerName", label: "اسم المطور" },
-  { key: "project", label: "مشروع" },
-  { key: "villaNumber", label: "رقم الفيلا" },
-  { key: "unitNumber", label: "رقم الوحدة" },
-  { key: "area", label: "مساحة" },
-  { key: "deedNumber", label: "رقم الصك" },
-  { key: "deliveryDate", label: "تاريخ التسليم" },
-  { key: "maintenanceStart", label: "بداية عقد الصيانة" },
-  { key: "maintenanceEnd", label: "نهاية عقد الصيانة" },
-  { key: "clientName", label: "اسم العميل" },
-  { key: "clientNumber", label: "رقم العميل" },
+  { key: "projectsCount", label: "عدد المشاريع" },
+  { key: "unitsCount", label: "عدد الوحدات" },
+  { key: "taxNumber", label: "رقم الضريبة" },
+  { key: "bankAccount", label: "الحساب البنكي" },
+  { key: "email", label: "البريد الالكتروني" },
 ];
 
 const baseClasses =
   "px-4 text-center text-white font-normal text-xl bg-secondary h-[45px]";
 
-const UnitsTH = () => {
+const DeveloperTH = () => {
   return (
-    <thead className="sticky top-0  z-10 bg-card ">
+    <thead className="sticky top-0 z-10">
       <tr>
         {developerTableHeaders.map((header, index) => {
           const isFirst = index === 0;
@@ -44,4 +40,4 @@ const UnitsTH = () => {
   );
 };
 
-export default UnitsTH;
+export default DeveloperTH;

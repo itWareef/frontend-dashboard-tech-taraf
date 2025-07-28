@@ -80,7 +80,7 @@ const menuItems = [
 
   {
     id: 4,
-    path: "/contact-requests",
+    path: "/users",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,6 @@ const menuItems = [
   },
   {
     id: 5,
-    path: "/SupervisorPage",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -159,11 +158,11 @@ const menuItems = [
       </svg>
     ),
     title: "العقود",
+    path: "/contracts",
   },
 
   {
     id: 6,
-    path: "/ClientsPage",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -180,12 +179,11 @@ const menuItems = [
         />
       </svg>
     ),
-    title: "'طلبات الخدمات",
+    title: "طلبات الخدمات",
   },
 
   {
     id: 7,
-    path: "/",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -240,7 +238,6 @@ const menuItems = [
   },
   {
     id: 9,
-    path: "/units",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -282,8 +279,8 @@ const menuItems = [
 
 const SidebarItem = ({ handleOpenSidBarProfile }) => {
   return (
-    <div className="flex flex-col items-center justify-between h-full w-full">
-      <nav className="flex flex-col items-center gap-y-3 md:gap-y-1 lg:gap-y-6 w-full px-1">
+    <div className="flex flex-col items-center gap-6 h-full w-full">
+      <nav className="flex flex-col items-center  gap-y-6 w-full px-1">
         {menuItems.map((item) => (
           <NavLink
             key={item.id}
@@ -306,10 +303,7 @@ const SidebarItem = ({ handleOpenSidBarProfile }) => {
         ))}
       </nav>
 
-      <div
-        onClick={handleOpenSidBarProfile}
-        className="mt-auto pt-4 md:pt-8 pb-2 text-center"
-      >
+      <div onClick={handleOpenSidBarProfile} className=" pt-2 pb-2 text-center">
         <img
           src={imgProfile}
           alt="User Profile"

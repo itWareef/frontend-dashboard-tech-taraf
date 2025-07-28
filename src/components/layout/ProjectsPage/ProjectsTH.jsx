@@ -1,25 +1,37 @@
+const developerTableHeaders = [
+  { key: "projectName", label: "اسم المشروع" },
+  { key: "developerName", label: "اسم المطور" },
+  { key: "neighborhood", label: "الحي" },
+  { key: "unitsCount", label: "عدد الوحدات" },
+  { key: "guarantees", label: "الضمانات " },
+];
+
+const baseClasses =
+  "px-4 text-center text-white font-normal text-xl bg-secondary h-[45px]";
+
 const ProjectsTH = () => {
   return (
-    <thead className="sticky top-0 z-10 ">
+    <thead className="sticky top-0  z-10 bg-card ">
       <tr>
-        <th className="px-4 py-3 text-center text-white font-normal h-[45px] text-xl bg-secondary rounded-r-[6px]">
-          اسم المشروع{" "}
-        </th>
-        <th className="px-4 py-3 text-center text-white font-normal h-[45px] text-xl bg-secondary">
-          اسم المطور{" "}
-        </th>
-        <th className="px-4 py-3 text-center text-white font-normal h-[45px] text-xl bg-secondary">
-          الحي{" "}
-        </th>
+        {developerTableHeaders.map((header, index) => {
+          const isFirst = index === 0;
+          const isLast = index === developerTableHeaders.length - 1;
 
-        <th className="px-4 py-3  text-center text-white font-normal h-[45px] text-xl bg-secondary rounded-l-[6px]">
-          عدد الوحدات
-        </th>
+          return (
+            <th
+              key={header.key}
+              className={`${baseClasses} 
+                ${isFirst ? "rounded-r-[6px]" : ""}
+                ${isLast ? "rounded-l-[6px]" : ""}
+              `}
+            >
+              {header.label}
+            </th>
+          );
+        })}
 
-        <th className="flex  w-[160px] ps-4  ">
-          <span className="py-3 text-center block w-full text-white font-normal text-xl bg-secondary rounded-[6px]">
-            العمليات
-          </span>
+        <th className="px-4 py-3 ms-2 flex items-center justify-center h-auto  text-center text-white font-normal text-xl bg-secondary rounded-[6px]">
+          العمليات
         </th>
       </tr>
     </thead>

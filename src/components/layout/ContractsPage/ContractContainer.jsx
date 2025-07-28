@@ -1,10 +1,11 @@
-import { svgIcons } from "@/svgIcons.jsx";
 import { useState } from "react";
 import Attachments from "./Attachments.jsx";
 import ContractBody from "./ContractBody.jsx";
 import ContractTH from "./ContractTH.jsx";
 import ModelAddContract from "./ModelAddContract.jsx";
+import { Search } from "lucide-react";
 const ContractContainer = () => {
+  const [activeTab, setActiveTab] = useState(" currentContracts");
   const [openAttachments, setOpenAttachments] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -67,56 +68,82 @@ const ContractContainer = () => {
 
   return (
     <>
+      {/* Model Add Contract */}
+      {isOpen && (
+        <ModelAddContract
+          handleAdd={handleAdd}
+          handleCloseModel={handleCloseModel}
+          selectedContract={selectedContract}
+          handleEdit={handleEdit}
+        />
+      )}
       {openAttachments && (
         <Attachments
           openAttachments={openAttachments}
           handleAttachments={handleAttachments}
         />
       )}
-      <div className="px-4 relative z-50">
-        {/* Table Card */}
 
-        {/* Model Add Contract */}
-        {isOpen && (
-          <ModelAddContract
-            handleAdd={handleAdd}
-            handleCloseModel={handleCloseModel}
-            selectedContract={selectedContract}
-            handleEdit={handleEdit}
-          />
-        )}
-
-        <div className="bg-card h-[calc(100vh-165px)] relative  p-3 rounded-2xl my-3">
-          {/* Button For Show Model Add Contract */}
-          <div className="w-[80px] absolute bottom-0 left-0 -translate-x-1/2  translate-y-5  z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
-            <button onClick={() => setIsOpen(true)}>
-              {svgIcons.addContract}
+      <section className="bg-card p-3 rounded-[20px] my-3 space-y-4">
+        {/* Header */}
+        <header className="flex justify-between items-center">
+          <div className="space-x-2 border-b border-muted flex flex-1">
+            <button
+              onClick={() => setActiveTab("currentContracts")}
+              className={`text-xl py-3 px-4 text-white transition-all duration-150 ${
+                activeTab === "currentContracts"
+                  ? "border-b-2 border-white text-red-50 font-bold"
+                  : "opacity-60"
+              }`}
+            >
+              عقود سارية{" "}
+            </button>
+            <button
+              onClick={() => setActiveTab("endedContracts")}
+              className={`text-xl py-3 px-4 text-white transition-all duration-150 ${
+                activeTab === "endedContracts"
+                  ? "border-b-2 border-white text-red-50 font-bold"
+                  : "opacity-60"
+              }`}
+            >
+              عقود منتهية{" "}
             </button>
           </div>
-          {/* Table Container with scroll */}
-          <div className="relative h-full">
-            <div
-              className="absolute inset-0 overflow-y-auto rounded-[6px] 
-            [-ms-overflow-style:none]
-            [scrollbar-width:none]
-            [&::-webkit-scrollbar]:hidden"
-            >
-              <table className="w-full border-separate border-spacing-y-6">
-                {/* Table Header */}
-                <ContractTH />
 
-                {/* Table Body */}
-                <ContractBody
-                  handleAttachments={handleAttachments}
-                  contracts={contracts}
-                  handleDelete={handleDelete}
-                  handleEdit={handleEditClick}
-                />
-              </table>
+          <div className="flex items-center space-x-2 w-[250px]">
+            <img src="\Icons\filter.svg" className="w-6 h-6" alt="filter" />
+            <div className="relative">
+              <Search className="text-muted absolute top-1/2 right-2 transform -translate-y-1/2" />
+              <input
+                type="text"
+                className="bg-white rounded-[6px] py-2 ps-10 pe-2 text-sm"
+                placeholder="بحث"
+              />
             </div>
           </div>
+        </header>
+
+        <div className="max-h-[calc(100vh-250px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="w-[80px] fixed bottom-0 left-0 translate-x-0    z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
+            <button onClick={() => setIsOpen(true)}>
+              <img
+                src="\Icons\Icon corebrands-addthis.svg"
+                className="w-8 h-8"
+                alt="add"
+              />
+            </button>
+          </div>
+          <table className="w-full border-separate border-spacing-y-6">
+            <ContractTH />
+            <ContractBody
+              handleAttachments={handleAttachments}
+              contracts={contracts}
+              handleDelete={handleDelete}
+              handleEdit={handleEditClick}
+            />
+          </table>
         </div>
-      </div>
+      </section>
     </>
   );
 };
