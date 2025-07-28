@@ -21,6 +21,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedAuth from "./ProtectedAuth";
 import ProposalSubmissionPage from "@/pages/ProposalSubmissionPage/ProposalSubmissionPage";
 import OfferPricePage from "@/pages/OfferPricePage.jsx/OfferPricePage";
+import StorePage from "@/pages/StorePage/StorePage";
 import AssignExternalRequest from "@/pages/AssignExternalRequestPage/AssignExternalRequestPage";
 import AssignExternalRequestPage from "@/pages/AssignExternalRequestPage/AssignExternalRequestPage";
 
@@ -53,6 +54,7 @@ const AppRoutes = () => {
           element: <ContractRequests />,
         },
         { path: "/add-unit-requests", element: <AddUnitRequestsPage /> },
+        { path: "/store", element: <StorePage /> },
       ],
     },
 
