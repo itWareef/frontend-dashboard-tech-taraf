@@ -3,7 +3,7 @@ import { useAuthContext } from "@/context/AuthContext";
 import { svgIcons } from "@/svgIcons";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ PageName, returnState = false, children }) => {
+const Header = ({ PageName, returnState = false, children, option = true }) => {
   const { handleLogout, isLoggedIn } = useAuthContext();
   const navigate = useNavigate();
   const handleLogOut = () => {
@@ -34,23 +34,26 @@ const Header = ({ PageName, returnState = false, children }) => {
       </div>
 
       {/* الجزء الأيمن */}
-      <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
-        <IconButton icon={svgIcons.chatIcon} alt="chat" />
-        <IconButton icon={svgIcons.fullScreenIcon} alt="fullScreen" />
 
-        <NotificationIcon count={3} icon={svgIcons.notificationsIcon} />
+      {option == true && (
+        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+          <IconButton icon={svgIcons.chatIcon} alt="chat" />
+          <IconButton icon={svgIcons.fullScreenIcon} alt="fullScreen" />
 
-        <div className="flex items-center gap-1">
-          <Button
-            onClick={handleLogOut}
-            variant="ghost"
-            className="text-muted font-bold text-sm sm:text-2xl hover:text-secondary hover:bg-transparent"
-          >
-            تسجيل الخروج
-          </Button>
-          <img src={svgIcons.logoutIcon} alt="logout" className="w-8 h-8" />
+          <NotificationIcon count={3} icon={svgIcons.notificationsIcon} />
+
+          <div className="flex items-center gap-1">
+            <Button
+              onClick={handleLogOut}
+              variant="ghost"
+              className="text-muted font-bold text-sm sm:text-2xl hover:text-secondary hover:bg-transparent"
+            >
+              تسجيل الخروج
+            </Button>
+            <img src={svgIcons.logoutIcon} alt="logout" className="w-8 h-8" />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

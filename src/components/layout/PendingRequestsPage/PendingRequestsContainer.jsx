@@ -17,7 +17,7 @@ const PendingRequestsContainer = () => {
   const requests = [
     {
       id: 1,
-      title: "طلب الصيانة الكهربائية",
+      title: "طلب الصيانة ",
       warehouse: "مستودع A12",
       unit: "الوحدة 5",
       district: "القسم الكهربائي",
@@ -28,7 +28,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 2,
-      title: "طلب صيانة التكييف",
+      title: "طلب صيانة ",
       warehouse: "مستودع B7",
       unit: "الوحدة 12",
       district: "قسم التبريد",
@@ -39,7 +39,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 3,
-      title: "طلب صيانة السباكة",
+      title: "طلب صيانة ",
       warehouse: "مستودع C3",
       unit: "الوحدة 8",
       district: "القسم الصحي",
@@ -50,7 +50,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 4,
-      title: "طلب صيانة الأجهزة",
+      title: "طلب صيانة ",
       warehouse: "مستودع D9",
       unit: "الوحدة 3",
       district: "قسم الأجهزة",
@@ -61,7 +61,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 5,
-      title: "طلب الصيانة الكهربائية",
+      title: "طلب الصيانة ",
       warehouse: "مستودع A12",
       unit: "الوحدة 5",
       district: "القسم الكهربائي",
@@ -72,7 +72,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 6,
-      title: "طلب صيانة التكييف",
+      title: "طلب صيانة ",
       warehouse: "مستودع B7",
       unit: "الوحدة 12",
       district: "قسم التبريد",
@@ -83,7 +83,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 7,
-      title: "طلب صيانة السباكة",
+      title: "طلب صيانة ",
       warehouse: "مستودع C3",
       unit: "الوحدة 8",
       district: "القسم الصحي",
@@ -94,7 +94,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 8,
-      title: "طلب صيانة الأجهزة",
+      title: "طلب صيانة ",
       warehouse: "مستودع D9",
       unit: "الوحدة 3",
       district: "قسم الأجهزة",
@@ -105,7 +105,7 @@ const PendingRequestsContainer = () => {
     },
     {
       id: 9,
-      title: "طلب صيانة التكييف",
+      title: "طلب صيانة ",
       warehouse: "مستودع B7",
       unit: "الوحدة 12",
       district: "قسم التبريد",
@@ -117,7 +117,7 @@ const PendingRequestsContainer = () => {
   ];
 
   return (
-    <div className="h-[calc(100vh-160px)] p-3 rounded-2xl my-3">
+    <div className="h-[calc(100vh-160px)] p-3 rounded-2xl my-3 text-white">
       <div className="relative h-full">
         <div
           className="absolute inset-0 overflow-y-auto rounded-[6px] 
@@ -325,9 +325,9 @@ const PendingRequestsContainer = () => {
                       </div>
                     </div>
                   </div>
-                  <div className=" bg-[#9BD3CA] mt-5 flex py-4 items-center rounded-b-lg gap-3 text-primary justify-center">
-                    <h3 className="font-bold text-2xl">الغاء الطلب</h3>
-                  </div>
+                  <button className="font-bold  w-full text-2xl hover:bg-destructive bg-[#9BD3CA] mt-5 flex py-4 items-center rounded-b-lg gap-3 text-primary justify-center hover:text-white">
+                    الغاء الطلب
+                  </button>
                 </div>
               );
             })}

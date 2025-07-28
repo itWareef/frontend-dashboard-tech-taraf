@@ -1,37 +1,47 @@
 import { useAuthContext } from "@/context/AuthContext";
 import imgPlaceholder from "../../../assets/placeholder.svg";
 const now = new Date();
-const time = now.toLocaleTimeString("ar-SA", {
+
+const time = now.toLocaleTimeString("en-US", {
   hour: "2-digit",
   minute: "2-digit",
+  hour12: false,
 });
 
-const date = now.toLocaleDateString("ar-SA", {
+const dayName = now.toLocaleDateString("ar-EG", {
   weekday: "long",
+});
+
+const restOfDate = now.toLocaleDateString("en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",
 });
+
 const UserProfile = () => {
   const { user } = useAuthContext();
   return (
-    <div className="flex w-full flex-col items-center space-y-4 rounded-lg bg-card p-6 py-10 shadow-md overflow-hidden">
+    <div className="col-span-2 row-span-2 col-start-11 row-start-1 gird place-content-center place-items-center space-y-3  bg-card rounded-[20px]">
       <figure className="text-center">
         <img
           src={user?.picture || imgPlaceholder}
           alt="صورة الملف الشخصي"
           className="mx-auto h-24 w-24 rounded-full object-cover border-2 border-primary"
         />
-        <figcaption className="mt-3 text-lg font-medium text-muted">
-          {user?.name || "اسم المستخدم غير متوفر"}
+        <figcaption className="mt-3 text-2xl font-bold  text-muted">
+          {user?.name || "اسم المستخدم  "}
         </figcaption>
       </figure>
 
-      <p className="text-center text-secondary">نتمنى لك يومًا سعيدًا</p>
+      <p className="text-center text-lg mb-5 font-bold text-secondary">
+        نتمنى لك يومًا سعيدًا
+      </p>
 
-      <div className="space-y-1 text-center text-muted">
-        <div className="text-2xl font-bold">{time}</div>
-        <div className="text-sm">{date}</div>
+      <div className="space-y-3  text-center text-muted font-bold">
+        <div className="text-4xl ">{time}</div>
+        <div className="text-sm">
+          {dayName} : {restOfDate}
+        </div>
       </div>
     </div>
   );

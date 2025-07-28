@@ -12,10 +12,10 @@ const SummaryStats = () => {
       {summaryStatsItems.map((item, index) => (
         <div
           key={index}
-          className="space-y-3 bg-muted/10 p-4 rounded-xl shadow-sm transition-all duration-300 hover:shadow-md hover:bg-muted/20 hover:scale-105 cursor-pointer"
+          className="space-y-6 p-4  transition-all duration-300 hover:shadow-md hover:rounded-3xl hover:bg-muted/20 hover:scale-105 cursor-pointer"
         >
-          <p className="text-2xl lg:text-4xl font-bold ">{item.value}</p>
-          <h3 className="text-muted text-base md:text-lg">{item.title}</h3>
+          <p className="text-5xl text-white font-bold ">{item.value}</p>
+          <h3 className="text-muted md:text-2xl font-bold">{item.title}</h3>
         </div>
       ))}
     </div>

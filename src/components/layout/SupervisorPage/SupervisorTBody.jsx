@@ -10,7 +10,7 @@ const SupervisorTBody = ({ supervisors, handleEdit, handleDelete }) => {
             <img
               src={supervisor.supervisorImage}
               alt={supervisor.supervisorName}
-              className="w-10 h-10 rounded-full "
+              className="w-12 h-12 rounded-full mx-auto "
             />
           </td>
           <td className="px-2 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
@@ -40,21 +40,20 @@ const SupervisorTBody = ({ supervisors, handleEdit, handleDelete }) => {
             </div>
           </td>
 
-          <td className="w-[160px]">
-            <div className="flex border-r-[1px] border-secondary rounded-l-[6px] bg-[#C8CCCC] hover:bg-[#B8BCBC] transition-colors duration-200">
+          <td className="px-2 py-0 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200 rounded-l-[6px]">
+            <div className="flex  rounded-l-[6px] bg-[#C8CCCC] hover:bg-[#B8BCBC] transition-colors duration-200">
               <button
                 onClick={() => handleEdit(supervisor)}
-                className="flex-1 cursor-pointer  py-5 transition-colors flex justify-center items-center border-r-[1px] border-secondary"
+                className="flex-1 cursor-pointer  py-5 transition-colors flex justify-center items-center  border-r-1 border-secondary"
                 aria-label="تعديل"
               >
                 {svgIcons.update}
               </button>
               <button
                 onClick={() => handleDelete(supervisor.id)}
-                className="flex-1 cursor-pointer py-5 relative   flex justify-center items-center"
+                className="flex-1 cursor-pointer  py-5 transition-colors flex justify-center items-center  border-r-1 border-secondary"
                 aria-label="حذف"
               >
-                <div className="absolute right-0 h-full w-[2px] bg-secondary" />
                 {svgIcons.delete}
               </button>
             </div>

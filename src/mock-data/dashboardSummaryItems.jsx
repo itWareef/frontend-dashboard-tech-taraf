@@ -98,6 +98,7 @@ const dashboardSummaryItems = [
     ),
     title: " عدد المشرفين   ",
     count: 88,
+    path: "/SupervisorPage",
   },
   {
     id: 5,
@@ -117,6 +118,7 @@ const dashboardSummaryItems = [
     ),
     title: "عدد العملاء",
     count: 88,
+    path: "/ClientsPage",
   },
   {
     id: 6,

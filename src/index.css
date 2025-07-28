@@ -204,66 +204,24 @@ button {
   cursor: pointer;
 }
 
-.invoice-wrapper {
-  padding: 20px;
-  color: #013b41 !important;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-.invoice-title {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #013b41 !important;
+.slow-spin {
+  animation: spin 3s linear infinite; /* 3 ثوانٍ لدورة كاملة */
 }
-
-.invoice-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
-  color: #013b41 !important;
-}
-
-.invoice-header p {
-  margin: 5px 0;
-  color: #013b41 !important;
-}
-
-.invoice-section {
-  margin-bottom: 20px;
-  color: #013b41 !important;
-}
-
-.section-title {
-  font-size: 18px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-  color: #013b41 !important;
-}
-
-.invoice-section p {
-  margin: 5px 0;
-  color: #013b41 !important;
-}
-
-.invoice-section ul {
-  padding-left: 20px;
-  color: #013b41 !important;
-}
-
-.invoice-section li {
-  margin-bottom: 5px;
-  color: #013b41 !important;
-}
-
-.invoice-footer {
-  margin-top: 30px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-  color: #013b41 !important;
+.slow-pulse {
+  animation: pulse 2s ease-in-out infinite; /* 2 ثوانٍ لكل نبضة */
 }

@@ -6,6 +6,16 @@ import notificationsIcon from "../public/Icons/notificationsIcon.svg";
 import logoutIcon from "../public/Icons/logoutIcon.svg";
 import fullScreenIcon from "../public/Icons/fullScreenIcon.svg";
 import chatIcon from "../public/Icons/chatIcon.svg";
+import arrowLeft from "../public/Icons/arrow-down.svg";
+import rectangleList from "../public/Icons/rectangle-list.svg";
+import pen from "../public/Icons/pen.svg";
+import warning from "../public/Icons/warning.svg";
+import locationIcon from "../public/Icons/location.svg";
+import phone from "../public/Icons/phone.svg";
+import userGroups from "../public/Icons/usersGroups.svg";
+import userGroups2 from "../public/Icons/usersGroups2.svg";
+import pending from "../public/Icons/pending.svg";
+import checkCircle from "../public/Icons/check-circle.svg";
 
 export const svgIcons = {
   proposalSubmission: proposalSubmission,
@@ -16,6 +26,16 @@ export const svgIcons = {
   logoutIcon: logoutIcon,
   fullScreenIcon: fullScreenIcon,
   chatIcon: chatIcon,
+  arrowLeft: arrowLeft,
+  rectangleList: rectangleList,
+  pen: pen,
+  warning: warning,
+  locationIcon: locationIcon,
+  phone: phone,
+  userGroups: userGroups,
+  userGroups2: userGroups2,
+  pending: pending,
+  checkCircle: checkCircle,
 
   projects: (
     <svg

@@ -5,7 +5,7 @@ import { svgIcons } from "@/svgIcons";
 const SupervisorOrders = () => {
   return (
     <>
-      <Header PageName="طلبات المشرف" returnState={true}>
+      <Header PageName="طلبات المشرف" returnState={true} option="false">
         {svgIcons.list}
       </Header>
 

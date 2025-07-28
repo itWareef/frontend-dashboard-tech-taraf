@@ -1,16 +1,37 @@
+import AssignExternalRequest from "@/components/layout/Dashboard/AssignExternalRequest";
+import DashboardStats from "@/components/layout/Dashboard/DashboardStats";
 import DashboardSummary from "@/components/layout/Dashboard/DashboardSummary";
+import ReportsAnalytics from "@/components/layout/Dashboard/ReportsAnalytics";
 import SidebarPanel from "@/components/layout/Dashboard/SidebarPanel";
+import TaskManagerForm from "@/components/layout/Dashboard/TaskManagerForm";
+import UserProfile from "@/components/layout/Dashboard/UserProfile";
 import Header from "@/components/shared/Header/Header";
+import { User } from "lucide-react";
 
 const Dashboard = () => {
   return (
     <>
       <Header PageName="لوحة التحكم" />
+      <section className="py-3 overflow-hidden" style={{}}>
+        <div
+          className="grid grid-cols-12 gap-4 h-full overflow-hidden  "
+          style={{
+            gridTemplateRows: "170px 170px 70px 195px 195px",
+          }}
+        >
+          <UserProfile />
+          <DashboardStats />
 
-      <section className="overflow-hidden  flex flex-col gap-6 pt-5 pb-5 md:px-4 lg:flex-row lg:pb-0">
-        <SidebarPanel />
-        <DashboardSummary />
+          <ReportsAnalytics />
+
+          <AssignExternalRequest />
+
+          <TaskManagerForm />
+        </div>
       </section>
+
+      {/* <SidebarPanel />
+      <DashboardSummary /> */}
     </>
   );
 };
