@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31.5" height="27" viewBox="0 0 31.5 27">
+  <g id="Icon_ion-file-tray-full-outline" data-name="Icon ion-file-tray-full-outline" transform="translate(-2.25 -4.5)">
+    <path id="Path_7268" data-name="Path 7268" d="M27,5.625H9A3.179,3.179,0,0,0,5.625,8.438L3.375,19.125V27A3.385,3.385,0,0,0,6.75,30.375h22.5A3.385,3.385,0,0,0,32.625,27V19.125L30.375,8.438A3.169,3.169,0,0,0,27,5.625Z" fill="none" stroke="#038d7d" stroke-linejoin="round" stroke-width="2.25"/>
+    <path id="Path_7269" data-name="Path 7269" d="M3.375,19.125H13.5m9,0H32.625m-19.125,0a4.5,4.5,0,0,0,9,0m-12.375-9h15.75M9,14.625H27" fill="none" stroke="#038d7d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25"/>
+  </g>
+</svg>

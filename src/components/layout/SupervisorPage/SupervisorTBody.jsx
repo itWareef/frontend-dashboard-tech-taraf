@@ -54,7 +54,6 @@ const SupervisorTBody = ({ supervisors, handleEdit, handleDelete }) => {
                 className="flex-1 cursor-pointer  py-5 transition-colors flex justify-center items-center  border-r-1 border-secondary"
                 aria-label="حذف"
               >
-                {/* <div className="absolute right-0 h-full w-0.5  bg-secondary" /> */}
                 {svgIcons.delete}
               </button>
             </div>

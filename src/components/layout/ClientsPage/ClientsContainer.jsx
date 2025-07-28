@@ -1,19 +1,21 @@
-import { svgIcons } from "@/svgIcons";
 import { useState } from "react";
 import superVisorImg from "../../../assets/imgProfile.png";
 import ClientsTBody from "./ClientsTBody";
 import ClientsTH from "./ClientsTH";
 import ModelAddClient from "./ModelAddClient";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
+import { Search } from "lucide-react";
+import ModeClientsOrder from "./ModelClientsOrder/ModeClientsOrder";
 
 const ClientsContainer = () => {
+  const [activeTab, setActiveTab] = useState("contracted");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
+  const [ordersModel, setOrdersModel] = useState(false);
 
   const handleCloseModel = () => {
     setIsOpen(false);
+    setSelectedClient(null);
   };
 
   const [clients, setClients] = useState([
@@ -80,13 +82,13 @@ const ClientsContainer = () => {
   ]);
 
   const handleDelete = (clientId) => {
-    console.log("Delete client:", clientId);
+    setClients(clients.filter((client) => client.id !== clientId));
   };
 
   const handleAdd = (formdata) => {
     const newClient = {
       id: clients.length + 1,
-      clientImage: formdata.get("image"),
+      clientImage: formdata.get("image") || superVisorImg,
       clientName: formdata.get("name"),
       clientContract: formdata.get("contract"),
       unitNumber: formdata.get("unitNumber"),
@@ -94,11 +96,11 @@ const ClientsContainer = () => {
       neighborhood: formdata.get("neighborhood"),
       phone: formdata.get("phone"),
       email: formdata.get("email"),
-      isContracted: true, // افتراضيًا متعاقد
+      isContracted: true,
     };
 
     setClients([...clients, newClient]);
-    setSelectedClient(newClient);
+    setSelectedClient(null);
     setIsOpen(false);
   };
 
@@ -130,108 +132,88 @@ const ClientsContainer = () => {
     setIsOpen(false);
   };
 
-  const contractedClients = clients.filter((c) => c.isContracted);
-  const nonContractedClients = clients.filter((c) => !c.isContracted);
+  const filteredClients = clients.filter((client) =>
+    activeTab === "contracted" ? client.isContracted : !client.isContracted
+  );
+
+  const handleOrdersModel = (client) => {
+    setSelectedClient(client);
+    setOrdersModel(true);
+  };
+
+  const handleCloseOrdersModel = () => {
+    setOrdersModel(false);
+    setSelectedClient(null);
+  };
 
   return (
     <>
-      <div className="px-4 relative z-50">
-        {isOpen && (
-          <ModelAddClient
-            handleAdd={handleAdd}
-            handleCloseModel={handleCloseModel}
-            selectedClient={selectedClient}
-            handleEdit={handleEdit}
-          />
-        )}
+      {ordersModel && (
+        <ModeClientsOrder
+          handleCloseOrdersModel={handleCloseOrdersModel}
+          client={selectedClient}
+        />
+      )}
 
-        <div className="bg-card h-[calc(100vh-165px)] relative p-3 rounded-2xl my-3">
-          <div className="w-[80px] absolute bottom-0 left-0 -translate-x-1/2 translate-y-5 z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
-            <button onClick={() => setIsOpen(true)}>
-              {svgIcons.addClient}
+      {isOpen && (
+        <ModelAddClient
+          handleAdd={handleAdd}
+          handleCloseModel={handleCloseModel}
+          selectedClient={selectedClient}
+          handleEdit={handleEdit}
+        />
+      )}
+      <section className="bg-card p-3 rounded-[20px] my-3 space-y-4">
+        {/* Header */}
+        <header className="flex justify-between items-center">
+          <div className="space-x-2 border-b border-muted flex flex-1">
+            <button
+              onClick={() => setActiveTab("contracted")}
+              className={`text-xl py-3 px-4 text-white transition-all duration-150 ${
+                activeTab === "contracted"
+                  ? "border-b-2 border-white text-red-50 font-bold"
+                  : "opacity-60"
+              }`}
+            >
+              عميل متعاقد
+            </button>
+            <button
+              onClick={() => setActiveTab("nonContracted")}
+              className={`text-xl py-3 px-4 text-white transition-all duration-150 ${
+                activeTab === "nonContracted"
+                  ? "border-b-2 border-white text-red-50 font-bold"
+                  : "opacity-60"
+              }`}
+            >
+              عميل غير متعاقد
             </button>
           </div>
 
-          <Tabs
-            style={{ direction: "rtl" }}
-            defaultValue="contracted"
-            className={cn("w-full h-full")}
-          >
-            <TabsList className="bg-transparent pb-0 w-full flex justify-start  relative rounded-none border-b border-b-muted ">
-              <div>
-                <TabsTrigger
-                  value="contracted"
-                  className="
-               
-                relative  
-                text-muted
-                hover:text-foreground
-                data-[state=active]:text-foreground
-                data-[state=active]:border-b-2
-                data-[state=active]:border-b-white
-                data-[state=active]:rounded-none
-                data-[state=active]:bg-transparent
-                transition-colors
-    "
-                >
-                  عميل متعاقد
-                </TabsTrigger>
-                <TabsTrigger
-                  value="non-contracted"
-                  className="
-               
+          <div className="flex items-center space-x-2 w-[250px]">
+            <img src="\Icons\filter.svg" className="w-6 h-6" alt="filter" />
+            <div className="relative">
+              <Search className="text-muted absolute top-1/2 right-2 transform -translate-y-1/2" />
+              <input
+                type="text"
+                className="bg-white rounded-[6px] py-2 ps-10 pe-2 text-sm"
+                placeholder="بحث"
+              />
+            </div>
+          </div>
+        </header>
 
-                relative  
-                text-muted
-                hover:text-foreground
-                data-[state=active]:text-foreground
-                data-[state=active]:border-b-2
-                data-[state=active]:border-b-white
-                data-[state=active]:rounded-none
-                data-[state=active]:bg-transparent
-                transition-colors
-    "
-                >
-                  عميل غير متعاقد
-                </TabsTrigger>
-              </div>
-            </TabsList>
-            <TabsContent
-              style={{ direction: "rtl" }}
-              value="contracted"
-              className="h-full"
-            >
-              <div className="relative h-full">
-                <div className="absolute inset-0 overflow-y-auto rounded-[6px] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  <table className="w-full border-separate border-spacing-y-6">
-                    <ClientsTH />
-                    <ClientsTBody
-                      clients={contractedClients}
-                      handleDelete={handleDelete}
-                      handleEdit={handleEditClick}
-                    />
-                  </table>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="non-contracted" className="h-full">
-              <div className="relative h-full">
-                <div className="absolute inset-0 overflow-y-auto rounded-[6px] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  <table className="w-full border-separate border-spacing-y-6">
-                    <ClientsTH />
-                    <ClientsTBody
-                      clients={nonContractedClients}
-                      handleDelete={handleDelete}
-                      handleEdit={handleEditClick}
-                    />
-                  </table>
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
+        <div className="max-h-[calc(100vh-250px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <table className="w-full border-separate border-spacing-y-6">
+            <ClientsTH />
+            <ClientsTBody
+              handleOrdersModel={handleOrdersModel}
+              clients={filteredClients}
+              handleDelete={handleDelete}
+              handleEdit={handleEditClick}
+            />
+          </table>
         </div>
-      </div>
+      </section>
     </>
   );
 };
