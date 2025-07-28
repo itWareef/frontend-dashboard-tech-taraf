@@ -3,22 +3,10 @@ import { Link } from "react-router-dom";
 
 const data = [
   {
-    icon: svgIcons.listIcon,
-    title: "بنود العروض",
-    count: 5,
-    path: "/add-unit-requests",
-  },
-  {
     icon: svgIcons.proposalSubmission,
     title: "عروض الأسعار",
     count: 13,
     path: "/offer-price",
-  },
-  {
-    icon: "public/Icons/Group 7486.svg",
-    title: "العروض الفنيه ",
-    count: 5,
-    path: "/contracts",
   },
 ];
 
