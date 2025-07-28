@@ -1,3 +1,6 @@
+import HeaderPopup from "@/components/shared/HeaderPopup/HeaderPopup";
+import Modal from "@/components/shared/SharedModal";
+import { svgIcons } from "@/components/shared/svgIcons";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -5,17 +8,13 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { svgIcons } from "@/svgIcons";
+import { Download, Eye } from "lucide-react";
 import { useState } from "react";
+import { usePDF } from "react-to-pdf";
 import CustomStepper from "./CustomStepper/CustomStepper";
 import OfferConditionsStep from "./CustomStepper/OfferConditionsStep";
 import RecipientEntityStep from "./CustomStepper/RecipientEntityStep";
 import SelectItemsStep from "./CustomStepper/SelectItemsStep";
-import HeaderPopup from "@/components/shared/HeaderPopup/HeaderPopup";
-import Modal from "@/components/shared/SharedModal";
-import { Download, Eye } from "lucide-react";
-import { usePDF } from "react-to-pdf";
-import InvoicePdf from "../OfferPricePage/InvoicePdf";
 
 function ConfirmationStep({ formData }) {
   const [showModal, setShowModal] = useState(false);

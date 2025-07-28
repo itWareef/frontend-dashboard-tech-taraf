@@ -1,7 +1,6 @@
-import React from "react";
-import FormAddAssignExternalRequest from "./FormAddAssignExternalRequest";
+import { svgIcons } from "@/components/shared/svgIcons";
 import ExternalRequestsItems from "./ExternalRequestsItems";
-import { svgIcons } from "@/svgIcons";
+import FormAddAssignExternalRequest from "./FormAddAssignExternalRequest";
 
 const AssignExternalRequestContainer = () => {
   return (

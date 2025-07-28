@@ -1,6 +1,6 @@
 import ContactRequestsCards from "@/components/layout/ContactRequests/ContactRequestsCards";
+import { svgIcons } from "@/components/shared/svgIcons";
 import { Button } from "@/components/ui/button";
-import { svgIcons } from "@/svgIcons";
 import { useNavigate } from "react-router-dom";
 
 const ContactRequests = () => {

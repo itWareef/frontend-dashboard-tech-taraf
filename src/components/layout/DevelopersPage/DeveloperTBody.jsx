@@ -1,4 +1,4 @@
-import { svgIcons } from "@/svgIcons";
+import { svgIcons } from "@/components/shared/svgIcons";
 
 const DeveloperTBody = ({ developers, handleEdit, handleDelete }) => {
   return (

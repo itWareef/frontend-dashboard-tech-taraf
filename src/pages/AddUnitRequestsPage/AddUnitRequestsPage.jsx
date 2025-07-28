@@ -1,6 +1,6 @@
 import AddUnitRequestsContainer from "@/components/layout/AddUnitRequestsPage/AddUnitRequestsContainer";
 import Header from "@/components/shared/Header/Header";
-import { svgIcons } from "@/svgIcons";
+import { svgIcons } from "@/components/shared/svgIcons";
 
 const AddUnitRequestsPage = () => {
   return (

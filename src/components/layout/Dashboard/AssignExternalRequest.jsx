@@ -1,5 +1,4 @@
-import { svgIcons } from "@/svgIcons";
-import React from "react";
+import { svgIcons } from "@/components/shared/svgIcons";
 import { Link } from "react-router-dom";
 
 const AssignExternalRequest = () => {

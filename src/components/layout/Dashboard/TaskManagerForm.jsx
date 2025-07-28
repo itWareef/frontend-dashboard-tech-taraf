@@ -1,3 +1,4 @@
+import { svgIcons } from "@/components/shared/svgIcons";
 import {
   Select,
   SelectContent,
@@ -5,7 +6,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { svgIcons } from "@/svgIcons";
 import { useState } from "react";
 
 const chooseOrderOptions = [

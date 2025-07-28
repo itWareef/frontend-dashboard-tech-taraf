@@ -1,7 +1,6 @@
-import React from "react";
-import HeaderPopup from "../../components/shared/HeaderPopup/HeaderPopup";
-import { svgIcons } from "@/svgIcons";
 import ProposalSubmissionCards from "@/components/layout/ProposalSubmissionPage/ProposalSubmissionCards";
+import { svgIcons } from "@/components/shared/svgIcons";
+import HeaderPopup from "../../components/shared/HeaderPopup/HeaderPopup";
 const ProposalSubmissionPage = () => {
   return (
     <section

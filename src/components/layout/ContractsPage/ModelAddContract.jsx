@@ -1,4 +1,4 @@
-import { svgIcons } from "@/svgIcons";
+import { svgIcons } from "@/components/shared/svgIcons";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import ModelAddContractTBody from "./ModelAddContractTBody";

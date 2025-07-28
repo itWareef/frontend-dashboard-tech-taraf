@@ -1,4 +1,4 @@
-import { svgIcons } from "@/svgIcons";
+import { svgIcons } from "@/components/shared/svgIcons";
 
 export default function ModelAddProjectTBody({ formik, handleCloseModel }) {
   return (
