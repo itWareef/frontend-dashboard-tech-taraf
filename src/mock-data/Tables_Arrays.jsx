@@ -289,3 +289,41 @@ export const table_store_tabs = [
     },
   },
 ];
+
+//================================================================
+
+export const offer_price_table = {
+  headCells: [
+    "رفم العرض",
+    "اسم العميل",
+    "تاريخ انشاء العرض",
+    "تاريخ اانتهاء العرض",
+    "قيمة العرض",
+    "حالة العرض",
+    "اخطار االعميل",
+    "العمليات",
+  ],
+  rows: [
+    {
+      offer_number: 5824,
+      name: "احمد",
+      start_date: "11/12/2025",
+      start_end: "10/9/2025",
+      offer_price: 854,
+    },
+    {
+      offer_number: 5824,
+      name: "احمد",
+      start_date: "11/12/2025",
+      start_end: "10/9/2025",
+      offer_price: 584,
+    },
+    {
+      offer_number: 5824,
+      name: "احمد",
+      start_date: "11/12/2025",
+      start_end: "10/9/2025",
+      offer_price: 845,
+    },
+  ],
+};
