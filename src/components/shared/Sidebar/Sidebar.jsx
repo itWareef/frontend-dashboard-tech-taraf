@@ -25,8 +25,9 @@ const Sidebar = () => {
       <nav
         className={`
           bg-sidebar h-full pt-10  overflow-x-hidden overflow-y-auto
-          flex flex-col items-center w-[80px] 
+          flex flex-col items-center w-[85px] 
           fixed md:static inset-y-0 right-0 z-40
+        
           transform transition-transform duration-300 ease-in-out
           ${
             isMobileOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"

@@ -1,7 +1,9 @@
 import arrowLeft from "../../assets/Icons/arrow-down.svg";
 import chatIcon from "../../assets/Icons/chatIcon.svg";
 import checkCircle from "../../assets/Icons/check-circle.svg";
+import filterIcon from "../../assets/Icons/filter.svg";
 import fullScreenIcon from "../../assets/Icons/fullScreenIcon.svg";
+import add from "../../assets/Icons/Icon corebrands-addthis.svg";
 import listIcon from "../../assets/Icons/listIcon.svg";
 import locationIcon from "../../assets/Icons/location.svg";
 import logoutIcon from "../../assets/Icons/logoutIcon.svg";
@@ -36,6 +38,8 @@ export const svgIcons = {
   userGroups2: userGroups2,
   pending: pending,
   checkCircle: checkCircle,
+  filterIcon: filterIcon,
+  add: add,
 
   projects: (
     <svg

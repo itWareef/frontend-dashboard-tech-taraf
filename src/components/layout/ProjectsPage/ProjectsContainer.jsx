@@ -1,14 +1,15 @@
+import { svgIcons } from "@/components/shared/svgIcons";
+import { Search } from "lucide-react";
 import { useState } from "react";
+import GuaranteesTBody from "./guarantees/GuaranteesTBody";
+import GuaranteesTH from "./guarantees/GuaranteesTH";
+import ModelAddGuarantees from "./guarantees/ModelAddGuarantees/ModelAddGuarantees";
 import ModelAddProject from "./ModelAddProject";
 import ProjectsTBody from "./ProjectsTBody";
 import ProjectsTH from "./ProjectsTH";
-import { Search } from "lucide-react";
-import GuaranteesTH from "./guarantees/GuaranteesTH";
-import GuaranteesTBody from "./guarantees/GuaranteesTBody";
-import SuppliersTH from "./suppliers/SuppliersTH";
-import SuppliersTBody from "./suppliers/SuppliersTBody";
-import ModelAddGuarantees from "./guarantees/ModelAddGuarantees/ModelAddGuarantees";
 import ModelAddSuppliers from "./suppliers/ModelAddSuppliers/ModelAddSuppliers";
+import SuppliersTBody from "./suppliers/SuppliersTBody";
+import SuppliersTH from "./suppliers/SuppliersTH";
 const ProjectsContainer = () => {
   const [activeTab, setActiveTab] = useState("projects");
   const [isOpen, setIsOpen] = useState(false);
@@ -209,11 +210,7 @@ const ProjectsContainer = () => {
 
               <div className="w-[80px] fixed bottom-0 left-0 translate-x-0    z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
                 <button onClick={() => handleModelGuarantees()}>
-                  <img
-                    src="\Icons\Icon corebrands-addthis.svg"
-                    className="w-8 h-8"
-                    alt="add"
-                  />
+                  <img src={svgIcons.add} className="w-8 h-8" alt="add" />
                 </button>
               </div>
             </>
@@ -227,11 +224,7 @@ const ProjectsContainer = () => {
               </table>
               <div className="w-[80px] fixed bottom-0 left-0 translate-x-0    z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
                 <button onClick={() => handleModelSuppliers()}>
-                  <img
-                    src="\Icons\Icon corebrands-addthis.svg"
-                    className="w-8 h-8"
-                    alt="add"
-                  />
+                  <img src={svgIcons.add} className="w-8 h-8" alt="add" />
                 </button>
               </div>
             </>
