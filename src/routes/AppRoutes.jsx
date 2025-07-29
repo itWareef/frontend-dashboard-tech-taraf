@@ -25,6 +25,7 @@ import UnitsPage from "@/pages/UnitsPage/UnitsPage";
 import UserPage from "@/pages/UserPage/UserPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedAuth from "./ProtectedAuth";
+import SubmittingEntitiesPage from "@/pages/SubmittingEntitiesPage/SubmittingEntitiesPage";
 
 const AppRoutes = () => {
   const routers = createBrowserRouter([
@@ -58,6 +59,10 @@ const AppRoutes = () => {
         },
         { path: "/add-unit-requests", element: <AddUnitRequestsPage /> },
         { path: "/store", element: <StorePage /> },
+        {
+          path: "/submitting-entities",
+          element: <SubmittingEntitiesPage />,
+        },
       ],
     },
 

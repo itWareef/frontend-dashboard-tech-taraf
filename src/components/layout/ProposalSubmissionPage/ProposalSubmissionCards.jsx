@@ -1,10 +1,34 @@
-import { svgIcons } from "@/components/shared/svgIcons";
+// icons imports
+import ContactPhoneIcon from "@/assets/Icons/ContactPhoneIcon.svg";
+import ListIcon from "@/assets/Icons/listIcon.svg";
+import PriceTagIcon from "@/assets/Icons/PriceTagIcon.svg";
+import FormIcon from "@/assets/Icons/Group 7486.svg";
+
+// React Router imports
 import { Link } from "react-router-dom";
 
 const data = [
   {
-    icon: svgIcons.proposalSubmission,
+    icon: ContactPhoneIcon,
+    title: "جهات التقديم",
+    count: 13,
+    path: "/submitting-entities",
+  },
+  {
+    icon: ListIcon,
+    title: "بنود العرض",
+    count: 13,
+    path: "/offer-price",
+  },
+  {
+    icon: PriceTagIcon,
     title: "عروض الأسعار",
+    count: 13,
+    path: "/offer-price",
+  },
+  {
+    icon: FormIcon,
+    title: "العروض الفنية",
     count: 13,
     path: "/offer-price",
   },
