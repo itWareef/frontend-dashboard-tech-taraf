@@ -1,7 +1,8 @@
+import { svgIcons } from "@/components/shared/svgIcons";
+import { Search } from "lucide-react";
 import { useState } from "react";
 import OrderTBody from "./OrderTBody";
 import OrderTH from "./OrderTH";
-import { Search } from "lucide-react";
 
 const chooseSupervisorOptions = [
   { name: "عبدالرحمن علي", value: "supervisor-1" },
@@ -67,7 +68,7 @@ const OrdersContainer = () => {
         </div>
 
         <div className="flex items-center space-x-2 w-[250px]">
-          <img src="\Icons\filter.svg" className="w-6 h-6" alt="" />
+          <img src={svgIcons.filterIcon} className="w-6 h-6" alt="" />
           <div className="relative">
             <Search className="text-muted absolute -top-1 right-0 transform translate-y-1/2 -translate-x-1/2 " />
             <input

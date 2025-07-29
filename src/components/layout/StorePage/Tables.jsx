@@ -1,5 +1,5 @@
 // Svg Icons import
-import { svgIcons } from "@/svgIcons";
+import { svgIcons } from "@/components/shared/svgIcons";
 
 // functions imports
 import { isImage } from "@/lib/utils";

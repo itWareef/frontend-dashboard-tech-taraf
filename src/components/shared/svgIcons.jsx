@@ -1,21 +1,23 @@
-import proposalSubmission from "../public/Icons/proposalSubmission.svg";
-import ordersIcon from "../public/Icons/ordersIcon.svg";
-import returnIcon from "../public/Icons/returnIcon.svg";
-import listIcon from "../public/Icons/listIcon.svg";
-import notificationsIcon from "../public/Icons/notificationsIcon.svg";
-import logoutIcon from "../public/Icons/logoutIcon.svg";
-import fullScreenIcon from "../public/Icons/fullScreenIcon.svg";
-import chatIcon from "../public/Icons/chatIcon.svg";
-import arrowLeft from "../public/Icons/arrow-down.svg";
-import rectangleList from "../public/Icons/rectangle-list.svg";
-import pen from "../public/Icons/pen.svg";
-import warning from "../public/Icons/warning.svg";
-import locationIcon from "../public/Icons/location.svg";
-import phone from "../public/Icons/phone.svg";
-import userGroups from "../public/Icons/usersGroups.svg";
-import userGroups2 from "../public/Icons/usersGroups2.svg";
-import pending from "../public/Icons/pending.svg";
-import checkCircle from "../public/Icons/check-circle.svg";
+import arrowLeft from "../../assets/Icons/arrow-down.svg";
+import chatIcon from "../../assets/Icons/chatIcon.svg";
+import checkCircle from "../../assets/Icons/check-circle.svg";
+import filterIcon from "../../assets/Icons/filter.svg";
+import fullScreenIcon from "../../assets/Icons/fullScreenIcon.svg";
+import add from "../../assets/Icons/Icon corebrands-addthis.svg";
+import listIcon from "../../assets/Icons/listIcon.svg";
+import locationIcon from "../../assets/Icons/location.svg";
+import logoutIcon from "../../assets/Icons/logoutIcon.svg";
+import notificationsIcon from "../../assets/Icons/notificationsIcon.svg";
+import ordersIcon from "../../assets/Icons/ordersIcon.svg";
+import pen from "../../assets/Icons/pen.svg";
+import pending from "../../assets/Icons/pending.svg";
+import phone from "../../assets/Icons/phone.svg";
+import proposalSubmission from "../../assets/Icons/proposalSubmission.svg";
+import rectangleList from "../../assets/Icons/rectangle-list.svg";
+import returnIcon from "../../assets/Icons/returnIcon.svg";
+import userGroups from "../../assets/Icons/usersGroups.svg";
+import userGroups2 from "../../assets/Icons/usersGroups2.svg";
+import warning from "../../assets/Icons/warning.svg";
 
 export const svgIcons = {
   proposalSubmission: proposalSubmission,
@@ -36,6 +38,8 @@ export const svgIcons = {
   userGroups2: userGroups2,
   pending: pending,
   checkCircle: checkCircle,
+  filterIcon: filterIcon,
+  add: add,
 
   projects: (
     <svg

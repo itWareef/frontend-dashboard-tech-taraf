@@ -1,4 +1,4 @@
-import imgSvg from "../../../../public/Icons/taraf.svg";
+import imgSvg from "../../../assets/Icons/taraf.svg";
 
 const StatCard = ({ title, subtitle }) => {
   return (

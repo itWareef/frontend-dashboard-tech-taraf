@@ -1,6 +1,6 @@
+import { svgIcons } from "@/components/shared/svgIcons";
 import { Button } from "@/components/ui/button";
 import { useAuthContext } from "@/context/AuthContext";
-import { svgIcons } from "@/svgIcons";
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ PageName, returnState = false, children, option = true }) => {
@@ -14,8 +14,7 @@ const Header = ({ PageName, returnState = false, children, option = true }) => {
   };
 
   return (
-    <div className="flex sticky top-0 pb-2 z-40 items-center justify-between px-4 sm:px-5 pt-3 sm:pt-5 flex-wrap gap-3">
-      {/* الجزء الأيسر */}
+    <div className="flex bg-background sticky top-0 pb-2 z-40 items-center justify-between px-4 sm:px-5 pt-3 sm:pt-5 flex-wrap gap-3">
       <div className="flex flex-col gap-2">
         <h2 className="text-primary font-bold text-xl sm:text-2xl md:text-[40px] flex items-center gap-2">
           {PageName}
@@ -32,8 +31,6 @@ const Header = ({ PageName, returnState = false, children, option = true }) => {
           </button>
         )}
       </div>
-
-      {/* الجزء الأيمن */}
 
       {option == true && (
         <div className="flex items-center gap-2 sm:gap-4 flex-wrap">

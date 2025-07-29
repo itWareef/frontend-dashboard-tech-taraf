@@ -1,6 +1,6 @@
 import ContractRequestsContainer from "@/components/layout/ContractRequestsComponets/ContractRequestsContainer";
 import Header from "@/components/shared/Header/Header";
-import { svgIcons } from "@/svgIcons";
+import { svgIcons } from "@/components/shared/svgIcons";
 
 const ContractRequests = () => {
   return (

@@ -58,7 +58,7 @@ const menuItems = [
 
   {
     id: 3,
-    path: "/",
+    path: "/store",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -163,6 +163,7 @@ const menuItems = [
 
   {
     id: 6,
+    path: "/service-requests",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -286,7 +287,7 @@ const SidebarItem = ({ handleOpenSidBarProfile }) => {
             key={item.id}
             to={item.path}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 w-full  rounded-lg transition-all duration-200 ${
+              `flex flex-col items-center gap-1 w-full   transition-all duration-200 ${
                 isActive
                   ? "text-secondary  bg-opacity-10"
                   : "text-muted hover:text-secondary hover:bg-opacity-10"

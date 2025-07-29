@@ -1,5 +1,4 @@
-import { svgIcons } from "@/svgIcons";
-import React, { useState } from "react";
+import { svgIcons } from "@/components/shared/svgIcons";
 import {
   Select,
   SelectContent,
@@ -7,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
 const clients = [
   { id: 1, name: "أحمد علي" },
   { id: 2, name: "منى حسن" },

@@ -1,4 +1,4 @@
-import { svgIcons } from "@/svgIcons";
+import { svgIcons } from "@/components/shared/svgIcons";
 import { useState } from "react";
 import superVisorImg from "../../../assets/imgProfile.png";
 import ModelAddSupervisor from "./ModelAddSupervisor";
