@@ -1,5 +1,6 @@
 import DefaultLayout from "@/layouts/DefaultLayout";
 import MainLayout from "@/layouts/MainLayout";
+import SettingsLayout from "@/layouts/SettingsLayout";
 import AddUnitRequestsPage from "@/pages/AddUnitRequestsPage/AddUnitRequestsPage";
 import AssignExternalRequestPage from "@/pages/AssignExternalRequestPage/AssignExternalRequestPage";
 import Login from "@/pages/auth/login";
@@ -18,6 +19,7 @@ import PendingRequestsPage from "@/pages/PendingRequestsPage/PendingRequestsPage
 import ProjectsPage from "@/pages/ProjectsPage/ProjectsPage";
 import ProposalSubmissionPage from "@/pages/ProposalSubmissionPage/ProposalSubmissionPage";
 import ServiceRequests from "@/pages/ServiceRequests/ServiceRequests";
+import SettingsPage from "@/pages/SettingsPage/SettingsPage";
 import StorePage from "@/pages/StorePage/StorePage";
 import SupervisorOrders from "@/pages/SupervisorOrders/SupervisorOrders";
 import SupervisorPage from "@/pages/SupervisorPage/SupervisorPage";
@@ -71,6 +73,13 @@ const AppRoutes = () => {
       element: <DefaultLayout />,
       children: [{ path: "map", element: <MapPage /> }],
     },
+
+    {
+      path: "/settings",
+      element: <SettingsLayout />,
+      children: [{ path: "", element: <SettingsPage /> }],
+    },
+
     {
       path: "login",
       element: (

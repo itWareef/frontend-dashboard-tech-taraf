@@ -239,6 +239,7 @@ const menuItems = [
   },
   {
     id: 9,
+    path: "/settings",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

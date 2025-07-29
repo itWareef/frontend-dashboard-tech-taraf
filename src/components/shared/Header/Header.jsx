@@ -3,7 +3,13 @@ import { Button } from "@/components/ui/button";
 import { useAuthContext } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ PageName, returnState = false, children, option = true }) => {
+const Header = ({
+  PageName,
+  returnState = false,
+  children,
+  option = true,
+  settings = false,
+}) => {
   const { handleLogout, isLoggedIn } = useAuthContext();
   const navigate = useNavigate();
   const handleLogOut = () => {
@@ -50,6 +56,10 @@ const Header = ({ PageName, returnState = false, children, option = true }) => {
             <img src={svgIcons.logoutIcon} alt="logout" className="w-8 h-8" />
           </div>
         </div>
+      )}
+
+      {settings && (
+        <img src="public/taraf.png" className="w-30 h-30" alt="taraf" />
       )}
     </div>
   );
