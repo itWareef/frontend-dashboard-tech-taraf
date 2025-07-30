@@ -30,7 +30,7 @@ const data = [
     icon: FormIcon,
     title: "العروض الفنية",
     count: 13,
-    path: "/offer-price",
+    path: "/technical-proposals",
   },
 ];
 
