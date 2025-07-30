@@ -327,3 +327,43 @@ export const offer_price_table = {
     },
   ],
 };
+
+//================================================================
+
+export const submitting_entities_tabs = [
+  {
+    name: "افراد",
+    value: "individuals",
+    table: {
+      headCells: ["اسم العميل", "رقم الهاتف", "البريد الالكتروني", "العروض"],
+      rows: [
+        ...Array.from({ length: 3 }, (_, i) => ({
+          name: "اسلام عادل",
+          phone: "01111111111",
+          email: "eslam1425@gmail.com",
+        })),
+      ],
+    },
+  },
+  {
+    name: "شركات",
+    value: "companies",
+    table: {
+      headCells: [
+        "اسم الشركة",
+        "رقم الهاتف",
+        "البريد الالكتروني",
+        "مسئول التواصل",
+        "العروض",
+      ],
+      rows: [
+        ...Array.from({ length: 10 }, (_, i) => ({
+          company_name: "شركة ترف",
+          phone: "01111111111",
+          email: "taraf1425@gmail.com",
+          delivery_person: "اسلام عادل",
+        })),
+      ],
+    },
+  },
+];
