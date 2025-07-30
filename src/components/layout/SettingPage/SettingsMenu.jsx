@@ -1,3 +1,4 @@
+import { svgIcons } from "@/components/shared/svgIcons";
 import {
   Select,
   SelectContent,
@@ -5,23 +6,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  BarChart3,
-  Check,
-  ChevronLeft,
-  ChevronsUpDown,
-  Clock,
-  Globe,
-  Leaf,
-  Sparkles,
-  Users,
-  Wrench,
-} from "lucide-react";
+
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SettingsMenu = () => {
   const [selectedValues, setSelectedValues] = useState({
-    developer: "متاح",
+    mode: "light",
     time: "12:45 PM",
     date: "ميلادي",
     language: "العربية",
@@ -36,52 +27,62 @@ const SettingsMenu = () => {
 
   const menuItems = [
     {
-      title: "طلبات إضافة الوحدات",
-      icon: <BarChart3 className="w-5 h-5 text-teal-600" />,
-      hasChevron: true,
-    },
-    {
       title: "تعديل بيانات المستخدمين",
-      icon: <Users className="w-5 h-5 text-teal-600" />,
+      icon: svgIcons.udateUser,
       hasChevron: true,
-    },
-    {
-      title: "بنود الصيانة",
-      icon: <Wrench className="w-5 h-5 text-teal-600" />,
-      hasChevron: true,
-    },
-    {
-      title: "بنود الزراعة",
-      icon: <Leaf className="w-5 h-5 text-teal-600" />,
-      hasChevron: true,
+      isUpdate: true,
+      path: "/users",
     },
     {
       title: "الإشعارات",
-      icon: <Sparkles className="w-5 h-5 text-teal-600" />,
+      icon: svgIcons.notificationsIconS,
       hasChevron: true,
+      isUpdate: true,
+    },
+
+    {
+      title: "بنود الصيانة",
+      icon: svgIcons.maintance,
+      hasChevron: true,
+      isUpdate: true,
     },
     {
-      title: "استعراض المشاريع",
-      icon: <BarChart3 className="w-5 h-5 text-teal-600" />,
+      title: "طلبات إضافة الوحدات",
+      icon: svgIcons.builds,
       hasChevron: true,
+      isUpdate: false,
+      path: "/add-unit-requests",
+    },
+
+    {
+      title: "بنود الزراعة",
+      icon: svgIcons.plant,
+      hasChevron: true,
+      isUpdate: true,
+    },
+
+    {
+      title: "استعراض المشاريع",
+      icon: svgIcons.builds,
+      hasChevron: true,
+      isUpdate: false,
     },
   ];
 
   const statusItems = [
     {
-      title: "المطور",
-      key: "developer",
-      icon: <Wrench className="w-5 h-5 text-teal-600" />,
+      title: "المظهر",
+      key: "mode",
+      icon: svgIcons.mode,
       options: [
-        { value: "متاح", label: "متاح" },
-        { value: "غير متاح", label: "غير متاح" },
-        { value: "مشغول", label: "مشغول" },
+        { value: "light", label: "فاتح" },
+        { value: "dark", label: "ظلام" },
       ],
     },
     {
       title: "الوقت",
       key: "time",
-      icon: <Clock className="w-5 h-5 text-teal-600" />,
+      icon: svgIcons.time,
       options: [
         { value: "12:45 PM", label: "12:45 PM" },
         { value: "1:00 PM", label: "1:00 PM" },
@@ -91,7 +92,7 @@ const SettingsMenu = () => {
     {
       title: "التاريخ",
       key: "date",
-      icon: <Clock className="w-5 h-5 text-teal-600" />,
+      icon: svgIcons.time,
       options: [
         { value: "ميلادي", label: "ميلادي" },
         { value: "هجري", label: "هجري" },
@@ -100,77 +101,81 @@ const SettingsMenu = () => {
     {
       title: "اللغة",
       key: "language",
-      icon: <Globe className="w-5 h-5 text-teal-600" />,
+      icon: svgIcons.language,
       options: [
         { value: "العربية", label: "العربية" },
         { value: "English", label: "English" },
-        { value: "Français", label: "Français" },
       ],
     },
   ];
 
   return (
-    <div className="w-[50%]  mx-auto grid gird-cols-1 md:grid-cols-2 gap-4 ">
-      {/* Menu Items */}
-      {menuItems.map((item, index) => (
-        <div
-          key={index}
-          className="flex bg-white shadow items-center justify-between p-4 hover:bg-gray-50 cursor-pointer"
-        >
-          <div className="flex items-center gap-3">
-            {item.icon}
-            <span className="text-gray-800 font-medium">{item.title}</span>
+    <section className=" container  mx-auto flex justify-center items-center h-[calc(100vh-200px)]">
+      <div className=" w-full grid gird-cols-1 md:grid-cols-2 gap-4 ">
+        {/* Menu Items */}
+        {menuItems.map((item, index) => (
+          <div
+            key={index}
+            className="flex bg-white text-xl md:text-2xl  lg:text-3xl font-bold shadow rounded-[6px] items-center justify-between p-4 hover:bg-gray-50 cursor-pointer"
+          >
+            <div className="flex items-center gap-3">
+              <img src={item.icon} className="w-7 h-7" alt="users" />
+              <span className="text-primary">{item.title}</span>
+            </div>
+            <div className="flex items-center gap-3">
+              {item.isUpdate && (
+                <Link to={item.path}>
+                  <img
+                    src={svgIcons.editIcon}
+                    className="w-7 h-7"
+                    alt="arrow"
+                  />
+                </Link>
+              )}
+              {item.hasChevron && (
+                <Link to={item.path}>
+                  <img
+                    src={svgIcons.arrowLeftS}
+                    className="w-7 h-7"
+                    alt="arrow"
+                  />
+                </Link>
+              )}
+            </div>
           </div>
-          {item.hasChevron && <ChevronLeft className="w-5 h-5 text-gray-400" />}
-        </div>
-      ))}
+        ))}
 
-      {/* Divider */}
-      {/* <div className="h-2 bg-gray-100"></div> */}
-
-      {statusItems.map((item, index) => (
-        <div
-          key={index}
-          className="flex bg-white items-center justify-between p-4"
-        >
-          <div className="flex items-center gap-3">
-            {item.icon}
-            <span className="text-gray-800 font-medium">{item.title}</span>
-          </div>
-          <div className="w-32">
-            <Select
-              value={selectedValues[item.key]}
-              onValueChange={(value) => handleSelectChange(item.key, value)}
-              dir="rtl"
-            >
-              <SelectTrigger className="bg-teal-600 text-white border-teal-600 hover:bg-teal-700 focus:ring-teal-500 h-8 rounded-full px-3 text-sm font-medium">
-                <SelectValue />
-                <ChevronsUpDown className="h-4 w-4 opacity-50" />
-              </SelectTrigger>
-              <SelectContent
-                className="bg-white border border-gray-200 rounded-md shadow-lg"
+        {statusItems.map((item, index) => (
+          <div
+            key={index}
+            className="flex bg-white text-xl md:text-2xl  lg:text-3xl font-bold shadow rounded-[6px] items-center justify-between p-4 hover:bg-gray-50 cursor-pointer"
+          >
+            <div className="flex items-center gap-3 ">
+              <img src={item.icon} className="w-7 h-7" alt="users" />
+              <span className="text-primary">{item.title}</span>
+            </div>
+            <div className="">
+              <Select
+                value={selectedValues[item.key]}
+                onValueChange={(value) => handleSelectChange(item.key, value)}
                 dir="rtl"
               >
-                {item.options.map((option) => (
-                  <SelectItem
-                    key={option.value}
-                    value={option.value}
-                    className="cursor-pointer hover:bg-gray-50 focus:bg-teal-50 focus:text-teal-900"
-                  >
-                    <div className="flex items-center justify-between w-full">
+                <SelectTrigger className="bg-secondary w-36 [&_svg:not([class*='text-'])]:text-primary [&_svg:not([class*='text-'])]:size-6 text-white border-secondary hover:bg-secondary focus:ring-secondary h-8 rounded-[6px] px-3 text-lg font-bold">
+                  <SelectValue placeholder="اختر" />
+                </SelectTrigger>
+                <SelectContent>
+                  {item.options.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
                       <span>{option.label}</span>
-                      {selectedValues[item.key] === option.value && (
-                        <Check className="h-4 w-4 text-teal-600" />
-                      )}
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

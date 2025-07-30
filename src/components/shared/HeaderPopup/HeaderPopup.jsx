@@ -2,7 +2,6 @@ import { svgIcons } from "@/components/shared/svgIcons";
 import { useNavigate } from "react-router-dom";
 
 const HeaderPopup = ({ PageName, icon, action }) => {
-  console.log(action);
   const navigate = useNavigate();
 
   return (

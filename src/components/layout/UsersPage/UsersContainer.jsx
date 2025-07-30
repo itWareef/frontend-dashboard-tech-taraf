@@ -3,6 +3,7 @@ import userImg from "../../../assets/imgProfile.png";
 import ModelAddUsers from "./ModelAddUsers";
 import UsersTBody from "./UsersTBody";
 import UsersTH from "./UsersTH";
+import { svgIcons } from "@/components/shared/svgIcons";
 const UsersContainer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -113,81 +114,36 @@ const UsersContainer = () => {
 
   return (
     <>
-      <div className="px-4 relative z-50">
-        {/* Table Card */}
+      {/* Model Add Users */}
+      {isOpen && (
+        <ModelAddUsers
+          handleAdd={handleAdd}
+          handleCloseModel={handleCloseModel}
+          selectedUser={selectedUser}
+          handleEdit={handleEdit}
+        />
+      )}
 
-        {/* Model Add Users */}
-        {isOpen && (
-          <ModelAddUsers
-            handleAdd={handleAdd}
-            handleCloseModel={handleCloseModel}
-            selectedUser={selectedUser}
-            handleEdit={handleEdit}
-          />
-        )}
-
-        <div className="bg-card h-[calc(100vh-165px)] relative  p-3 rounded-2xl my-3">
-          {/* Button For Show Model Add Users */}
-          <div className="w-[80px] absolute bottom-0 left-0 -translate-x-1/2  translate-y-5  z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
+      <section className="bg-card p-3 relative rounded-[20px] my-3 space-y-4">
+        <div className="h-[calc(100vh-200px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="w-[80px] fixed bottom-0 left-0 translate-x-0  -translate-y-2  z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
             <button onClick={() => setIsOpen(true)}>
-              <svg
-                width="40"
-                height="58"
-                viewBox="0 0 66 55"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M46.7937 14.5005C46.2833 21.3849 41.0643 27.0011 35.3349 27.0011C29.6055 27.0011 24.3774 21.3862 23.8761 14.5005C23.3552 7.33877 28.4336 2 35.3349 2C42.2362 2 47.3146 7.46898 46.7937 14.5005Z"
-                  fill="white"
-                  stroke="white"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M35.3345 35.335C24.0059 35.335 12.508 41.5852 10.3803 53.3826C10.1199 54.8045 10.9285 56.1692 12.4182 56.1692H58.2521C59.7418 56.1692 60.5465 54.8045 60.29 53.3826C58.161 41.5852 46.6631 35.335 35.3345 35.335Z"
-                  fill="white"
-                  stroke="white"
-                  strokeWidth="3"
-                />
-                <path
-                  d="M9.29197 18.6675V33.2514V18.6675ZM16.5839 25.9595H2H16.5839Z"
-                  fill="white"
-                />
-                <path
-                  d="M9.29197 18.6675V33.2514M16.5839 25.9595H2"
-                  stroke="white"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              {svgIcons.addSupervisor}
             </button>
           </div>
-          {/* Table Container with scroll */}
-          <div className="relative h-full">
-            <div
-              className="absolute inset-0 overflow-y-auto rounded-[6px] 
-            [-ms-overflow-style:none]
-            [scrollbar-width:none]
-            [&::-webkit-scrollbar]:hidden"
-            >
-              <table className="w-full border-separate border-spacing-y-6">
-                {/* Table Header */}
-                <UsersTH />
+          <table className="w-full border-separate border-spacing-y-6">
+            {/* Table Header */}
+            <UsersTH />
 
-                {/* Table Body */}
-                <UsersTBody
-                  users={users}
-                  handleDelete={handleDelete}
-                  handleEdit={handleEditClick}
-                />
-              </table>
-            </div>
-          </div>
+            {/* Table Body */}
+            <UsersTBody
+              users={users}
+              handleDelete={handleDelete}
+              handleEdit={handleEditClick}
+            />
+          </table>
         </div>
-      </div>
+      </section>
     </>
   );
 };

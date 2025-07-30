@@ -13,6 +13,9 @@ const AddUnitRequestsContainer = () => {
     setIsOpen(false);
   };
 
+  const handleAddUnit = () => {
+    setIsOpen(true);
+  };
   const [clients, setClients] = useState(
     Array(20)
       .fill()
@@ -92,20 +95,19 @@ const AddUnitRequestsContainer = () => {
           />
         )}
 
-        <div className="bg-card h-[calc(100vh-165px)] relative p-3 rounded-2xl my-3">
-          <div className="relative h-full">
-            <div className="absolute inset-0 overflow-y-auto rounded-[6px] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <table className="w-full border-separate border-spacing-y-6">
-                <AddUnitRequestsTH />
-                <AddUnitRequestsTBody
-                  clients={contractedClients}
-                  handleDelete={handleDelete}
-                  handleEdit={handleEditClick}
-                />
-              </table>
-            </div>
+        <section className="bg-card px-8 py-6 rounded-[20px] my-3 space-y-4">
+          <div className="max-h-[calc(100vh-250px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <table className="w-full border-separate border-spacing-y-6">
+              <AddUnitRequestsTH />
+              <AddUnitRequestsTBody
+                clients={contractedClients}
+                handleDelete={handleDelete}
+                handleEdit={handleEditClick}
+                handleAddUnit={handleAddUnit}
+              />
+            </table>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );

@@ -18,13 +18,24 @@ import returnIcon from "../../assets/Icons/returnIcon.svg";
 import userGroups from "../../assets/Icons/usersGroups.svg";
 import userGroups2 from "../../assets/Icons/usersGroups2.svg";
 import warning from "../../assets/Icons/warning.svg";
+import udateUser from "../../assets/Icons/update-user.svg";
+import editIcon from "../../assets/Icons/edit-icon.svg";
+import arrowLeftS from "../../assets/Icons/arrow-left.svg";
+import builds from "../../assets/Icons/build-icon.svg";
+import maintance from "../../assets/Icons/maintenance-icon.svg";
+import plant from "../../assets/Icons/plant-icon.svg";
+import notificationsIconS from "../../assets/Icons/notification-icon.svg";
+import time from "../../assets/Icons/time-icon.svg";
+import mode from "../../assets/Icons/mode-icon.svg";
+import language from "../../assets/Icons/languag-icon.svg";
+import addUnitIcon from "../../assets/Icons/add-unit-icon.svg";
 
 export const svgIcons = {
   proposalSubmission: proposalSubmission,
   ordersIcon: ordersIcon,
   returnIcon: returnIcon,
   listIcon: listIcon,
-  notificationsIcon: notificationsIcon,
+  S: notificationsIcon,
   logoutIcon: logoutIcon,
   fullScreenIcon: fullScreenIcon,
   chatIcon: chatIcon,
@@ -40,7 +51,18 @@ export const svgIcons = {
   checkCircle: checkCircle,
   filterIcon: filterIcon,
   add: add,
+  udateUser: udateUser,
+  editIcon: editIcon,
+  arrowLeftS: arrowLeftS,
+  builds: builds,
+  maintance: maintance,
+  plant: plant,
+  notificationsIconS: notificationsIconS,
+  time: time,
+  mode: mode,
+  language: language,
 
+  addUnitIcon: addUnitIcon,
   projects: (
     <svg
       width="32"
