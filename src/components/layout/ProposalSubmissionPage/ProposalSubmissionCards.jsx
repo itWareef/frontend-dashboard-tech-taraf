@@ -18,7 +18,7 @@ const data = [
     icon: ListIcon,
     title: "بنود العرض",
     count: 13,
-    path: "/offer-price",
+    path: "/offers-terms",
   },
   {
     icon: PriceTagIcon,

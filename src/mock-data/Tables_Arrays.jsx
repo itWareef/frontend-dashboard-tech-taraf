@@ -367,3 +367,22 @@ export const submitting_entities_tabs = [
     },
   },
 ];
+
+//================================================================
+
+export const offers_terms_tabs = {
+  name: "البنود",
+  value: "terms",
+  table: {
+    headCells: ["البند", "الصنف", "الوحدة", "السعر", "العمليات"],
+    rows: [
+      ...Array.from({ length: 3 }, (_, i) => ({
+        id: i,
+        term: "البند 1",
+        category: "الصنف 1",
+        unit: "كيلو",
+        price: 152,
+      })),
+    ],
+  },
+};
