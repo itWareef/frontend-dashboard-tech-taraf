@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/select";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SettingsMenu = () => {
   const [selectedValues, setSelectedValues] = useState({
@@ -30,6 +31,7 @@ const SettingsMenu = () => {
       icon: svgIcons.udateUser,
       hasChevron: true,
       isUpdate: true,
+      path: "/users",
     },
     {
       title: "الإشعارات",
@@ -49,6 +51,7 @@ const SettingsMenu = () => {
       icon: svgIcons.builds,
       hasChevron: true,
       isUpdate: false,
+      path: "/add-unit-requests",
     },
 
     {
@@ -121,14 +124,22 @@ const SettingsMenu = () => {
             </div>
             <div className="flex items-center gap-3">
               {item.isUpdate && (
-                <img src={svgIcons.editIcon} className="w-7 h-7" alt="arrow" />
+                <Link to={item.path}>
+                  <img
+                    src={svgIcons.editIcon}
+                    className="w-7 h-7"
+                    alt="arrow"
+                  />
+                </Link>
               )}
               {item.hasChevron && (
-                <img
-                  src={svgIcons.arrowLeftS}
-                  className="w-7 h-7"
-                  alt="arrow"
-                />
+                <Link to={item.path}>
+                  <img
+                    src={svgIcons.arrowLeftS}
+                    className="w-7 h-7"
+                    alt="arrow"
+                  />
+                </Link>
               )}
             </div>
           </div>

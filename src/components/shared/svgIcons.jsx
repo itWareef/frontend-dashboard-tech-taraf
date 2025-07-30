@@ -28,6 +28,7 @@ import notificationsIconS from "../../assets/Icons/notification-icon.svg";
 import time from "../../assets/Icons/time-icon.svg";
 import mode from "../../assets/Icons/mode-icon.svg";
 import language from "../../assets/Icons/languag-icon.svg";
+import addUnitIcon from "../../assets/Icons/add-unit-icon.svg";
 
 export const svgIcons = {
   proposalSubmission: proposalSubmission,
@@ -60,6 +61,8 @@ export const svgIcons = {
   time: time,
   mode: mode,
   language: language,
+
+  addUnitIcon: addUnitIcon,
   projects: (
     <svg
       width="32"

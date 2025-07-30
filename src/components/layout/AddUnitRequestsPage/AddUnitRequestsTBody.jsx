@@ -22,9 +22,9 @@ const chooseStatus = [
   },
 ];
 
-const AddUnitRequestsTBody = ({ clients }) => {
+const AddUnitRequestsTBody = ({ clients, handleAddUnit }) => {
   return (
-    <tbody>
+    <tbody className="">
       {clients.map((client, index) => (
         <tr key={index} className="group">
           <td className="px-2 py-3  bg-[#C8CCCC] hover:bg-[#B8BCBC] transition-colors duration-200 rounded-r-[6px]">
@@ -55,10 +55,7 @@ const AddUnitRequestsTBody = ({ clients }) => {
           </td>
           <td className="px-5 py-3 w-[150px] text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
             <Select dir="rtl">
-              <SelectTrigger
-                iconClass={"text-primary  opacity-100"}
-                className="w-full py-5 bg-secondary text-white border-0  font-bold"
-              >
+              <SelectTrigger className="bg-secondary data-[placeholder]:text-white w-36 [&_svg:not([class*='text-'])]:text-primary [&_svg:not([class*='text-'])]:size-6 text-white border-secondary hover:bg-secondary focus:ring-secondary h-8 rounded-[6px] px-3 text-lg font-bold">
                 <SelectValue placeholder={client.isContracted} />
               </SelectTrigger>
               <SelectContent>
@@ -72,7 +69,11 @@ const AddUnitRequestsTBody = ({ clients }) => {
           </td>
 
           <td className="px-2 py-3 border-r-2 border-secondary  rounded-l-[6px] flex items-center justify-center text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
-            <span className="text-primary"> {svgIcons.addUnit}</span>
+            <img
+              onClick={() => handleAddUnit(client)}
+              src={svgIcons.addUnitIcon}
+              alt=""
+            />
           </td>
         </tr>
       ))}
