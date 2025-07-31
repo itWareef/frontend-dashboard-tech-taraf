@@ -14,18 +14,44 @@ import {
   initialValues,
 } from "@/lib/YupSchemas/StorePage/AddNewRecipientSchema";
 
+// icons imports
+import AddRecipientIcon from "@/assets/Icons/AddRecipientIcon.svg";
+
 //============================================================
 
-const ModelContent = ({ setIsOpen }) => {
+const ModelContent = ({ setIsOpen, setTableData }) => {
   //------------------------------------------------
   const handleSubmit = (values) => {
-    console.log("Submitting recipient data:", values);
+    setTableData((prev) =>
+      prev.map((tab) =>
+        tab.value === "product_requests"
+          ? {
+              ...tab,
+              table: {
+                ...tab.table,
+                rows: [
+                  ...tab.table.rows,
+                  {
+                    id: Math.random(),
+                    order_number: values.order_number,
+                    recipient_name: values.name,
+                    number: values.phone,
+                    date: values.date,
+                    shipping_details: values.details,
+                  },
+                ],
+              },
+            }
+          : tab
+      )
+    );
+    setIsOpen(false);
   };
 
   //------------------------------------------------
 
   return (
-    <div className="flex items-center justify-center absolute inset-0 backdrop-blur-2xl bg-transparent z-50 w-full h-full">
+    <div className="flex items-center justify-center absolute inset-0 backdrop-blur-lg bg-transparent z-50 w-full h-full">
       <div className="flex flex-col items-center w-[65%] bg-white text-2xl rounded-2xl overflow-hidden">
         <h1 className="bg-[#038d7d] text-white w-full py-5 text-center">
           اضف مستلم جديد
@@ -44,7 +70,9 @@ const ModelContent = ({ setIsOpen }) => {
                   <Field
                     name="order_number"
                     type="number"
-                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[#aaaaaa]"
+                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa] !focus:outline-none !border-none
+                    !shadow-[inset_0_2px_4px_rgba(0,0,0,0.2), inset_0_1px_2px_rgba(0,0,0,0.15)]
+                    "
                     as={Input}
                     placeholder="رقم الطلب"
                   />
@@ -59,7 +87,9 @@ const ModelContent = ({ setIsOpen }) => {
                   <Field
                     name="phone"
                     type="number"
-                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[#aaaaaa]"
+                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa] !focus:outline-none !border-none
+                !shadow-[inset_0_2px_4px_rgba(0,0,0,0.2),inset_0_1px_2px_rgba(0,0,0,0.15)]
+                "
                     as={Input}
                     placeholder="رقم التواصل"
                   />
@@ -75,7 +105,9 @@ const ModelContent = ({ setIsOpen }) => {
                     name="name"
                     as={Input}
                     placeholder="اسم المستلم"
-                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[#aaaaaa]"
+                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa] !focus:outline-none !border-none
+                !shadow-[inset_0_2px_4px_rgba(0,0,0,0.2),inset_0_1px_2px_rgba(0,0,0,0.15)]
+                "
                   />
                   <ErrorMessage
                     name="name"
@@ -85,16 +117,21 @@ const ModelContent = ({ setIsOpen }) => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <div className=" bg-[#ededed] text-xl px-4 rounded-2xl placeholder:text-[#aaaaaa] flex items-center border">
-                    <p className="flex-1/2 text-[#aaaaaa]">
+                  <div className="flex items-center gap-4 bg-[#ededed] px-4 py-3 rounded-2xl border text-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.2),inset_0_1px_2px_rgba(0,0,0,0.15)]">
+                    <label
+                      htmlFor="date"
+                      className="text-[#aaaaaa] whitespace-nowrap w-[120px]"
+                    >
                       تاريخ استلام الطلب
-                    </p>
+                    </label>
+
                     <Field
+                      id="date"
                       name="date"
-                      as={Input}
                       type="date"
-                      className="!bg-transparent !border-none !outline-none !text-lg !py-6  placeholder:text-[#aaaaaa]"
-                      placeholder="تاريخ استلام الطلب"
+                      as="input"
+                      className="flex-1 bg-transparent text-2xl outline-none border-none focus:ring-0"
+                      placeholder="تاريخ الاستلام"
                     />
                   </div>
 
@@ -109,7 +146,9 @@ const ModelContent = ({ setIsOpen }) => {
                   <Field
                     name="details"
                     as={Input}
-                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[#aaaaaa] h-full"
+                    className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa] !focus:outline-none !border-none
+                !shadow-[inset_0_2px_4px_rgba(0,0,0,0.2),inset_0_1px_2px_rgba(0,0,0,0.15)]
+                "
                     placeholder="تفاصيل الشحن"
                   />
                   <ErrorMessage
@@ -146,7 +185,7 @@ const ModelContent = ({ setIsOpen }) => {
 
 //======================================================
 
-const AddNewRecipientModal = () => {
+const AddNewRecipientModal = ({ setTableData }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -154,9 +193,11 @@ const AddNewRecipientModal = () => {
         className="absolute grid place-content-center bottom-2 left-2 rounded-full p-7 bg-[#1c7e68] cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
-        <img src="public/Icons/AddRecipientIcon.svg" className="size-7" />
+        <img src={AddRecipientIcon} className="size-7" />
       </div>
-      {isOpen && <ModelContent setIsOpen={setIsOpen} />}
+      {isOpen && (
+        <ModelContent setIsOpen={setIsOpen} setTableData={setTableData} />
+      )}
     </>
   );
 };

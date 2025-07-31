@@ -1,45 +1,71 @@
-// ShadCn imports
+//Shadcn imports
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-// react imports
+// react imoprts
 import { useState } from "react";
 
-// yup schema imports
+// yup shcema imports
 import {
-  AddNewPaymentSchema,
+  AddNewCategorySchema,
   initialValues,
-} from "@/lib/YupSchemas/StorePage/AddPaymentsSchema";
+} from "@/lib/YupSchemas/StorePage/AddNewCategorySchema";
 
 // formik imports
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-//=================================================================
+// icons imports
+import AddIcon from "@/assets/Icons/AddIcon.svg";
+import addImageIcon from "@/assets/Icons/AddImageIcon.svg";
 
-const ModelContent = ({ setIsOpen }) => {
-  //------------------------------------------------
+//==================================================================
+
+const ModelContent = ({ setIsOpen, setTableData }) => {
+  //----------------------------------------------------------
+  // submission form
+
   const handleSubmit = (values) => {
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, val]) => {
-      formData.append(key, val);
-    });
-
-    // Send to backend (replace with actual API call)
-    formData.entries().forEach(([key, val]) => console.log(key, val));
+    setTableData((prev) =>
+      prev.map((tab) =>
+        tab.value === "items"
+          ? {
+              ...tab,
+              table: {
+                ...tab.table,
+                rows: [
+                  ...tab.table.rows,
+                  {
+                    id: Math.random(), // or Date.now()
+                    mainImg: URL.createObjectURL(values.picture),
+                    otherImg: URL.createObjectURL(values.picture2),
+                    categoryName: values.name,
+                    description: values.description,
+                    terms: values.section_id,
+                    advantages: values.features,
+                    price: values.price,
+                  },
+                ],
+              },
+            }
+          : tab
+      )
+    );
+    setIsOpen(false); // assuming you're closing a modal
   };
 
-  //------------------------------------------------
+  // send formData to backend here
+
+  //----------------------------------------------------------
 
   return (
-    <div className="flex items-center justify-center absolute inset-0 backdrop-blur-2xl bg-transparent z-50 w-full h-full ">
-      <div className="flex flex-col items-center w-[45%] bg-white text-2xl rounded-2xl overflow-hidden">
+    <div className="flex items-center justify-center absolute inset-0 backdrop-blur-2xl bg-transparent z-50 w-full h-full">
+      <div className="flex flex-col items-center w-[65%] bg-white text-2xl rounded-2xl overflow-hidden">
         <h1 className="bg-[#038d7d] text-white w-full py-5 text-center">
-          اضافة مدفوعات
+          اضف صنف جديد
         </h1>
-        {/* //========================================== */}
         <Formik
           initialValues={initialValues}
-          validationSchema={AddNewPaymentSchema}
+          validationSchema={AddNewCategorySchema}
           onSubmit={handleSubmit}
         >
           {({ setFieldValue, errors, touched }) => (
@@ -50,7 +76,7 @@ const ModelContent = ({ setIsOpen }) => {
                   <Field
                     name="name"
                     as={Input}
-                    placeholder="اسم العميل"
+                    placeholder="اسم الصنف"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
@@ -62,14 +88,13 @@ const ModelContent = ({ setIsOpen }) => {
 
                 <div className="flex flex-col gap-1">
                   <Field
-                    name="phone_number"
+                    name="section_id"
                     as={Input}
-                    type="number"
-                    placeholder="رقم الهاتف"
+                    placeholder="البند"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
-                    name="phone_number"
+                    name="section_id"
                     component="div"
                     className="text-red-500 text-sm"
                   />
@@ -77,13 +102,13 @@ const ModelContent = ({ setIsOpen }) => {
 
                 <div className="flex flex-col gap-1">
                   <Field
-                    name="bill"
+                    name="features"
                     as={Input}
-                    placeholder="قيمة الفاتورة"
+                    placeholder="الميزة"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
-                    name="bill"
+                    name="features"
                     component="div"
                     className="text-red-500 text-sm"
                   />
@@ -91,14 +116,28 @@ const ModelContent = ({ setIsOpen }) => {
 
                 <div className="flex flex-col gap-1">
                   <Field
-                    name="bill_number"
+                    name="price"
                     as={Input}
-                    placeholder="رقم الفاتورة"
+                    placeholder="السعر"
                     type="number"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
-                    name="bill_number"
+                    name="price"
+                    component="div"
+                    className="text-red-500 text-sm "
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1 col-span-2">
+                  <Field
+                    name="description"
+                    as={Input}
+                    placeholder="الوصف"
+                    className="h-full !bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
+                  />
+                  <ErrorMessage
+                    name="description"
                     component="div"
                     className="text-red-500 text-sm"
                   />
@@ -112,28 +151,44 @@ const ModelContent = ({ setIsOpen }) => {
                     htmlFor="mainImage"
                     className="cursor-pointer flex gap-2"
                   >
-                    <p>اضف مرفقات</p>
-                    <img
-                      src="public/Icons/addImageIcon.svg"
-                      className="w-15 h-15"
-                    />
+                    <p>اضف الصورة الرئيسية</p>
+                    <img src={addImageIcon} className="w-15 h-15" />
                   </label>
                   <input
                     type="file"
                     className="hidden"
                     id="mainImage"
                     accept="image/*"
-                    multiple
                     onChange={(e) =>
-                      setFieldValue(
-                        "pictures",
-                        Array.from(e.currentTarget.files)
-                      )
+                      setFieldValue("picture", e.currentTarget.files[0])
                     }
                   />
-                  {errors.pictures && touched.pictures && (
+                  {errors.picture && touched.picture && (
+                    <div className="text-red-500 text-sm">{errors.picture}</div>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="moreImages"
+                    className="cursor-pointer flex gap-2"
+                  >
+                    <p>اضف صور اخرى</p>
+                    <img src={addImageIcon} className="w-15 h-15" />
+                  </label>
+                  <input
+                    type="file"
+                    className="hidden"
+                    id="moreImages"
+                    accept="image/*"
+                    multiple={false}
+                    onChange={(e) =>
+                      setFieldValue("picture2", e.currentTarget.files[0])
+                    }
+                  />
+                  {errors.picture2 && touched.picture2 && (
                     <div className="text-red-500 text-sm">
-                      {errors.pictures}
+                      {errors.picture2}
                     </div>
                   )}
                 </div>
@@ -165,7 +220,7 @@ const ModelContent = ({ setIsOpen }) => {
 
 //======================================================
 
-const AddPaymentModel = () => {
+const AddNewCategoryModel = ({ setTableData }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -173,11 +228,13 @@ const AddPaymentModel = () => {
         className="absolute grid place-content-center bottom-2 left-2 rounded-full p-7 bg-[#1c7e68] cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
-        <img src="public/Icons/AddPaymentsIcon.svg" className="size-7" />
+        <img src={AddIcon} className="size-7" />
       </div>
-      {isOpen && <ModelContent setIsOpen={setIsOpen} />}
+      {isOpen && (
+        <ModelContent setIsOpen={setIsOpen} setTableData={setTableData} />
+      )}
     </>
   );
 };
 
-export default AddPaymentModel;
+export default AddNewCategoryModel;

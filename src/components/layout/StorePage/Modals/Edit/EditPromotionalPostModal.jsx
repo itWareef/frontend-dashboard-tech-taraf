@@ -1,47 +1,68 @@
-// react imports
-import { useState } from "react";
-
-// Shadcn imports
+// ShadCn imports
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-// formik imports
+// React & Formik imports
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-// schema imports
-import {
-  AddNewTypeSchema,
-  initialValues,
-} from "@/lib/YupSchemas/StorePage/AddNewTypeSchema";
+// Yup schema
+import { AddPromotionalPostSchema } from "@/lib/YupSchemas/StorePage/AddPromotionalPostSchema";
 
-//=========================================================
+// icons import
+import addImageIcon from "@/assets/Icons/AddImageIcon.svg";
 
-const ModelContent = ({ setIsOpen }) => {
-  //------------------------------------------------
+//==========================================================================
+
+const ModelContent = ({ setTableData, selectedRow, setIsOpen }) => {
+  //----------------------------------
+  const initialValues = {
+    picture: selectedRow?.image,
+    name: selectedRow?.name,
+    content: selectedRow?.content,
+  };
+  //-------------------------------------
   const handleSubmit = (values) => {
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, val]) => {
-      formData.append(key, val);
-    });
-
-    // Send to backend (replace with actual API call)
-    formData.entries().forEach(([key, val]) => console.log(key, val));
+    setTableData((prev) =>
+      prev.map((tab) =>
+        tab.value === "promotional_posts"
+          ? {
+              ...tab,
+              table: {
+                ...tab.table,
+                rows: tab.table.rows.map((row) =>
+                  row.id === selectedRow.id
+                    ? {
+                        ...row,
+                        name: values.name,
+                        content: values.content,
+                        image:
+                          values.picture === row.image
+                            ? row.image
+                            : URL.createObjectURL(values.picture),
+                      }
+                    : row
+                ),
+              },
+            }
+          : tab
+      )
+    );
+    setIsOpen(false);
   };
 
-  //------------------------------------------------
   return (
     <div className="flex items-center justify-center absolute inset-0 backdrop-blur-2xl bg-transparent z-50 w-full h-full">
       <div className="flex flex-col items-center w-[45%] bg-white text-2xl rounded-2xl overflow-hidden">
         <h1 className="bg-[#038d7d] text-white w-full py-5 text-center">
-          اضف نوع جديد
+          تعديل منشور دعائي
         </h1>
 
         <Formik
           initialValues={initialValues}
-          validationSchema={AddNewTypeSchema}
+          validationSchema={AddPromotionalPostSchema}
           onSubmit={handleSubmit}
         >
-          {({ setFieldValue, errors, touched }) => (
+          {({ setFieldValue, errors, touched, values }) => (
             <Form className="flex flex-col items-center gap-5 p-10 w-full">
               {/* ---- Inputs ---- */}
               <div className="grid grid-cols-2 gap-4 w-full">
@@ -49,7 +70,8 @@ const ModelContent = ({ setIsOpen }) => {
                   <Field
                     name="name"
                     as={Input}
-                    placeholder="اسم النوع"
+                    value={values.name}
+                    placeholder="اسم المنشور التوضيحي"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
@@ -61,13 +83,14 @@ const ModelContent = ({ setIsOpen }) => {
 
                 <div className="flex flex-col">
                   <Field
-                    name="category"
+                    name="content"
+                    value={values.content}
                     as={Input}
-                    placeholder="الصنف"
+                    placeholder="المحتوى"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
-                    name="category"
+                    name="content"
                     component="div"
                     className="text-red-500 text-sm"
                   />
@@ -77,23 +100,23 @@ const ModelContent = ({ setIsOpen }) => {
               {/* ---- File Upload ---- */}
               <div className="flex gap-5 items-center">
                 <label
-                  htmlFor="addNewImage"
+                  htmlFor="add image"
                   className="cursor-pointer flex items-center gap-2"
                 >
-                  <p>اضف ايقونة</p>
+                  <p>اضف صورة</p>
                   <img
-                    src="public/Icons/addImageIcon.svg"
-                    alt="addImageIcon"
+                    src={addImageIcon}
+                    alt="add image"
                     className="w-15 h-15"
                   />
                 </label>
 
                 <input
-                  id="addNewImage"
-                  name="icon"
+                  id="add image"
+                  name="picture"
                   type="file"
                   accept="image/*"
-                  multiple
+                  multiple={false}
                   className="hidden"
                   onChange={(event) =>
                     setFieldValue("picture", event.currentTarget.files[0])
@@ -102,7 +125,6 @@ const ModelContent = ({ setIsOpen }) => {
 
                 <p className="text-sm">ايقونة مقاس 58×85</p>
               </div>
-
               {errors.picture && touched.picture && (
                 <div className="text-red-500 text-sm">{errors.picture}</div>
               )}
@@ -133,19 +155,23 @@ const ModelContent = ({ setIsOpen }) => {
 
 //======================================================
 
-const AddNewTypeModel = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const EditPromotionalPostModel = ({
+  setTableData,
+  selectedRow,
+  isOpen,
+  setIsOpen,
+}) => {
   return (
     <>
-      <div
-        className="absolute grid place-content-center bottom-2 left-2 rounded-full p-7 bg-[#1c7e68] cursor-pointer"
-        onClick={() => setIsOpen(true)}
-      >
-        <img src="public/Icons/AddIcon.svg" className="size-7" />
-      </div>
-      {isOpen && <ModelContent setIsOpen={setIsOpen} />}
+      {isOpen && (
+        <ModelContent
+          setIsOpen={setIsOpen}
+          setTableData={setTableData}
+          selectedRow={selectedRow}
+        />
+      )}
     </>
   );
 };
 
-export default AddNewTypeModel;
+export default EditPromotionalPostModel;

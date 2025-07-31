@@ -7,7 +7,13 @@ export function cn(...inputs) {
 
 export const isImage = (value) =>
   typeof value === "string" &&
-  (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"));
+  (value.startsWith("blob:") ||
+    value.endsWith(".png") ||
+    value.endsWith(".jpg") ||
+    value.endsWith(".jpeg") ||
+    value.endsWith(".webp") ||
+    value.endsWith(".gif") ||
+    value.endsWith(".svg"));
 
 export const totalAmount = (array) => {
   let total = 0;
@@ -62,4 +68,19 @@ export const totalWithFee = (array) => {
   let fee = 0.15 * total;
 
   return total + fee;
+};
+
+export const formatDateForInput = (dateStr) => {
+  if (!dateStr) return "";
+  // Handle YYYY-MM-DD format
+  if (dateStr.includes("-")) {
+    const [year, month, day] = dateStr.split("-");
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+  // Handle DD/MM/YYYY format
+  if (dateStr.includes("/")) {
+    const [day, month, year] = dateStr.split("/");
+    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  }
+  return "";
 };

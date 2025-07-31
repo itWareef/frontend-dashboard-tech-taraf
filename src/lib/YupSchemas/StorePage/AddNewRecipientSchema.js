@@ -14,10 +14,10 @@ export const AddNewRecipientSchema = Yup.object({
     .min(3, "الاسم يجب ان يكون اكثر من 3 حروف")
     .max(50, "الاسم يجب ان يكون اقل من 50 حروف")
     .required("الاسم مطلوب"),
-  phone: Yup.number()
-    .min(1, "الرقم يجب ان يكون رقم واحد على الاقل")
-    .required("الرقم مطلوب")
-    .positive(),
+  phone: Yup.string()
+    .min(10, "الرقم يجب ان يكون مكون من 11 رقم")
+    .max(10, "الرقم يجب ان يكون مكون من 11 رقم")
+    .required("الرقم مطلوب"),
   date: Yup.string().required("التاريخ مطلوب"),
   details: Yup.string()
     .min(3, "التفاصيل يجب ان يكون اكثر من 3 حروف")
