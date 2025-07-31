@@ -1,3 +1,6 @@
+import Store_Main_Img from "../assets/images/Store_Main_Img.png";
+import Store_Advantage_Img from "../assets/images/Store_Advantage_Img.png";
+
 //==================================================================
 
 export const table_store_tabs = [
@@ -16,119 +19,29 @@ export const table_store_tabs = [
         "",
         "العمليات",
       ],
-      rows: [
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 1",
-          description: "hello there",
-          terms: "terms 1",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 2",
-          description: "hello there",
-          terms: "terms2",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-        {
-          mainImg: "public/assets/images/Store_Main_Img.png",
-          otherImg: "public/assets/images/Store_Main_Img.png",
-          categoryName: "category 3",
-          description: "hello there",
-          terms: "terns 3",
-          advantages: "public/assets/images/Store_Advantage_Img.png",
-          price: 555,
-        },
-      ],
+      rows: Array.from({ length: 10 }, (_, id) => ({
+        id,
+        mainImg: Store_Main_Img,
+        otherImg: Store_Main_Img,
+        categoryName: `category ${id + 1}`,
+        description: "hello there",
+        terms: `terms ${id + 1}`,
+        advantages: Store_Advantage_Img,
+        price: 555,
+      })),
     },
   },
   {
     name: "الانواع",
     value: "types",
     table: {
-      headCells: ["الايقونة", "اسم البند", "الاصناف", "العمليات"],
-      rows: [
-        {
-          icon: "public/assets/images/Store_Main_Img.png",
-          term_name: "public/assets/images/Store_Main_Img.png",
-        },
-        {
-          icon: "public/assets/images/Store_Main_Img.png",
-          term_name: "public/assets/images/Store_Main_Img.png",
-        },
-        {
-          icon: "public/assets/images/Store_Main_Img.png",
-          term_name: "public/assets/images/Store_Main_Img.png",
-        },
-      ],
+      headCells: ["الايقونة", "اسم النوع", "الاصناف", "العمليات"],
+      rows: Array.from({ length: 3 }, (_, id) => ({
+        id,
+        icon: Store_Main_Img,
+        term_name: "نوع",
+        category: "صنف",
+      })),
     },
   },
   {
@@ -136,23 +49,12 @@ export const table_store_tabs = [
     value: "features",
     table: {
       headCells: ["الايقونة", "اسم الميزة", "الوصف", "العمليات"],
-      rows: [
-        {
-          icon: "public/assets/images/Store_Advantage_Img.png",
-          advantage_term: "ميزة جديده",
-          description: "الوصف هنا",
-        },
-        {
-          icon: "public/assets/images/Store_Advantage_Img.png",
-          advantage_term: "ميزة جديده",
-          description: "الوصف هنا",
-        },
-        {
-          icon: "public/assets/images/Store_Advantage_Img.png",
-          advantage_term: "ميزة جديده",
-          description: "الوصف هنا",
-        },
-      ],
+      rows: Array.from({ length: 3 }, (_, id) => ({
+        id,
+        icon: Store_Advantage_Img,
+        advantage_term: `ميزة جديده ${id + 1}`,
+        description: "الوصف هنا",
+      })),
     },
   },
   {
@@ -160,20 +62,12 @@ export const table_store_tabs = [
     value: "promotional_posts",
     table: {
       headCells: ["الصورة", "الاسم التوضيحي", "حالة المنشور", "العمليات"],
-      rows: [
-        {
-          image: "public/assets/images/Store_Main_Img.png",
-          name: "public/assets/images/Store_Main_Img.png",
-        },
-        {
-          image: "public/assets/images/Store_Main_Img.png",
-          name: "public/assets/images/Store_Main_Img.png",
-        },
-        {
-          image: "public/assets/images/Store_Main_Img.png",
-          name: "public/assets/images/Store_Main_Img.png",
-        },
-      ],
+      rows: Array.from({ length: 3 }, (_, id) => ({
+        id,
+        image: Store_Main_Img,
+        name: "منشور دعائي",
+        content: "هنا محتوى",
+      })),
     },
   },
   {
@@ -190,29 +84,14 @@ export const table_store_tabs = [
         " حالة الطلب",
       ],
 
-      rows: [
-        {
-          order_number: 5248,
-          recipient_name: "public/assets/images/Store_Main_Img.png",
-          number: "احمد",
-          date: "10/5/2025",
-          shipping_details: "شارع السلام",
-        },
-        {
-          order_number: 5248,
-          recipient_name: "public/assets/images/Store_Main_Img.png",
-          number: "احمد",
-          date: "10/5/2025",
-          shipping_details: "شارع السلام",
-        },
-        {
-          order_number: 5248,
-          recipient_name: "public/assets/images/Store_Main_Img.png",
-          number: "احمد",
-          date: "10/5/2025",
-          shipping_details: "شارع السلام",
-        },
-      ],
+      rows: Array.from({ length: 3 }, (_, id) => ({
+        id,
+        order_number: 5248,
+        recipient_name: "عبد الله",
+        number: "0555000000",
+        date: "10/5/2025",
+        shipping_details: "شارع السلام",
+      })),
     },
   },
   {
@@ -228,26 +107,13 @@ export const table_store_tabs = [
         "حالة الفاتورة",
         "العمليات",
       ],
-      rows: [
-        {
-          icon: "public/assets/images/Store_Main_Img.png",
-          term_name: "public/assets/images/Store_Main_Img.png",
-          invoice_value: 511,
-          invoice_details: "تفاصيل هنا",
-        },
-        {
-          icon: "public/assets/images/Store_Main_Img.png",
-          term_name: "public/assets/images/Store_Main_Img.png",
-          invoice_value: 511,
-          invoice_details: "تفاصيل هنا",
-        },
-        {
-          icon: "public/assets/images/Store_Main_Img.png",
-          term_name: "public/assets/images/Store_Main_Img.png",
-          invoice_value: 511,
-          invoice_details: "تفاصيل هنا",
-        },
-      ],
+      rows: Array.from({ length: 3 }, (_, id) => ({
+        id,
+        customer_name: "عبد الله",
+        number: "0555000000",
+        invoice_value: 511,
+        invoice_details: "تفاصيل هنا",
+      })),
     },
   },
   {
@@ -257,35 +123,20 @@ export const table_store_tabs = [
       headCells: [
         "كود الخصم",
         "نسبة الخصم",
-        " بداية تاريخ صلاحية الكود",
-        "بداية تاريخ صلاحية الكود",
+        " تاريخ بداية صلاحية الكود",
+        "تاريخ نهاية صلاحية الكود",
         "صلااحية المستخدم",
         "حالة الكود",
         "العمليات",
       ],
-      rows: [
-        {
-          discount_code: 555,
-          discount_percentage: "50%",
-          start_date: "15/2/2025",
-          end_date: "15/5/2025",
-          user_authority: "مدير",
-        },
-        {
-          discount_code: 555,
-          discount_percentage: "50%",
-          start_date: "15/2/2025",
-          end_date: "15/5/2025",
-          user_authority: "مدير",
-        },
-        {
-          discount_code: 555,
-          discount_percentage: "50%",
-          start_date: "15/2/2025",
-          end_date: "15/5/2025",
-          user_authority: "مدير",
-        },
-      ],
+      rows: Array.from({ length: 3 }, (_, index) => ({
+        id: index + 1,
+        discount_code: 555555,
+        discount_percentage: 50,
+        start_date: "2025-5-10",
+        end_date: "2025-5-20",
+        user_authority: "مدير",
+      })),
     },
   },
 ];

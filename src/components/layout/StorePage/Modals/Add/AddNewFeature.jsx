@@ -1,48 +1,63 @@
-// ShadCn imports
+// react imports
+import { useState } from "react";
+
+// Shadcn imports
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-// React & Formik imports
-import { useState } from "react";
+// formik imports
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-// Yup schema
+// schema imports
 import {
-  AddPromotionalPostSchema,
+  AddNewFeatureSchema,
   initialValues,
-} from "@/lib/YupSchemas/StorePage/AddPromotionalPostSchema";
+} from "@/lib/YupSchemas/StorePage/AddNewFeatureSchema";
 
-//==========================================================================
+// icons imports
+import AddIcon from "@/assets/Icons/AddIcon.svg";
+import addImageIcon from "@/assets/Icons/AddImageIcon.svg";
 
-const ModelContent = ({ setIsOpen }) => {
-  const handleSubmit = (values, { resetForm }) => {
-    const formData = new FormData();
+//=========================================================
 
-    Object.entries(values).forEach(([key, val]) => {
-      if (key === "icon" && val) {
-        for (let i = 0; i < val.length; i++) {
-          formData.append("icon", val[i]);
-        }
-      } else {
-        formData.append(key, val);
-      }
-    });
-
-    console.log("Submitting promotional post:", values);
-
-    resetForm();
+const ModelContent = ({ setIsOpen, setTableData }) => {
+  //------------------------------------------------
+  const handleSubmit = (values) => {
+    setTableData((prev) =>
+      prev.map((tab) =>
+        tab.value === "features"
+          ? {
+              ...tab,
+              table: {
+                ...tab.table,
+                rows: [
+                  ...tab.table.rows,
+                  {
+                    id: Math.random(),
+                    icon: URL.createObjectURL(values.picture),
+                    description: values.description,
+                    advantage_term: values.name,
+                  },
+                ],
+              },
+            }
+          : tab
+      )
+    );
+    setIsOpen(false);
   };
 
+  //------------------------------------------------
   return (
     <div className="flex items-center justify-center absolute inset-0 backdrop-blur-2xl bg-transparent z-50 w-full h-full">
       <div className="flex flex-col items-center w-[45%] bg-white text-2xl rounded-2xl overflow-hidden">
         <h1 className="bg-[#038d7d] text-white w-full py-5 text-center">
-          انشئ منشور دعائي
+          اضف ميزة جديده
         </h1>
 
         <Formik
           initialValues={initialValues}
-          validationSchema={AddPromotionalPostSchema}
+          validationSchema={AddNewFeatureSchema}
           onSubmit={handleSubmit}
         >
           {({ setFieldValue, errors, touched }) => (
@@ -53,7 +68,7 @@ const ModelContent = ({ setIsOpen }) => {
                   <Field
                     name="name"
                     as={Input}
-                    placeholder="اسم المنشور التوضيحي"
+                    placeholder="اسم الميزة"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
@@ -65,13 +80,13 @@ const ModelContent = ({ setIsOpen }) => {
 
                 <div className="flex flex-col">
                   <Field
-                    name="content"
+                    name="description"
                     as={Input}
-                    placeholder="المحتوى"
+                    placeholder="الوصف"
                     className="!bg-[#ededed] !text-2xl !py-6 placeholder:text-[3aaaaaa]"
                   />
                   <ErrorMessage
-                    name="content"
+                    name="category"
                     component="div"
                     className="text-red-500 text-sm"
                   />
@@ -81,22 +96,23 @@ const ModelContent = ({ setIsOpen }) => {
               {/* ---- File Upload ---- */}
               <div className="flex gap-5 items-center">
                 <label
-                  htmlFor="add image"
+                  htmlFor="addNewImage"
                   className="cursor-pointer flex items-center gap-2"
                 >
-                  <p>اضف صورة</p>
+                  <p>اضف ايقونة</p>
                   <img
-                    src="public/Icons/addImageIcon.svg"
-                    alt="add image"
+                    src={addImageIcon}
+                    alt="addImageIcon"
                     className="w-15 h-15"
                   />
                 </label>
 
                 <input
-                  id="add image"
-                  name="picture"
+                  id="addNewImage"
+                  name="icon"
                   type="file"
                   accept="image/*"
+                  multiple
                   className="hidden"
                   onChange={(event) =>
                     setFieldValue("picture", event.currentTarget.files[0])
@@ -105,6 +121,7 @@ const ModelContent = ({ setIsOpen }) => {
 
                 <p className="text-sm">ايقونة مقاس 58×85</p>
               </div>
+
               {errors.picture && touched.picture && (
                 <div className="text-red-500 text-sm">{errors.picture}</div>
               )}
@@ -135,20 +152,21 @@ const ModelContent = ({ setIsOpen }) => {
 
 //======================================================
 
-const AddPromotionalPostModel = () => {
+const AddNewFeature = ({ setTableData }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
       <div
         className="absolute grid place-content-center bottom-2 left-2 rounded-full p-7 bg-[#1c7e68] cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
-        <img src="public/Icons/AddRecipientIcon.svg" className="size-7" />
+        <img src={AddIcon} className="size-7" />
       </div>
-      {isOpen && <ModelContent setIsOpen={setIsOpen} />}
+      {isOpen && (
+        <ModelContent setIsOpen={setIsOpen} setTableData={setTableData} />
+      )}
     </>
   );
 };
 
-export default AddPromotionalPostModel;
+export default AddNewFeature;

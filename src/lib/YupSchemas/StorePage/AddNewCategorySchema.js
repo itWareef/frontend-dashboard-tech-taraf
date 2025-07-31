@@ -26,5 +26,5 @@ export const AddNewCategorySchema = Yup.object({
   section_id: Yup.string().required("البند مطلوب"),
   features: Yup.string().required("الميزات مطلوبة"),
   picture: Yup.mixed().required("الصورة الرئيسية مطلوبة"),
-  pictures: Yup.array().min(1, "يجب إضافة صورة واحدة على الأقل"),
+  picture2: Yup.mixed().required("الصورة الاخرى مطلوبة"),
 });

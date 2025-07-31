@@ -13,8 +13,8 @@ export const AddDiscountCouponSchema = Yup.object({
     .min(6, "الكود يجب ان يكون 6 حروف على الاقل")
     .required("الكود مطلوب"),
   discount_percentage: Yup.number()
-    .min(1, "النسبة يجب ان يكون رقم واحد على الاقل")
-    .max(3, "النسبة يجب ان تكون رقمين على الاكثر")
+    .min(1, "اقل نسبة %1")
+    .max(100, "اكبر نسبة %100")
     .required("النسبة مطلوبة"),
   start_date: Yup.date()
     .required("التاريخ مطلوب")
