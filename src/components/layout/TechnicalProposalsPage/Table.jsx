@@ -9,17 +9,15 @@ const TechnicalProposalsTable = ({ headCells = [], rows = [] }) => {
   return (
     <>
       <table className="w-max min-w-full border-separate border-spacing-y-6">
-        <thead className="sticky top-0 z-10">
+        <thead className="sticky top-0 z-10 ">
           <tr>
             {headCells.map((cell, index) => {
               const isLast = index === headCells.length - 1;
-
               return isLast ? (
                 <th
                   key={index}
                   className="w-[160px] ps-4 align-top sticky top-0 z-10 bg-transparent"
                 >
-                  {/* Keep separate look for the last header cell */}
                   <span className="py-3 text-center block w-full text-white font-normal text-xl bg-secondary rounded-[6px]">
                     {cell}
                   </span>
