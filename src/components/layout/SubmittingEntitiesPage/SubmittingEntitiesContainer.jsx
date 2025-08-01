@@ -39,16 +39,19 @@ export const SubmittingEntitiesContainer = () => {
                     key={index}
                     value={tab.value}
                     className="
-                  text-zinc-400 dark:text-zinc-400 text-xl px-3 py-2 relative
-                  whitespace-nowrap
-                  data-[state=active]:after:content-['']
-                  data-[state=active]:after:absolute 
-                  data-[state=active]:after:bottom-0
-                  data-[state=active]:after:left-1/2
-                  data-[state=active]:after:-translate-x-1/2
-                  data-[state=active]:after:w-full 
-                  data-[state=active]:after:h-[2px]
-                  data-[state=active]:after:bg-white
+                  text-zinc-400 dark:text-zinc-400 !bg-transparent !dark:bg-transparent text-xl px-3 py-2 relative
+                    whitespace-nowrap
+                     data-[state=active]:text-white
+                     data-[state=active]:border-none
+                     data-[state=active]:shadow-none
+                     data-[state=active]:after:content-['']
+                     data-[state=active]:after:absolute 
+                     data-[state=active]:after:bottom-0
+                     data-[state=active]:after:left-1/2
+                     data-[state=active]:after:-translate-x-1/2
+                     data-[state=active]:after:w-full 
+                     data-[state=active]:after:h-[2px]
+                   data-[state=active]:after:bg-white
                 "
                   >
                     {tab.name}

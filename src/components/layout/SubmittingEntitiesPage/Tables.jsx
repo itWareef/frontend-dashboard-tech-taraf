@@ -56,23 +56,25 @@ const SubmittingEntitiesTable = ({ headCells = [], rows = [], tabName }) => {
 
             {/* Action column */}
             <td className="w-[160px]">
-              <div className="flex border-r-[1px] border-secondary rounded-l-lg bg-[#C8CCCC] hover:bg-[#B8BCBC] transition-colors duration-200">
-                {tabName === "individuals" ? (
-                  <button
-                    className="flex-1 cursor-pointer py-5 transition-colors flex justify-center items-center border-r-[1px] border-secondary"
-                    aria-label="العروض"
-                  >
-                    <Link to="/offer-price">{svgIcons.list}</Link>
-                  </button>
-                ) : (
-                  <button
-                    className="flex-1 cursor-pointer py-5 transition-colors flex justify-center items-center border-r-[1px] border-secondary"
-                    aria-label="العروض"
-                  >
-                    {svgIcons.list}
-                  </button>
-                )}
-              </div>
+              <Link to="/offer-price">
+                <div className="flex border-r-[1px] border-secondary rounded-l-lg bg-[#C8CCCC] hover:bg-[#B8BCBC] transition-colors duration-200">
+                  {tabName === "individuals" ? (
+                    <button
+                      className="flex-1 cursor-pointer py-5 transition-colors flex justify-center items-center border-r-[1px] border-secondary"
+                      aria-label="العروض"
+                    >
+                      {svgIcons.list}
+                    </button>
+                  ) : (
+                    <button
+                      className="flex-1 cursor-pointer py-5 transition-colors flex justify-center items-center border-r-[1px] border-secondary"
+                      aria-label="العروض"
+                    >
+                      {svgIcons.list}
+                    </button>
+                  )}
+                </div>
+              </Link>
             </td>
           </tr>
         ))}
