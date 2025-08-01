@@ -19,7 +19,7 @@ import { useOffer } from "@/context/OfferPriceContext";
 //==========================================================================
 
 const ModelContent = ({ setIsOpen }) => {
-  const { offer, addOffer } = useOffer();
+  const { offer, addOffer, offerUpdater } = useOffer();
   const steps = ["الجهة الموجهة", "اختر البنود", "تأكيد"];
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -34,7 +34,7 @@ const ModelContent = ({ setIsOpen }) => {
   };
 
   return (
-    <main className="absolute inset-0 flex flex-col bg-white/60 backdrop-blur-md z-50 h-screen w-screen p-7 font-NotoKufiArabic">
+    <main className="absolute inset-0 flex flex-col bg-white/40 backdrop-blur-2xl z-50 h-screen w-screen p-7 overflow-y-auto">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2 ">
           <HiMenuAlt2 className="text-5xl" />
@@ -46,12 +46,12 @@ const ModelContent = ({ setIsOpen }) => {
       </div>
       {/* //======================================== */}
 
-      <div className="w-full flex-1 flex flex-col mx-auto p-4 ">
+      <div className="w-full flex-1 flex flex-col gap-14 mx-auto p-4 mt-10">
         {/* Stepper Header */}
         {/* //================================================ */}
         <div
           dir="rtl"
-          className="flex w-full justify-between items-center px-10 "
+          className="flex w-full justify-between items-center px-10 flex-[30%]"
         >
           {steps.map((label, index) => (
             <Step
@@ -65,12 +65,14 @@ const ModelContent = ({ setIsOpen }) => {
         </div>
         {/* //=============================================== */}
         {/* Step Content */}
-        {currentStep === 0 && <StepperContentOne />}
-        {currentStep === 1 && <StepperContentThree />}
-        {currentStep === 2 && <StepperContentFour />}
+        <div className="mt-10 flex-[50%]">
+          {currentStep === 0 && <StepperContentOne />}
+          {currentStep === 1 && <StepperContentThree />}
+          {currentStep === 2 && <StepperContentFour />}
+        </div>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between gap-4 ">
+        <div className="flex justify-between ">
           <button
             onClick={goBack}
             disabled={currentStep === 0}
@@ -80,6 +82,7 @@ const ModelContent = ({ setIsOpen }) => {
           </button>
           <ConfirmButton
             currentStep={currentStep}
+            offerUpdater={offerUpdater}
             steps={steps}
             offer={offer}
             addOffer={addOffer}
