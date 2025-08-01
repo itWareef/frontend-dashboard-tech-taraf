@@ -1,5 +1,8 @@
+// react imports
+import { useMemo, useState } from "react";
+
 // functions imports
-import { isImage } from "@/lib/utils";
+import { isImage, totalWithFee } from "@/lib/utils";
 
 // icons imports
 import WhatsAppIcon from "@/assets/Icons/WhatsAppIcon.svg";
@@ -22,7 +25,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CATEGORIES, ITEMS, UNITS } from "@/mock-data/OfferPriceData";
-import { useEffect, useState } from "react";
 import { useOffer } from "@/context/OfferPriceContext";
 
 // pdf download button import
@@ -34,14 +36,7 @@ import { SpinnerOne } from "@/components/shared/Spinners";
 const GenericTableOffersPrices = ({ headCells = [] }) => {
   const { allOffers: rows } = useOffer();
   return (
-    <div
-      className="w-full overflow-x-auto max-h-full rounded-lg
-    [scrollbar-width:auto] [scrollbar-color:#4ade80_#1e1e1e]
-    [&::-webkit-scrollbar]:h-2
-    [&::-webkit-scrollbar-track]:bg-[#1e1e1e]
-    [&::-webkit-scrollbar-thumb]:bg-[#4ade80]
-    [&::-webkit-scrollbar-thumb]:rounded-full"
-    >
+    <div className="w-full overflow-x-auto max-h-full rounded-lg [scrollbar-width:auto] [scrollbar-color:#4ade80_#1e1e1e] [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-[#1e1e1e] [&::-webkit-scrollbar-thumb]:bg-[#4ade80] [&::-webkit-scrollbar-thumb]:rounded-full">
       <table className="w-max min-w-full border-separate border-spacing-y-6">
         <thead className="sticky top-0 z-10">
           <tr>
@@ -56,7 +51,13 @@ const GenericTableOffersPrices = ({ headCells = [] }) => {
               ) : (
                 <th
                   key={index}
-                  className="min-w-[150px] px-4 py-3 text-center text-white font-normal h-[45px] text-xl bg-secondary whitespace-nowrap"
+                  className={`${
+                    headCells.length - 2 === index
+                      ? "rounded-l-[6px]"
+                      : index === 0
+                      ? "rounded-r-[6px]"
+                      : ""
+                  } min-w-[150px] px-4 py-3 text-center text-white font-normal h-[45px] text-xl bg-secondary whitespace-nowrap`}
                 >
                   {cell}
                 </th>
@@ -68,27 +69,27 @@ const GenericTableOffersPrices = ({ headCells = [] }) => {
         <tbody>
           {rows.map((row, rowIndex) => (
             <tr key={rowIndex} className="group">
-              {Object.entries(row).map(
-                ([key, value], cellIndex) =>
-                  key !== "terms" && (
-                    <td
-                      key={cellIndex}
-                      className="min-w-[150px] px-2 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200"
-                    >
-                      {isImage(value) ? (
-                        <img
-                          src={value}
-                          alt="img"
-                          className="w-10 h-10 rounded-full mx-auto"
-                        />
-                      ) : (
-                        <div>{value}</div>
-                      )}
-                    </td>
-                  )
+              {Object.entries(row).map(([key, value], cellIndex) =>
+                !(key === "terms" || key === "id") ? (
+                  <td
+                    key={cellIndex}
+                    className={`${
+                      cellIndex === 0 && "rounded-r-[6px]"
+                    } min-w-[150px] px-2 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200`}
+                  >
+                    {isImage(value) ? (
+                      <img
+                        src={value}
+                        alt="img"
+                        className="w-10 h-10 rounded-full mx-auto"
+                      />
+                    ) : (
+                      <div>{value}</div>
+                    )}
+                  </td>
+                ) : null
               )}
 
-              {/* Status Dropdown */}
               <td className="min-w-[200px] px-5 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
                 <Select dir="rtl">
                   <SelectTrigger
@@ -103,12 +104,12 @@ const GenericTableOffersPrices = ({ headCells = [] }) => {
                       <SelectItem value="لم يتم القبول">
                         لم يتم القبول
                       </SelectItem>
+                      <SelectItem value="قيد الانتظار">قيد الانتظار</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
               </td>
 
-              {/* WhatsApp & Message Icons */}
               <td className="min-w-[200px] px-5 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
                 <div className="flex items-center justify-center gap-4">
                   <img
@@ -124,8 +125,7 @@ const GenericTableOffersPrices = ({ headCells = [] }) => {
                 </div>
               </td>
 
-              {/* Preview / Download / Print */}
-              <td className="min-w-[200px] px-5 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200">
+              <td className="min-w-[200px] px-5 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-sm font-medium whitespace-nowrap transition-colors duration-200 rounded-l-[6px]">
                 <div className="flex items-center justify-center gap-4">
                   <img
                     src={AddRequestEyeIcon}
@@ -166,12 +166,10 @@ const GenericTableOffersPrices = ({ headCells = [] }) => {
 
 export default GenericTableOffersPrices;
 
-//======================================================================
-
 export const BandTable = () => {
-  const { offer, termsUpdater } = useOffer();
+  const { offer, offerUpdater } = useOffer();
+  const offerNumber = useMemo(() => Math.floor(Math.random() * 100000), []);
 
-  // constants
   const initialRow = {
     item: "اختر بند",
     unit: "اختر وحدة",
@@ -180,11 +178,9 @@ export const BandTable = () => {
     price: "",
   };
 
-  // states
   const [rows, setRows] = useState(offer.terms);
   const [newRow, setNewRow] = useState(initialRow);
 
-  // functions
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewRow((prev) => ({ ...prev, [name]: value }));
@@ -199,34 +195,46 @@ export const BandTable = () => {
       newRow.price === ""
     )
       return;
-    setRows([...rows, newRow]);
+
+    const updatedRows = [...rows, newRow];
+    setRows(updatedRows);
     setNewRow(initialRow);
+
+    const startDate = new Date();
+    const endDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000);
+
+    const newOffer = {
+      name: "عبد الله",
+      startDate: startDate.toLocaleDateString(),
+      endDate: endDate.toLocaleDateString(),
+      offerNumber,
+      terms: updatedRows,
+      price: totalWithFee(updatedRows),
+    };
+
+    offerUpdater(newOffer);
   };
 
   const handleDeleteRow = (index) => {
-    setRows(rows.filter((_, i) => i !== index));
+    const updatedRows = rows.filter((_, i) => i !== index);
+    setRows(updatedRows);
+
+    const startDate = new Date();
+    const endDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000);
+    const newOffer = {
+      name: "عبد الله",
+      startDate: startDate.toLocaleDateString(),
+      endDate: endDate.toLocaleDateString(),
+      offerNumber,
+      terms: updatedRows,
+      price: totalWithFee(updatedRows),
+    };
+    offerUpdater(newOffer);
   };
 
-  // UseEffect
-
-  useEffect(() => {
-    termsUpdater(rows);
-  }, [rows]);
-  //---------------------------------------------------
-
   return (
-    <div
-      className="w-full overflow-x-scroll max-h-full bg-zinc-900/50 p-3 rounded-lg
-    [scrollbar-width:auto] [scrollbar-color:#4ade80_#1e1e1e]
-    [&::-webkit-scrollbar]:h-3
-    [&::-webkit-scrollbar]:block
-    [&::-webkit-scrollbar-track]:bg-gray-500
-    [&::-webkit-scrollbar-thumb]:bg-[#4ade80]
-    [&::-webkit-scrollbar-thumb]:rounded-full
-    [&::-webkit-scrollbar-thumb]:border-[2px]
-    [&::-webkit-scrollbar-thumb]:border-gray-500"
-    >
-      <table className="w-max min-w-full text-sm text-left rtl:text-right border-separate border-spacing-y-2">
+    <div className="w-full overflow-x-scroll max-h-full bg-card/90 p-3 rounded-lg [scrollbar-width:auto] [scrollbar-color:#4ade80_#1e1e1e] [&::-webkit-scrollbar]:h-3 [&::-webkit-scrollbar]:block [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-[#4ade80] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border-[2px] [&::-webkit-scrollbar-thumb]:border-gray-500">
+      <table className="w-max min-w-full text-sm text-left rtl:text-right border-separate border-spacing-y-2 ">
         <thead className="text-xs text-white text-right uppercase bg-[#1c7e68] rounded-3xl">
           <tr className="text-center">
             <th
@@ -255,9 +263,8 @@ export const BandTable = () => {
             </th>
           </tr>
         </thead>
-
         <tbody className="font-black w-full text-right">
-          {offer?.terms?.map((row, index) => (
+          {rows.map((row, index) => (
             <tr className="bg-[#c8cccc] text-[#023b41]" key={index}>
               <td className="rounded-r-xl text-center px-6 py-3 text-xl md:text-2xl">
                 {row.item}
@@ -295,13 +302,13 @@ export const BandTable = () => {
               item={newRow.item}
               handleChange={handleChange}
             />
-          </tr>
-
-          <tr>
-            <td colSpan={1}>
+            <td
+              colSpan={1}
+              className="flex items-center justify-center py-3 mx-3"
+            >
               <button
                 onClick={handleAddRow}
-                className="bg-[#178D69] text-xl md:text-2xl text-white border-none font-bold rounded-lg px-2 py-2 flex items-center gap-4 md:gap-8 cursor-pointer w-full justify-center mt-4"
+                className="bg-[#178D69] text-lg md:text-xl text-white border-none font-bold rounded-lg px-2 py-2 flex items-center gap-4 md:gap-8 cursor-pointer w-full justify-center "
               >
                 <FaCheck className="text-2xl md:text-3xl font-bold text-white" />
                 أضف بند
@@ -314,8 +321,6 @@ export const BandTable = () => {
   );
 };
 
-//================================================================
-
 export const InputBandRow = ({
   price,
   unit,
@@ -326,7 +331,6 @@ export const InputBandRow = ({
 }) => {
   return (
     <>
-      {/* البند */}
       <td className="rounded-r-xl px-6 py-3 text-2xl">
         <select
           name="item"
@@ -341,8 +345,6 @@ export const InputBandRow = ({
           ))}
         </select>
       </td>
-
-      {/* الصنف */}
       <td className="px-6 py-3 text-2xl">
         <select
           name="category"
@@ -357,8 +359,6 @@ export const InputBandRow = ({
           ))}
         </select>
       </td>
-
-      {/* الكمية */}
       <td className="px-6 py-3 text-2xl">
         <input
           type="number"
@@ -369,8 +369,6 @@ export const InputBandRow = ({
           className="min-w-[100px] w-full py-1 bg-white rounded placeholder:text-center"
         />
       </td>
-
-      {/* الوحدة */}
       <td className="px-6 py-3 text-2xl">
         <select
           name="unit"
@@ -385,8 +383,6 @@ export const InputBandRow = ({
           ))}
         </select>
       </td>
-
-      {/* السعر */}
       <td className="px-6 py-3 text-2xl">
         <input
           type="number"
@@ -397,9 +393,6 @@ export const InputBandRow = ({
           className="min-w-[100px] w-full py-1 bg-white rounded placeholder:text-center"
         />
       </td>
-
-      {/* العمليات (intentionally empty) */}
-      <td className="px-6 py-3 text-2xl"></td>
     </>
   );
 };

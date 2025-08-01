@@ -16,13 +16,13 @@ export const StepperContentOne = () => {
         <p className="text-3xl font-bold text-[#013b41] ">الجهة الموجهة</p>
         <div className="flex flex-row-reverse gap-5 ">
           <ButtonRegular
-            label="عميل"
+            label="شركات"
             bgColor="#038d7d"
             textColor="white"
             className="px-15 py-2 rounded-lg shadow-sm shadow-black/10 flex-1 text-2xl"
           />
           <ButtonRegular
-            label="مطور"
+            label="افراد"
             bgColor="white"
             textColor="#013b41"
             className="px-15 py-2 rounded-lg shadow-sm shadow-black/10 flex-1 text-2xl"

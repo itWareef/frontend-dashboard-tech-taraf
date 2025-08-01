@@ -10,40 +10,25 @@ export const useOffer = () => useContext(offerContext);
 const OfferContextProvider = ({ children }) => {
   const [allOffers, setAllOffers] = useState([
     {
-      name: "اسلام عادل",
-      number: "525485",
+      offerNumber: Math.floor(Math.random() * 100000, 5),
+      name: "عبد الله احمد",
       startDate: "15/11/2022",
       endDate: "15/11/2025",
       price: "500",
-      terms: [
-        {
-          item: "بند1",
-          unit: "كيلو",
-          category: "صنف1",
-          quantity: 5,
-          price: 5,
-        },
-        {
-          item: "بند1",
-          unit: "كيلو",
-          category: "صنف1",
-          quantity: 5,
-          price: 5,
-        },
-        {
-          item: "بند1",
-          unit: "كيلو",
-          category: "صنف1",
-          quantity: 5,
-          price: 5,
-        },
-      ],
+      terms: Array.from({ length: 8 }, (_, i) => ({
+        id: i + 1,
+        item: `بند${i + 1}`,
+        unit: "كيلو",
+        category: "صنف1",
+        quantity: 5,
+        price: 5,
+      })),
     },
   ]);
 
   const [offer, setOffer] = useState({
-    name: "اسلام عادل",
-    number: "525485",
+    offerNumber: Math.floor(Math.random() * 100000, 5),
+    name: "عبد الله احمد",
     startDate: "15/11/2022",
     endDate: "15/11/2025",
     price: "500",
