@@ -16,7 +16,6 @@ import {
 
 // formik imports
 import { useFormik } from "formik";
-import { svgIcons } from "@/components/shared/svgIcons";
 
 //==================================================================
 
@@ -52,21 +51,9 @@ const ModelContent = ({ setIsOpen, setData, data }) => {
   //----------------------------------------------------------
 
   return (
-    <div className="absolute inset-0 bg-white z-50 w-full h-full flex flex-col ">
-      {/* //========================================================== */}
-      <div className="w-full z-50 flex flex-col justify-center gap-3 py-5 px-20 ">
-        <h1 className="text-5xl font-bold">اضافة بند</h1>
-        <button
-          className="mt-2 cursor-pointer flex items-center justify-center rounded gap-2 bg-secondary text-xl font-bold min-h-[15px] w-[90px] text-white hover:bg-secondary/80 transition-all duration-300"
-          onClick={() => setIsOpen(false)}
-        >
-          <img src={svgIcons.returnIcon} alt="return" />
-          <span className="pb-2">رجوع</span>
-        </button>
-      </div>
-      {/* //========================================================== */}
+    <div className="absolute inset-0 backdrop-blur-lg z-50 w-full h-full flex flex-col overflow-y-auto">
       <div className="flex items-center justify-center w-full h-full">
-        <div className="flex flex-col items-center w-[65%] max-w-[1100px] bg-white shadow-2xl text-2xl rounded-2xl overflow-hidden">
+        <div className="flex flex-col items-center w-[65%] max-w-[950px] bg-white shadow-2xl text-2xl rounded-2xl overflow-hidden">
           <h1 className="bg-[#038d7d] text-white w-full py-5 text-center">
             اضف بند جديد
           </h1>
