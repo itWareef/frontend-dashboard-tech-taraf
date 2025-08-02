@@ -93,6 +93,33 @@ const SupervisorContainer = () => {
       email: "abdalahm234@gmail.com",
       avgRating: 4.5,
     },
+    {
+      id: 10,
+      supervisorImage: superVisorImg,
+      supervisorName: "عبدالرحمن علي",
+      maintenanceNum: 30,
+      phone: "0550000000",
+      email: "abdalahm234@gmail.com",
+      avgRating: 4.5,
+    },
+    {
+      id: 11,
+      supervisorImage: superVisorImg,
+      supervisorName: "عبدالرحمن علي",
+      maintenanceNum: 30,
+      phone: "0550000000",
+      email: "abdalahm234@gmail.com",
+      avgRating: 4.5,
+    },
+    {
+      id: 12,
+      supervisorImage: superVisorImg,
+      supervisorName: "عبدالرحمن علي",
+      maintenanceNum: 30,
+      phone: "0550000000",
+      email: "abdalahm234@gmail.com",
+      avgRating: 4.5,
+    },
   ]);
 
   const handleDelete = (supervisorId) => {
@@ -153,14 +180,14 @@ const SupervisorContainer = () => {
           handleEdit={handleEdit}
         />
       )}
-      <section className="bg-card p-3 relative rounded-[20px] my-3 space-y-4">
-        <div className="max-h-[calc(100vh-200px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="w-[80px] fixed bottom-0 left-0 translate-x-0  -translate-y-5  z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
+      <section className="bg-card p-4 relative rounded-[20px] my-2">
+        <div className="h-[calc(100vh-200px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="w-[80px] fixed bottom-0 left-0 translate-x-0  -translate-y-1  z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
             <button onClick={() => setIsOpen(true)}>
               {svgIcons.addSupervisor}
             </button>
           </div>
-          <table className="w-full border-separate border-spacing-y-6">
+          <table className="w-full  ">
             <SupervisorTH />
 
             <SupervisorTBody

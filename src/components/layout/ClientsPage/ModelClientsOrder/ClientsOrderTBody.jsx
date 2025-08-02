@@ -1,3 +1,6 @@
+import { svgIcons } from "@/components/shared/svgIcons";
+import TableTd from "@/components/shared/Table/TableTd";
+
 const mockOrders = [
   {
     orderNumber: "ORD-001",
@@ -155,46 +158,62 @@ const mockOrders = [
   },
 ];
 
-const tdBaseClasses =
-  "px-2 py-3 text-center text-primary bg-[#C8CCCC] hover:bg-[#B8BCBC] text-base font-medium whitespace-nowrap transition-colors duration-200";
-
 const ClientsOrderTBody = () => {
   return (
     <tbody>
       {mockOrders.map((order, index) => (
         <tr key={index} className="group">
-          <td className={`${tdBaseClasses} rounded-r-[6px]`}>
-            {order.orderNumber}
-          </td>
-          <td className={tdBaseClasses}>{order.clientName}</td>
-          <td className={tdBaseClasses}>{order.supervisorName}</td>
-          <td className={tdBaseClasses}>{order.maintenanceItem}</td>
-          <td className={tdBaseClasses}>{order.unitNumber}</td>
-          <td className={tdBaseClasses}>{order.time}</td>
-          <td className={tdBaseClasses}>{order.date}</td>
-          <td className={tdBaseClasses}>{order.phone}</td>
-          <td className={tdBaseClasses}>{order.email}</td>
-          <td className={tdBaseClasses + " border-r border-muted"}>
+          <TableTd content={order.orderNumber} options={{ roundedR: true }} />
+          <TableTd content={order.clientName} />
+
+          <TableTd content={order.supervisorName} />
+          <TableTd content={order.maintenanceItem} />
+          <TableTd content={order.unitNumber} />
+          <TableTd content={order.time} />
+
+          <TableTd content={order.date} />
+          <TableTd content={order.phone} />
+          <TableTd content={order.email} />
+          <TableTd classes="border-r border-muted">
             <div className="flex items-center justify-center gap-4">
-              <img src="/Icons/Icon feather-camera.svg" alt="" />
-              <img src="/Icons/Icon material-outline-comment.svg" alt="" />
+              <img src={svgIcons.iconFeatherCamera} alt="" />
+              <img src={svgIcons.iconMaterialOutlineComment} alt="" />
             </div>
-          </td>
-          <td className={tdBaseClasses + " border-r border-muted"}>
+          </TableTd>
+          <TableTd classes="border-r border-muted">
             <div className="flex items-center justify-center gap-4">
-              <img src="/Icons/Icon feather-camera.svg" alt="" />
-              <img src="/Icons/Icon material-outline-comment.svg" alt="" />
+              <img src={svgIcons.iconFeatherCamera} alt="" />
+              <img src={svgIcons.iconMaterialOutlineComment} alt="" />
+            </div>
+          </TableTd>
+          <TableTd
+            options={{ roundedL: true }}
+            classes=" border-r border-muted"
+          >
+            <div className="flex items-center justify-center  gap-4">
+              <img
+                src={svgIcons.iconfileTrayFullOutline}
+                className="mx-auto "
+                alt=""
+              />
+            </div>
+          </TableTd>
+
+          {/* <td className={tdBaseClasses + " border-r border-muted"}>
+            <div className="flex items-center justify-center gap-4">
+              <img src={svgIcons.iconFeatherCamera} alt="" />
+              <img src={svgIcons.iconMaterialOutlineComment} alt="" />
             </div>
           </td>
           <td
             className={`${tdBaseClasses} rounded-l-[6px]  border-r border-muted`}
           >
             <img
-              src="/Icons/Icon ion-file-tray-full-outline.svg "
+              src={svgIcons.iconfileTrayFullOutline}
               className="mx-auto "
               alt=""
             />
-          </td>
+          </td> */}
         </tr>
       ))}
     </tbody>

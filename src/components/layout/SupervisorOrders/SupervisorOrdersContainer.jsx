@@ -17,7 +17,7 @@ const SupervisorOrdersContainer = () => {
   return (
     <>
       {/* Table Card */}
-      <div className="bg-card h-[calc(100vh-165px)] p-3 rounded-2xl my-3">
+      <div className="bg-card h-[calc(100vh-165px)] p-5 rounded-2xl my-3 ">
         <div className="relative h-full">
           <div
             className="absolute inset-0 overflow-y-auto rounded-[6px] 
@@ -25,7 +25,7 @@ const SupervisorOrdersContainer = () => {
             [scrollbar-width:none]
             [&::-webkit-scrollbar]:hidden"
           >
-            <table className="w-full border-separate border-spacing-y-6">
+            <table className="w-full ">
               {/* Table Header - Sticky */}
               <SuperOrderTH />
 

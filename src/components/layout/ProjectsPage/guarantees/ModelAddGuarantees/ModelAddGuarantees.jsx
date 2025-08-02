@@ -1,9 +1,10 @@
 import React from "react";
 import HeaderPopup from "@/components/shared/HeaderPopup/HeaderPopup";
+import { svgIcons } from "@/components/shared/svgIcons";
 
 const ModelAddGuarantees = ({ handleModelGuarantees }) => {
   return (
-    <section className="p-8 backdrop-blur-xl fixed top-0 left-0 right-0 bottom-0 z-50 min-h-screen bg-white/50">
+    <section className=" fixed top-0 left-0 right-0 bottom-0 z-50 min-h-screen bg-background">
       <HeaderPopup PageName={"اضافة ضمان"} action={handleModelGuarantees} />
 
       <div className="container mx-auto  flex justify-center mt-20 ">
@@ -59,7 +60,7 @@ const ModelAddGuarantees = ({ handleModelGuarantees }) => {
                 <label htmlFor="file" className="flex items-center gap-5">
                   <img
                     className="cursor-pointer w-16 h-16"
-                    src="/Icons/file-upload.svg"
+                    src={svgIcons.fileUpload}
                     alt=""
                   />
                   ايقون الضمان

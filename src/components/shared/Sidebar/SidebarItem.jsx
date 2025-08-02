@@ -17,7 +17,7 @@ const menuItems = [
           data-name="Path 487"
           d="M31.7,24.918,16.646,11.451a.423.423,0,0,0-.086-.066.891.891,0,0,0-1.2-.02L.3,24.832a.89.89,0,0,0,1.185,1.33l2.712-2.429v15.7a2.24,2.24,0,0,0,2.238,2.238h4.752a2.1,2.1,0,0,0,2.1-2.1V31.591a.323.323,0,0,1,.323-.323h4.8a.323.323,0,0,1,.323.323v7.984a2.1,2.1,0,0,0,2.1,2.1h4.752a2.544,2.544,0,0,0,2.238-2.8V23.818l2.712,2.429a.895.895,0,0,0,1.257-.072A.906.906,0,0,0,31.7,24.918Zm-5.673,4.39v9.55c0,.638-.316,1.027-.461,1.027H20.819a.323.323,0,0,1-.323-.323v-7.97a2.1,2.1,0,0,0-2.1-2.1H13.6a2.1,2.1,0,0,0-2.1,2.1v7.984a.323.323,0,0,1-.323.323H6.425a.462.462,0,0,1-.461-.461V22.14l9.991-8.925,10.077,9.01v7.082Z"
           transform="translate(0 -11.141)"
-          fill="#1c7e68"
+          fill="#aaa"
         />
       </svg>
     ),
@@ -119,9 +119,9 @@ const menuItems = [
             transform="translate(0.022 0)"
             fill="none"
             stroke="#aaa"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="3"
           />
           <path
             id="Path_6275"
@@ -130,9 +130,9 @@ const menuItems = [
             transform="translate(0 0.056)"
             fill="none"
             stroke="#aaa"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="3"
           />
           <path
             id="Path_6276"
@@ -141,8 +141,8 @@ const menuItems = [
             transform="translate(0.09 0.045)"
             fill="none"
             stroke="#aaa"
-            stroke-linecap="round"
-            stroke-width="3"
+            strokeLinecap="round"
+            strokeWidth="3"
           />
           <path
             id="Path_6277"
@@ -151,8 +151,8 @@ const menuItems = [
             transform="translate(0.09 0.124)"
             fill="none"
             stroke="#aaa"
-            stroke-linecap="round"
-            stroke-width="3"
+            strokeLinecap="round"
+            strokeWidth="3"
           />
         </g>
       </svg>
@@ -259,9 +259,9 @@ const menuItems = [
             d="M22.5,18A4.5,4.5,0,1,1,18,13.5,4.5,4.5,0,0,1,22.5,18Z"
             fill="none"
             stroke="#aaa"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
           />
           <path
             id="Path_6333"
@@ -269,9 +269,9 @@ const menuItems = [
             d="M29.1,22.5a2.475,2.475,0,0,0,.495,2.73l.09.09a3,3,0,1,1-4.245,4.245l-.09-.09a2.5,2.5,0,0,0-4.23,1.77V31.5a3,3,0,1,1-6,0v-.135A2.475,2.475,0,0,0,13.5,29.1a2.475,2.475,0,0,0-2.73.495l-.09.09A3,3,0,1,1,6.435,25.44l.09-.09a2.5,2.5,0,0,0-1.77-4.23H4.5a3,3,0,1,1,0-6h.135A2.475,2.475,0,0,0,6.9,13.5a2.475,2.475,0,0,0-.5-2.73l-.09-.09A3,3,0,1,1,10.56,6.435l.09.09a2.475,2.475,0,0,0,2.73.495h.12A2.475,2.475,0,0,0,15,4.755V4.5a3,3,0,0,1,6,0v.135a2.5,2.5,0,0,0,4.23,1.77l.09-.09a3,3,0,1,1,4.245,4.245l-.09.09a2.475,2.475,0,0,0-.5,2.73v.12A2.475,2.475,0,0,0,31.245,15H31.5a3,3,0,0,1,0,6h-.135A2.475,2.475,0,0,0,29.1,22.5Z"
             fill="none"
             stroke="#aaa"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
           />
         </g>
       </svg>
@@ -283,23 +283,25 @@ const menuItems = [
 const SidebarItem = ({ handleOpenSidBarProfile }) => {
   return (
     <div className="flex flex-col items-center gap-6 h-full w-full">
-      <nav className="flex flex-col items-center  gap-y-6 w-full px-1">
+      <nav className="flex flex-col items-center  gap-y-8 w-full px-1">
         {menuItems.map((item) => (
           <NavLink
             key={item.id}
             to={item.path}
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 w-full   transition-all duration-200 ${
-                isActive
-                  ? "text-secondary  bg-opacity-10"
-                  : "text-muted hover:text-secondary hover:bg-opacity-10"
+              `flex flex-col items-center gap-1 w-full transition-all duration-200 ${
+                isActive ? "text-secondary bg-opacity-10" : "text-muted ."
               }`
             }
+            style={({ isActive }) => ({
+              filter: isActive
+                ? "brightness(0) saturate(100%) invert(48%) sepia(18%) saturate(1237%) hue-rotate(122deg) brightness(91%) contrast(87%)"
+                : undefined,
+            })}
             aria-current={({ isActive }) => (isActive ? "page" : undefined)}
           >
             <span className="w-5 h-5 md:w-7 md:h-7 flex items-center justify-center">
               {item.icon}
-              {/* <img src={item.icon} alt="icon" /> */}
             </span>
             <span className="text-xs text-center font-bold">{item.title}</span>
           </NavLink>

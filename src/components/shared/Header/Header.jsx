@@ -43,7 +43,7 @@ const Header = ({
           <IconButton icon={svgIcons.chatIcon} alt="chat" />
           <IconButton icon={svgIcons.fullScreenIcon} alt="fullScreen" />
 
-          <NotificationIcon count={3} icon={svgIcons.notificationsIcon} />
+          <NotificationIcon count={3} icon={svgIcons.notificationsIconS} />
 
           <div className="flex items-center gap-1">
             <Button

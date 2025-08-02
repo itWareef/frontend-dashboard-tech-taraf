@@ -5,7 +5,7 @@ const HeaderPopup = ({ PageName, icon, action }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex sticky top-0 pb-2 z-40 items-center justify-between px-5 pt-5">
+    <div className="flex sticky top-0 pb-2 z-40 items-center justify-between px-5 pt-5 bg-background">
       <div className="space-y-3">
         <div className="flex items-center gap-3">
           {icon && <img src={icon} alt="icon" className="w-7 h-7" />}

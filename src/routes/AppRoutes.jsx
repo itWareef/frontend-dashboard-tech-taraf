@@ -1,4 +1,3 @@
-import DefaultLayout from "@/layouts/DefaultLayout";
 import MainLayout from "@/layouts/MainLayout";
 import SettingsLayout from "@/layouts/SettingsLayout";
 import AddUnitRequestsPage from "@/pages/AddUnitRequestsPage/AddUnitRequestsPage";
@@ -30,6 +29,8 @@ import ProtectedAuth from "./ProtectedAuth";
 import SubmittingEntitiesPage from "@/pages/SubmittingEntitiesPage/SubmittingEntitiesPage";
 import OffersTermsPage from "@/pages/OffersTermsPage/OffersTermsPage";
 import TechnicalProposalsPage from "@/pages/TechnicalProposalsPage/TechnicalProposalsPage";
+import ProjectOverview from "@/pages/ProjectOverview/ProjectOverview";
+import NotificationsPage from "@/pages/NotificationsPage/NotificationsPage";
 
 const AppRoutes = () => {
   const routers = createBrowserRouter([
@@ -75,13 +76,16 @@ const AppRoutes = () => {
           path: "/technical-proposals",
           element: <TechnicalProposalsPage />,
         },
+        {
+          path: "/project-overview",
+          element: <ProjectOverview />,
+        },
+        { path: "map", element: <MapPage /> },
+        {
+          path: "notifications",
+          element: <NotificationsPage />,
+        },
       ],
-    },
-
-    {
-      path: "/",
-      element: <DefaultLayout />,
-      children: [{ path: "map", element: <MapPage /> }],
     },
 
     {

@@ -7,7 +7,7 @@ const ModeClientsOrder = ({ client, handleCloseOrdersModel }) => {
     <>
       <section
         style={{ zIndex: 99999 }}
-        className="min-h-screen bg-background/80  backdrop-blur-sm  p-8 absolute left-0 right-0 bottom-0 top-0"
+        className="min-h-screen bg-background  p-8 absolute left-0 right-0 bottom-0 top-0"
       >
         <HeaderPopup
           action={handleCloseOrdersModel}

@@ -38,6 +38,7 @@ const SettingsMenu = () => {
       icon: svgIcons.notificationsIconS,
       hasChevron: true,
       isUpdate: true,
+      path: "/notifications",
     },
 
     {
@@ -66,6 +67,7 @@ const SettingsMenu = () => {
       icon: svgIcons.builds,
       hasChevron: true,
       isUpdate: false,
+      path: "/project-overview",
     },
   ];
 
@@ -113,38 +115,28 @@ const SettingsMenu = () => {
     <section className=" container  mx-auto flex justify-center items-center h-[calc(100vh-200px)]">
       <div className=" w-full grid gird-cols-1 md:grid-cols-2 gap-4 ">
         {/* Menu Items */}
-        {menuItems.map((item, index) => (
-          <div
-            key={index}
-            className="flex bg-white text-xl md:text-2xl  lg:text-3xl font-bold shadow rounded-[6px] items-center justify-between p-4 hover:bg-gray-50 cursor-pointer"
-          >
-            <div className="flex items-center gap-3">
-              <img src={item.icon} className="w-7 h-7" alt="users" />
-              <span className="text-primary">{item.title}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              {item.isUpdate && (
-                <Link to={item.path}>
-                  <img
-                    src={svgIcons.editIcon}
-                    className="w-7 h-7"
-                    alt="arrow"
-                  />
-                </Link>
-              )}
-              {item.hasChevron && (
-                <Link to={item.path}>
+        {menuItems.map((item) => (
+          <Link key={item.path} to={item.path} className="block">
+            <div className="flex bg-white text-xl md:text-2xl lg:text-3xl font-bold shadow rounded-[6px] items-center justify-between p-4 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
+              <div className="flex items-center gap-3">
+                <img src={item.icon} className="w-7 h-7" alt={item.title} />
+                <span className="text-primary">{item.title}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                {item.isUpdate && (
+                  <img src={svgIcons.editIcon} className="w-7 h-7" alt="Edit" />
+                )}
+                {item.hasChevron && (
                   <img
                     src={svgIcons.arrowLeftS}
                     className="w-7 h-7"
-                    alt="arrow"
+                    alt="Navigate"
                   />
-                </Link>
-              )}
+                )}
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
-
         {statusItems.map((item, index) => (
           <div
             key={index}

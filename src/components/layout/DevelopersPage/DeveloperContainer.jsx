@@ -6,7 +6,7 @@ import DeveloperTBody from "./DeveloperTBody";
 const DeveloperContainer = () => {
   const [developers, setDevelopers] = useState(
     Array.from({ length: 20 }, (_, index) => ({
-      developerLogo: "/Icons/Taraf for 3d.svg",
+      developerLogo: "public/taraf.png",
       developerName: `Modern Real Estate Developer Co. #${index + 1}`,
       projectsCount: 12,
       unitsCount: 340,
@@ -18,9 +18,9 @@ const DeveloperContainer = () => {
 
   return (
     <>
-      <section className="bg-card p-3 rounded-[20px] my-3 space-y-4">
-        <div className="max-h-[calc(100vh-200px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <table className="w-full border-separate border-spacing-y-6">
+      <section className="bg-card rounded-[20px] my-2 p-5">
+        <div className="h-[calc(100vh-200px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <table className="w-full ">
             <DeveloperTH />
             <DeveloperTBody developers={developers} />
           </table>

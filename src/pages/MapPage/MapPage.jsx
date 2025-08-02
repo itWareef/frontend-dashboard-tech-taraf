@@ -100,6 +100,10 @@ import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import imgUser from "../../assets/imgProfile.png";
 import mapImg from "../../assets/marker-icon-2x.png";
+import { svgIcons } from "@/components/shared/svgIcons";
+import { RadioGroup, RadioGroupIndicator } from "@radix-ui/react-radio-group";
+import { RadioGroupItem } from "@/components/ui/radio-group";
+import Header from "@/components/shared/Header/Header";
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
@@ -210,6 +214,7 @@ const stats = [
 
 export default function DashboardMapPage() {
   const [locations, setLocations] = useState([]);
+  const [filterValue, setFilterValue] = useState("available-supervisor");
 
   useEffect(() => {
     const pusher = new Pusher("19eb2dc80c8ede461867", {
@@ -249,100 +254,154 @@ export default function DashboardMapPage() {
 
   return (
     <>
-      <HeaderDefaultLayout />
-      <div className="h-[600px] rounded-md overflow-hidden bg-primary p-5">
-        <MapContainer
-          center={[24.7136, 46.6753]}
-          zoom={11}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-
-          {locations.map((marker) => (
-            <Marker
-              key={marker.id}
-              position={[
-                parseFloat(marker.latitude),
-                parseFloat(marker.longitude),
-              ]}
-              icon={customIcon}
+      <section
+        style={{ zIndex: 99999 }}
+        className="min-h-screen bg-background  p-8 absolute left-0 right-0 bottom-0 top-0"
+      >
+        <Header PageName={"تتبع المشرفين"} returnState={true} />
+        <div className="h-[600px] mt-5 mx-auto max-w-[1320px] rounded-md overflow-hidden relative bg-card p-5">
+          <div
+            className="absolute top-10 right-10 min-w-[200px] min-h-[200px] bg-background p-5 rounded-md space-y-3 text-xl font-bold "
+            style={{ zIndex: 9999 }}
+          >
+            <RadioGroup
+              dir="rtl"
+              value={filterValue}
+              onValueChange={setFilterValue}
+              className="space-y-3"
             >
-              {/* /node_modules/leaflet/dist/images/marker-icon.png */}
-              <Popup className="custom-popup">
-                <div className="flex gap-4  w-[420px]">
-                  <div className="flex-shrink-0  w-[150px] h-[150px]">
-                    <img
-                      src={marker.image || imgUser}
-                      alt={marker.name}
-                      className="w-full  h-full rounded-full object-cover border-10 border-secondary"
-                    />
-                  </div>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem
+                  className={"size-6"}
+                  value="available-supervisor"
+                  id="available-supervisor"
+                />
 
-                  {/* Data */}
-                  <div className="flex-1 ">
-                    <div className="flex items-center gap-2 pb-2 border-b border-muted">
-                      <UserBadgeIcon color="#1C7E68" />
-                      <span className="text-sm font-semibold text-primary">
-                        {marker.position || "مشرف صيانة"}
-                      </span>
-                    </div>
+                <img src={svgIcons.mapUserAv} alt="" className="w-8" />
+                <label htmlFor="available-supervisor">مشرف متاح</label>
+              </div>
 
-                    {/* الصف الثاني: الاسم والهاتف */}
-                    <div className="flex flex-col sm:flex-row gap-4 py-2 border-b border-muted">
-                      <div className="flex items-center gap-2">
-                        <UserIconSmall color="#1C7E68" />
-                        <span className="text-sm  text-primary font-bold">
-                          {marker.name || "عبدالرحمن علي"}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <PhoneIcon color="#1C7E68" />
-                        <span className="text-sm  text-primary font-bold">
-                          {marker.phone || "01008034761"}
-                        </span>
-                      </div>
-                    </div>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem
+                  className={"size-6"}
+                  value="unavailable-supervisor"
+                  id="unavailable-supervisor"
+                />
+                <img src={svgIcons.mapUserNotAv} alt="" className="w-8" />
+                <label htmlFor="unavailable-supervisor">مشرف غير متاح</label>
+              </div>
 
-                    {/* الصف الثالث: العنوان */}
-                    <div className="flex items-center gap-2 py-2 border-b border-muted">
-                      <LocationIcon color="#038D7D" />
-                      <span className="text-sm font-bold text-primary">
-                        {marker.address || "34 حي النزهة"}
-                      </span>
-                    </div>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem
+                  RadioGroupItemvalue="new-order"
+                  className={"size-6"}
+                  id="new-order"
+                />
+                <img src={svgIcons.mapNewOrder} alt="" className="w-8" />
+                <label htmlFor="new-order">طلب جديد</label>
+              </div>
 
-                    {/* الصف الرابع: التقييم */}
-                    <div className="">
-                      <span className="text-sm  text-primary text-start block ">
-                        متوسط تقييم المشرف
-                      </span>
-                      <div className="flex justify-end items-center gap-1">
-                        {renderRatingStars(marker.rating || 5)}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 my-6 text-center">
-        {stats.map((item, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center">
-              {" "}
-              {item.icon}
-            </div>
-            <h5 className="text-sm text-primary mt-1">{item.label}</h5>
-            <span className="text-2xl  text-primary">{item.value}</span>
+              <div className="flex items-center gap-2">
+                <RadioGroupItem
+                  value="in-progress"
+                  id="in-progress"
+                  className={"size-6"}
+                />
+                <img src={svgIcons.mapProgressOrder} alt="" className="w-8" />
+                <label htmlFor="in-progress">طلب قيد التنفيذ</label>
+              </div>
+            </RadioGroup>
           </div>
-        ))}
-      </div>
+          <MapContainer
+            center={[24.7136, 46.6753]}
+            zoom={11}
+            style={{ height: "100%", width: "100%" }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+            {locations.map((marker) => (
+              <Marker
+                key={marker.id}
+                position={[
+                  parseFloat(marker.latitude),
+                  parseFloat(marker.longitude),
+                ]}
+                icon={customIcon}
+              >
+                {/* /node_modules/leaflet/dist/images/marker-icon.png */}
+                <Popup className="custom-popup">
+                  <div className="flex gap-4  w-[420px]">
+                    <div className="flex-shrink-0  w-[150px] h-[150px]">
+                      <img
+                        src={marker.image || imgUser}
+                        alt={marker.name}
+                        className="w-full  h-full rounded-full object-cover border-10 border-secondary"
+                      />
+                    </div>
+
+                    {/* Data */}
+                    <div className="flex-1 ">
+                      <div className="flex items-center gap-2 pb-2 border-b border-muted">
+                        <UserBadgeIcon color="#1C7E68" />
+                        <span className="text-sm font-semibold text-primary">
+                          {marker.position || "مشرف صيانة"}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row gap-4 py-2 border-b border-muted">
+                        <div className="flex items-center gap-2">
+                          <UserIconSmall color="#1C7E68" />
+                          <span className="text-sm  text-primary font-bold">
+                            {marker.name || "عبدالرحمن علي"}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <PhoneIcon color="#1C7E68" />
+                          <span className="text-sm  text-primary font-bold">
+                            {marker.phone || "01008034761"}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 py-2 border-b border-muted">
+                        <LocationIcon color="#038D7D" />
+                        <span className="text-sm font-bold text-primary">
+                          {marker.address || "34 حي النزهة"}
+                        </span>
+                      </div>
+
+                      <div className="">
+                        <span className="text-sm  text-primary text-start block ">
+                          متوسط تقييم المشرف
+                        </span>
+                        <div className="flex justify-end items-center gap-1">
+                          {renderRatingStars(marker.rating || 5)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 my-6 text-center mx-auto max-w-[1320px]">
+          {stats.map((item, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center">
+                {" "}
+                {item.icon}
+              </div>
+              <h5 className="text-sm text-primary mt-1">{item.label}</h5>
+              <span className="text-2xl  text-primary">{item.value}</span>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

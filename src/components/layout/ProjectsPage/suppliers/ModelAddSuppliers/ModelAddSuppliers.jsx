@@ -3,7 +3,7 @@ import React from "react";
 
 const ModelAddSuppliers = (handleModelSuppliers) => {
   return (
-    <section className="p-8 backdrop-blur-xl fixed top-0 left-0 right-0 bottom-0 z-50 min-h-screen bg-white/50">
+    <section className=" fixed top-0 left-0 right-0 bottom-0 z-50 min-h-screen bg-background">
       <HeaderPopup PageName={"اضافة مورد"} action={handleModelSuppliers} />
 
       <div className="container mx-auto  flex justify-center mt-20 ">

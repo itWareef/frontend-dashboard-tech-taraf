@@ -4,8 +4,9 @@ import ContractBody from "./ContractBody.jsx";
 import ContractTH from "./ContractTH.jsx";
 import ModelAddContract from "./ModelAddContract.jsx";
 import { Search } from "lucide-react";
+import { svgIcons } from "@/components/shared/svgIcons.jsx";
 const ContractContainer = () => {
-  const [activeTab, setActiveTab] = useState(" currentContracts");
+  const [activeTab, setActiveTab] = useState("currentContracts");
   const [openAttachments, setOpenAttachments] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +93,7 @@ const ContractContainer = () => {
               onClick={() => setActiveTab("currentContracts")}
               className={`text-xl py-3 px-4 text-white transition-all duration-150 ${
                 activeTab === "currentContracts"
-                  ? "border-b-2 border-white text-red-50 font-bold"
+                  ? "border-b-2 border-white text-white font-bold"
                   : "opacity-60"
               }`}
             >
@@ -102,7 +103,7 @@ const ContractContainer = () => {
               onClick={() => setActiveTab("endedContracts")}
               className={`text-xl py-3 px-4 text-white transition-all duration-150 ${
                 activeTab === "endedContracts"
-                  ? "border-b-2 border-white text-red-50 font-bold"
+                  ? "border-b-2 border-white text-white font-bold"
                   : "opacity-60"
               }`}
             >
@@ -111,7 +112,7 @@ const ContractContainer = () => {
           </div>
 
           <div className="flex items-center space-x-2 w-[250px]">
-            <img src="\Icons\filter.svg" className="w-6 h-6" alt="filter" />
+            <img src={svgIcons.filterIcon} className="w-6 h-6" alt="filter" />
             <div className="relative">
               <Search className="text-muted absolute top-1/2 right-2 transform -translate-y-1/2" />
               <input
@@ -126,11 +127,7 @@ const ContractContainer = () => {
         <div className="max-h-[calc(100vh-250px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="w-[80px] fixed bottom-0 left-0 translate-x-0    z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
             <button onClick={() => setIsOpen(true)}>
-              <img
-                src="\Icons\Icon corebrands-addthis.svg"
-                className="w-8 h-8"
-                alt="add"
-              />
+              <img src={svgIcons.addContract} className="w-11 h-11" alt="add" />
             </button>
           </div>
           <table className="w-full border-separate border-spacing-y-6">

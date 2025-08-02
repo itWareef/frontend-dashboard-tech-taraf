@@ -6,12 +6,18 @@ import ModelAddClient from "./ModelAddClient";
 
 import { Search } from "lucide-react";
 import ModeClientsOrder from "./ModelClientsOrder/ModeClientsOrder";
+import { svgIcons } from "@/components/shared/svgIcons";
 
 const ClientsContainer = () => {
   const [activeTab, setActiveTab] = useState("contracted");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
   const [ordersModel, setOrdersModel] = useState(false);
+
+  const handleAddClient = () => {
+    setIsOpen(true);
+    setSelectedClient(null);
+  };
 
   const handleCloseModel = () => {
     setIsOpen(false);
@@ -69,6 +75,90 @@ const ClientsContainer = () => {
     },
     {
       id: 5,
+      clientImage: superVisorImg,
+      clientName: "ليلى خالد",
+      clientContract: "تنسيق حدائق",
+      unitNumber: 45,
+      projectName: "الواحة 22",
+      neighborhood: "حي النخيل",
+      phone: "0553322110",
+      email: "layla.khaled@yahoo.com",
+      isContracted: true,
+    },
+    {
+      id: 6,
+      clientImage: superVisorImg,
+      clientName: "ليلى خالد",
+      clientContract: "تنسيق حدائق",
+      unitNumber: 45,
+      projectName: "الواحة 22",
+      neighborhood: "حي النخيل",
+      phone: "0553322110",
+      email: "layla.khaled@yahoo.com",
+      isContracted: true,
+    },
+    {
+      id: 7,
+      clientImage: superVisorImg,
+      clientName: "ليلى خالد",
+      clientContract: "تنسيق حدائق",
+      unitNumber: 45,
+      projectName: "الواحة 22",
+      neighborhood: "حي النخيل",
+      phone: "0553322110",
+      email: "layla.khaled@yahoo.com",
+      isContracted: true,
+    },
+    {
+      id: 8,
+      clientImage: superVisorImg,
+      clientName: "ليلى خالد",
+      clientContract: "تنسيق حدائق",
+      unitNumber: 45,
+      projectName: "الواحة 22",
+      neighborhood: "حي النخيل",
+      phone: "0553322110",
+      email: "layla.khaled@yahoo.com",
+      isContracted: true,
+    },
+    {
+      id: 9,
+      clientImage: superVisorImg,
+      clientName: "ليلى خالد",
+      clientContract: "تنسيق حدائق",
+      unitNumber: 45,
+      projectName: "الواحة 22",
+      neighborhood: "حي النخيل",
+      phone: "0553322110",
+      email: "layla.khaled@yahoo.com",
+      isContracted: true,
+    },
+    {
+      id: 10,
+      clientImage: superVisorImg,
+      clientName: "ليلى خالد",
+      clientContract: "تنسيق حدائق",
+      unitNumber: 45,
+      projectName: "الواحة 22",
+      neighborhood: "حي النخيل",
+      phone: "0553322110",
+      email: "layla.khaled@yahoo.com",
+      isContracted: true,
+    },
+    {
+      id: 11,
+      clientImage: superVisorImg,
+      clientName: "ليلى خالد",
+      clientContract: "تنسيق حدائق",
+      unitNumber: 45,
+      projectName: "الواحة 22",
+      neighborhood: "حي النخيل",
+      phone: "0553322110",
+      email: "layla.khaled@yahoo.com",
+      isContracted: true,
+    },
+    {
+      id: 11,
       clientImage: superVisorImg,
       clientName: "ليلى خالد",
       clientContract: "تنسيق حدائق",
@@ -163,9 +253,9 @@ const ClientsContainer = () => {
           handleEdit={handleEdit}
         />
       )}
-      <section className="bg-card p-3 rounded-[20px] my-3 space-y-4">
+      <section className="bg-card p-3 rounded-[20px] my-2">
         {/* Header */}
-        <header className="flex justify-between items-center">
+        <header className="flex justify-between items-center mb-5">
           <div className="space-x-2 border-b border-muted flex flex-1">
             <button
               onClick={() => setActiveTab("contracted")}
@@ -190,7 +280,7 @@ const ClientsContainer = () => {
           </div>
 
           <div className="flex items-center space-x-2 w-[250px]">
-            <img src="\Icons\filter.svg" className="w-6 h-6" alt="filter" />
+            <img src={svgIcons.filterIcon} className="w-6 h-6" alt="filter" />
             <div className="relative">
               <Search className="text-muted absolute top-1/2 right-2 transform -translate-y-1/2" />
               <input
@@ -202,8 +292,8 @@ const ClientsContainer = () => {
           </div>
         </header>
 
-        <div className="max-h-[calc(100vh-250px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <table className="w-full border-separate border-spacing-y-6">
+        <div className="h-[calc(100vh-260px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <table className="w-full ">
             <ClientsTH />
             <ClientsTBody
               handleOrdersModel={handleOrdersModel}
@@ -211,6 +301,11 @@ const ClientsContainer = () => {
               handleDelete={handleDelete}
               handleEdit={handleEditClick}
             />
+            <div className="w-[80px] fixed bottom-0 left-0 translate-x-0    z-30 h-[80px] rounded-full bg-secondary flex items-center justify-center">
+              <button onClick={() => handleAddClient()}>
+                <img src={svgIcons.addClient} className="w-12 h-12" alt="add" />
+              </button>
+            </div>
           </table>
         </div>
       </section>

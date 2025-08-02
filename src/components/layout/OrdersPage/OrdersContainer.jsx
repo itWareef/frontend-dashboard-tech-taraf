@@ -41,9 +41,9 @@ const OrdersContainer = () => {
     activeTab === "maintenance" ? requestsMaintenance : requestsCleaning;
 
   return (
-    <section className="bg-card p-3 rounded-[20px] my-3 space-y-4">
+    <section className="bg-card p-3 rounded-[20px] my-2 ">
       {/* Header */}
-      <header className="flex justify-between items-center">
+      <header className="flex justify-between items-center mb-5">
         <div className="space-x-2 border-b border-muted flex flex-1">
           <button
             onClick={() => setActiveTab("maintenance")}
@@ -67,21 +67,21 @@ const OrdersContainer = () => {
           </button>
         </div>
 
-        <div className="flex items-center space-x-2 w-[250px]">
+        <div className="flex items-center space-x-2 w-[300px]">
           <img src={svgIcons.filterIcon} className="w-6 h-6" alt="" />
-          <div className="relative">
+          <div className="relative flex-1">
             <Search className="text-muted absolute -top-1 right-0 transform translate-y-1/2 -translate-x-1/2 " />
             <input
               type="text "
-              className="bg-white rounded-[6px] py-2 ps-10 pe-2  text-sm"
+              className="bg-white rounded-[6px] py-2 ps-10 pe-2 w-full text-sm"
               placeholder="بحث"
             />
           </div>
         </div>
       </header>
 
-      <div className="max-h-[calc(100vh-250px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <table className="w-full border-separate border-spacing-y-6">
+      <div className="h-[calc(100vh-250px)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <table className="w-full ">
           <OrderTH />
           <OrderTBody
             requests={displayedRequests}

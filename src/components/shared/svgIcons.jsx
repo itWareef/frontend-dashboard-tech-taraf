@@ -3,7 +3,7 @@ import chatIcon from "../../assets/Icons/chatIcon.svg";
 import checkCircle from "../../assets/Icons/check-circle.svg";
 import filterIcon from "../../assets/Icons/filter.svg";
 import fullScreenIcon from "../../assets/Icons/fullScreenIcon.svg";
-import add from "../../assets/Icons/Icon corebrands-addthis.svg";
+import add from "../../assets/Icons/addthis.svg";
 import listIcon from "../../assets/Icons/listIcon.svg";
 import locationIcon from "../../assets/Icons/location.svg";
 import logoutIcon from "../../assets/Icons/logoutIcon.svg";
@@ -29,6 +29,22 @@ import time from "../../assets/Icons/time-icon.svg";
 import mode from "../../assets/Icons/mode-icon.svg";
 import language from "../../assets/Icons/languag-icon.svg";
 import addUnitIcon from "../../assets/Icons/add-unit-icon.svg";
+import addUnitIconWhite from "../../assets/Icons/add-unit-white.svg";
+import eyeIcon from "../../assets/Icons/eyeIcon.svg";
+import addThis from "../../assets/Icons/addthis.svg";
+import fileUpload from "../../assets/Icons/file-upload.svg";
+import addClient from "../../assets/Icons/add-client.svg";
+import addProject from "../../assets/Icons/addProject.svg";
+import addContract from "../../assets/Icons/addContract.svg";
+
+import iconfileTrayFullOutline from "../../assets/Icons/Icon ion-file-tray-full-outline.svg";
+import iconMaterialOutlineComment from "../../assets/Icons/Icon material-outline-comment.svg";
+import iconFeatherCamera from "../../assets/Icons/Icon feather-camera.svg";
+
+import mapUserAv from "../../assets/Icons/mapUserAv.svg";
+import mapUserNotAv from "../../assets/Icons/mapUserNotAv.svg";
+import mapNewOrder from "../../assets/Icons/mapNewOrder.svg";
+import mapProgressOrder from "../../assets/Icons/mapProgressOrder.svg";
 
 export const svgIcons = {
   proposalSubmission: proposalSubmission,
@@ -61,8 +77,21 @@ export const svgIcons = {
   time: time,
   mode: mode,
   language: language,
-
+  eyeIcon: eyeIcon,
+  addThis: addThis,
+  fileUpload: fileUpload,
+  addClient: addClient,
   addUnitIcon: addUnitIcon,
+  iconfileTrayFullOutline: iconfileTrayFullOutline,
+  iconMaterialOutlineComment: iconMaterialOutlineComment,
+  iconFeatherCamera: iconFeatherCamera,
+  addUnitIconWhite: addUnitIconWhite,
+  addProject: addProject,
+  addContract: addContract,
+  mapUserAv: mapUserAv,
+  mapUserNotAv: mapUserNotAv,
+  mapNewOrder: mapNewOrder,
+  mapProgressOrder: mapProgressOrder,
   projects: (
     <svg
       width="32"
@@ -128,24 +157,7 @@ export const svgIcons = {
       />
     </svg>
   ),
-  addContract: (
-    <svg
-      width="40"
-      height="50"
-      viewBox="0 0 55 45"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M0.238281 0.238281V53.1346H33.2567L53.1346 33.2567V0.238281H0.238281ZM3.82447 3.82447H49.5484V28.0313H28.0313V49.5484H3.82447V3.82447ZM31.7713 49.5484H31.6174V31.6174H49.5484V31.7713L31.7713 49.5484Z"
-        fill="white"
-      />
-      <path
-        d="M20.747 29.7134V20.748H29.7125V17.1618H20.747V8.19629H17.1608V17.1618H8.19531V20.748H17.1608V29.7134H20.747Z"
-        fill="white"
-      />
-    </svg>
-  ),
+
   update: (
     <svg
       width="29"
@@ -464,41 +476,6 @@ export const svgIcons = {
       <path
         d="M27.2637 3.58906C27.2637 2.08881 26.0498 0.861328 24.5496 0.861328H2.72774C1.22748 0.861328 0 2.08881 0 3.58906V19.9555C0 21.4557 1.22748 22.6832 2.72774 22.6832H21.8219L27.2773 28.1387L27.2637 3.58906ZM24.5496 3.58906V21.5512L22.9539 19.9555H2.72774V3.58906H24.5496ZM5.45547 14.5H21.8219V17.2277H5.45547V14.5ZM5.45547 10.4084H21.8219V13.1361H5.45547V10.4084ZM5.45547 6.3168H21.8219V9.04453H5.45547V6.3168Z"
         fill="#038D7D"
-      />
-    </svg>
-  ),
-  addClient: (
-    <svg
-      width="40"
-      height="58"
-      viewBox="0 0 66 55"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M46.7937 14.5005C46.2833 21.3849 41.0643 27.0011 35.3349 27.0011C29.6055 27.0011 24.3774 21.3862 23.8761 14.5005C23.3552 7.33877 28.4336 2 35.3349 2C42.2362 2 47.3146 7.46898 46.7937 14.5005Z"
-        fill="white"
-        stroke="white"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M35.3345 35.335C24.0059 35.335 12.508 41.5852 10.3803 53.3826C10.1199 54.8045 10.9285 56.1692 12.4182 56.1692H58.2521C59.7418 56.1692 60.5465 54.8045 60.29 53.3826C58.161 41.5852 46.6631 35.335 35.3345 35.335Z"
-        fill="white"
-        stroke="white"
-        strokeWidth="3"
-      />
-      <path
-        d="M9.29197 18.6675V33.2514V18.6675ZM16.5839 25.9595H2H16.5839Z"
-        fill="white"
-      />
-      <path
-        d="M9.29197 18.6675V33.2514M16.5839 25.9595H2"
-        stroke="white"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   ),
